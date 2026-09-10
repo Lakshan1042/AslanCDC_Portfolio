@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-teal: #176B68;
+    --color-sage: #7FAE9B;
+    --color-cream: #F8F5EF;
+    --color-peach: #F3C7B5;
+    --color-charcoal: #243333;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--color-charcoal);
+  }
+
+  /* Add scroll margin for sticky navbar offset */
+  section[id] {
+    scroll-margin-top: 85px;
+  }
+}
+
+/* Custom editorial styling utilities */
+.font-heading {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.font-display {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Smooth organic visual gradient accents */
+.bg-cream-gradient {
+  background: linear-gradient(180deg, #F8F5EF 0%, #FAF7F2 100%);
+}
+
+.bg-teal-gradient {
+  background: linear-gradient(135deg, #176B68 0%, #115250 100%);
+}
+
+.bg-soft-gradient {
+  background: linear-gradient(180deg, #FCFAF6 0%, #F8F5EF 100%);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F5EF;
+}
+::-webkit-scrollbar-thumb {
+  background: #7FAE9B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #176B68;
+}
