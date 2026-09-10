@@ -168,7 +168,6 @@ export const App: React.FC = () => {
           {/* 3. PROGRAMS & SERVICES (Soft Cream) */}
           <ProgramsSection
             onOpenAppointment={handleOpenAppointment}
-            onSelectServiceDetail={(slug) => handleNavigate('service-detail', slug)}
           />
 
           {/* COMPACT TRUST VALUES STRIP (Sage Soft) */}

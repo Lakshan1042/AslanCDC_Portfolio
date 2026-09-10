@@ -23,6 +23,7 @@ export const AppointmentSection: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -57,15 +58,42 @@ export const AppointmentSection: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError(null);
+
+    const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
+
+    try {
+      if (scriptUrl) {
+        const formDataPayload = new FormData();
+        formDataPayload.append('parentName', formData.parentName);
+        formDataPayload.append('childName', formData.childName);
+        formDataPayload.append('phone', formData.phone);
+        formDataPayload.append('email', formData.email);
+        formDataPayload.append('concern', formData.concern);
+        formDataPayload.append('submittedAt', new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }));
+
+        await fetch(scriptUrl, {
+          method: 'POST',
+          body: formDataPayload,
+          mode: 'no-cors',
+        });
+      } else {
+        // Fallback simulation when VITE_GOOGLE_SCRIPT_URL is not defined in env
+        await new Promise((resolve) => setTimeout(resolve, 600));
+      }
+
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 600);
+    } catch (err) {
+      console.error('Submission error:', err);
+      setSubmitError('Failed to submit enquiry. Please try again or contact us directly.');
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -154,6 +182,7 @@ export const AppointmentSection: React.FC = () => {
                       setSubmitted(false);
                       setFormData({ parentName: '', childName: '', phone: '', email: '', concern: '' });
                       setErrors({});
+                      setSubmitError(null);
                     }}
                   >
                     Submit Another Request
@@ -295,6 +324,13 @@ export const AppointmentSection: React.FC = () => {
                     </p>
                   )}
                 </div>
+
+                {submitError && (
+                  <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-2xl text-xs text-rose-700 font-medium flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
 
                 <div className="pt-2">
                   <Button

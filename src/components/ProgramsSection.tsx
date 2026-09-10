@@ -1,16 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeading } from './SectionHeading';
-import { ArrowUpRight, ChevronRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ProgramsSectionProps {
   onOpenAppointment: () => void;
-  onSelectServiceDetail?: (slug: string) => void;
 }
 
 export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
   onOpenAppointment,
-  onSelectServiceDetail,
 }) => {
   const programs = [
     {
@@ -95,17 +93,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-aslan-sage/10 flex items-center justify-between">
-                {onSelectServiceDetail ? (
-                  <button
-                    onClick={() => onSelectServiceDetail(item.slug)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold font-heading text-aslan-charcoal-muted hover:text-aslan-teal transition-colors"
-                  >
-                    <span>Read Program Details</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                ) : <span />}
-
+              <div className="pt-6 mt-6 border-t border-aslan-sage/10 flex items-center justify-end">
                 <button
                   onClick={onOpenAppointment}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold font-heading text-aslan-teal group-hover:underline"
