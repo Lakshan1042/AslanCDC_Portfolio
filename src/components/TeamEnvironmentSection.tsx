@@ -5,7 +5,8 @@ import { ENVIRONMENT_GALLERY } from '../data/contentData';
 
 export const TeamEnvironmentSection: React.FC = () => {
   return (
-    <section id="gallery" className="py-20 lg:py-24 bg-aslan-cream relative overflow-hidden">
+    <section id="environment" className="py-20 lg:py-24 bg-aslan-cream relative overflow-hidden">
+      <span id="gallery" className="absolute top-0"></span>
       
       {/* Organic Background Blobs */}
       <div className="absolute top-10 right-10 w-96 h-96 bg-aslan-sage/10 rounded-full blur-3xl pointer-events-none"></div>

@@ -191,7 +191,7 @@ export const App: React.FC = () => {
       )}
 
       {/* 8. FOOTER (Pure White) */}
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 };
