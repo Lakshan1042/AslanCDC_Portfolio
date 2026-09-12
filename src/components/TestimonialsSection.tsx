@@ -64,13 +64,13 @@ export const TestimonialsSection: React.FC = () => {
           className="mb-12"
         />
 
-        {/* Carousel Card Container */}
+        {/* Fixed Height Container to Guarantee Zero Page Layout Shift */}
         <div
-          className="relative"
+          className="relative h-[340px] sm:h-[280px] w-full"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <AnimatePresence custom={direction} mode="wait">
+          <AnimatePresence custom={direction} initial={false}>
             <motion.div
               key={current.id}
               custom={direction}
@@ -79,13 +79,13 @@ export const TestimonialsSection: React.FC = () => {
               animate="center"
               exit="exit"
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="bg-white rounded-3xl p-8 sm:p-10 border border-aslan-sage/20 shadow-aslan-card relative space-y-6"
+              className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-aslan-sage/20 shadow-aslan-card absolute inset-0 w-full h-full flex flex-col justify-between"
             >
               {/* Header inside card */}
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center justify-between gap-4 flex-shrink-0">
                 <div className="flex items-center gap-1 text-amber-400">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                    <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
                 <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-aslan-teal/10 text-aslan-teal text-xs font-semibold">
@@ -93,27 +93,27 @@ export const TestimonialsSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Quote Text */}
-              <div className="relative">
-                <Quote className="w-12 h-12 text-aslan-peach/30 absolute -top-4 -left-3 -z-1" />
-                <p className="text-base sm:text-xl text-aslan-charcoal leading-relaxed font-sans italic relative z-10">
+              {/* Quote Text Container - Vertically Centered */}
+              <div className="relative my-auto flex-grow flex items-center px-1 py-2">
+                <Quote className="w-10 h-10 sm:w-12 sm:h-12 text-aslan-peach/30 absolute -top-3 -left-3 -z-1" />
+                <p className="text-sm sm:text-base md:text-lg text-aslan-charcoal leading-relaxed font-sans italic relative z-10">
                   "{current.quote}"
                 </p>
               </div>
 
               {/* Footer inside card */}
-              <div className="pt-4 border-t border-aslan-sage/10 flex flex-wrap items-center justify-between gap-4">
+              <div className="pt-3 sm:pt-4 border-t border-aslan-sage/10 flex items-center justify-between gap-4 flex-shrink-0">
                 <div>
-                  <h4 className="font-heading font-bold text-aslan-charcoal text-base sm:text-lg">
+                  <h4 className="font-heading font-bold text-aslan-charcoal text-sm sm:text-base">
                     {current.parentName}
                   </h4>
-                  <p className="text-xs sm:text-sm text-aslan-teal font-semibold font-heading">
+                  <p className="text-xs text-aslan-teal font-semibold font-heading">
                     {current.program}
                   </p>
                 </div>
 
                 {/* Counter Badge */}
-                <span className="text-xs text-aslan-charcoal-muted font-medium bg-aslan-cream px-3 py-1 rounded-full border border-aslan-sage/20 font-sans">
+                <span className="text-xs text-aslan-charcoal-muted font-medium bg-aslan-cream px-3 py-1 rounded-full border border-aslan-sage/20 font-sans flex-shrink-0">
                   {activeIndex + 1} of {TESTIMONIAL_PLACEHOLDERS.length}
                 </span>
               </div>
