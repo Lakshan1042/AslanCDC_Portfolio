@@ -86,7 +86,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       'telephone': CENTER_INFO.phones.map(p => `+91-${p}`),
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': '2nd Floor, Sha Complex, Mudichur Road, West Tambaram',
+        'streetAddress': '6, Raju St, Mudichur Rd, West Tambaram',
         'addressLocality': 'Chennai',
         'addressRegion': 'Tamil Nadu',
         'postalCode': '600045',
@@ -103,7 +103,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         'opens': '09:00',
         'closes': '20:00'
       }],
-      'areaServed': ['West Tambaram', 'Tambaram', 'Chennai', 'Tamil Nadu'],
+      'areaServed': ['West Tambaram', 'Chromepet', 'Tambaram', 'Chennai', 'Tamil Nadu'],
       'medicalSpecialty': ['Pediatric Therapy', 'Occupational Therapy', 'Speech Therapy', 'Special Education']
     };
     clinicScript.text = JSON.stringify(clinicSchema);

@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               ASLAN
             </button>
             <p className="text-aslan-charcoal-muted">
-              Child Development Center • West Tambaram, Chennai
+              Child Development Center • West Tambaram & Chromepet, Chennai
             </p>
           </div>
 

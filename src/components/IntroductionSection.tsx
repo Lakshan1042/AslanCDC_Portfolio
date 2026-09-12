@@ -21,7 +21,7 @@ export const IntroductionSection: React.FC = () => {
                 At <strong className="text-aslan-teal font-semibold">Aslan Child Development Center</strong>, we believe every child possesses unique strengths and deserves a nurturing environment to learn, express, and thrive.
               </p>
               <p>
-                Located on Mudichur Road, West Tambaram, our center brings together specialized therapy and tailored educational support designed specifically around the natural pace of your child. We collaborate closely with parents and caregivers to create a calm, empowering space where every developmental step is supported with warmth and clinical expertise.
+                Located across West Tambaram and Chromepet, our centers bring together specialized therapy and tailored educational support designed specifically around the natural pace of your child. We collaborate closely with parents and caregivers to create a calm, empowering space where every developmental step is supported with warmth and clinical expertise.
               </p>
             </div>
 
@@ -83,10 +83,10 @@ export const IntroductionSection: React.FC = () => {
 
               <div className="mt-4 p-4 rounded-2xl bg-aslan-teal text-white space-y-1 text-center shadow-aslan-sm">
                 <p className="font-heading font-semibold text-sm">
-                  Visit Us in West Tambaram, Chennai
+                  Visit Us in West Tambaram & Chromepet
                 </p>
                 <p className="text-xs text-aslan-cream/80">
-                  2nd Floor, Sha Complex, Mudichur Road • Open Mon – Sat (9 AM – 8 PM)
+                  Open Mon – Sat (9:00 AM – 8:00 PM)
                 </p>
               </div>
             </div>

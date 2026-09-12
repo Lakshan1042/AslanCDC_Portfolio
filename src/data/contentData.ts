@@ -1,11 +1,11 @@
-import type { ServiceItem, ApproachStep, TestimonialItem } from '../types';
+import type { ServiceItem, ApproachStep, TestimonialItem, BranchInfo } from '../types';
 
 export const CENTER_INFO = {
   name: 'Aslan Child Development Center',
   tagline: 'Supporting Every Step of Your Child’s Growth',
-  address: '2nd Floor, Sha Complex, Mudichur Road, West Tambaram, Tambaram, Chennai, Tamil Nadu – 600045',
-  shortAddress: 'West Tambaram, Chennai',
-  landmark: '2nd Floor, Sha Complex, Mudichur Road',
+  address: '6, Raju St, Mudichur Rd, West Tambaram, Tambaram, Tamil Nadu 600045',
+  shortAddress: 'West Tambaram & Chromepet, Chennai',
+  landmark: '6, Raju St, Mudichur Rd, West Tambaram',
   hours: 'Monday – Saturday: 9:00 AM – 8:00 PM',
   closedDays: 'Sunday: Closed',
   phones: ['9445914020', '8072545109'],
@@ -14,7 +14,38 @@ export const CENTER_INFO = {
   latitude: '12.926834',
   longitude: '80.1054806',
   siteUrl: 'https://aslancdc.com',
+  branches: [
+    {
+      id: 'main-branch',
+      name: 'Main Branch (West Tambaram)',
+      shortName: 'West Tambaram',
+      address: '6, Raju St, Mudichur Rd, West Tambaram, Tambaram, Tamil Nadu 600045',
+      street: '6, Raju St, Mudichur Rd',
+      area: 'West Tambaram, Tambaram',
+      cityStatePin: 'Chennai, Tamil Nadu – 600045',
+      landmark: 'Mudichur Road',
+      pincode: '600045',
+      googleMapsUrl: 'https://www.google.com/maps/place/ASLAN+-+Occupational+Therapy,+Speech+Therapy,+Special+Education,+Physio+Therapy/@12.9268392,80.1029057,17z/data=!3m1!4b1!4m6!3m5!1s0x3a525f051e448e3b:0x5a10d0687e59a966!8m2!3d12.926834!4d80.1054806!16s%2Fg%2F11l_18kd1x',
+      embedMapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1965!2d80.1029057!3d12.9268392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f051e448e3b%3A0x5a10d0687e59a966!2sASLAN%20-%20Occupational%20Therapy%2C%20Speech%20Therapy%2C%20Special%20Education%2C%20Physio%20Therapy!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
+      isMain: true,
+    },
+    {
+      id: 'chromepet-branch',
+      name: 'Chromepet Branch',
+      shortName: 'Chromepet',
+      address: 'No: 7/4, 3rd Cross St, New Colony, Chromepet, Chennai, Tambaram, Tamil Nadu 600044',
+      street: 'No: 7/4, 3rd Cross St, New Colony',
+      area: 'Chromepet, Tambaram',
+      cityStatePin: 'Chennai, Tamil Nadu – 600044',
+      landmark: '3rd Cross St, New Colony',
+      pincode: '600044',
+      googleMapsUrl: 'https://www.google.com/maps/place/ASLAN+child+development+and+therapy+center/@12.952751,80.1390222,17z/data=!3m1!4b1!4m6!3m5!1s0x3a525fc775eff365:0xc4ccc0b78a8df409!8m2!3d12.952751!4d80.1390222!16s%2Fg%2F11nvtp6v2q',
+      embedMapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6531!2d80.1390222!3d12.952751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525fc775eff365%3A0xc4ccc0b78a8df409!2sASLAN%20child%20development%20and%20therapy%20center!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
+      isMain: false,
+    }
+  ] as (BranchInfo & { street: string; area: string; cityStatePin: string; embedMapUrl: string })[]
 };
+
 
 export const ENVIRONMENT_GALLERY = [
   {

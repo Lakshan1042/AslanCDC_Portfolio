@@ -43,6 +43,17 @@ export interface TeamCategory {
   focusAreas: string[];
 }
 
+export interface BranchInfo {
+  id: string;
+  name: string;
+  shortName: string;
+  address: string;
+  landmark?: string;
+  pincode: string;
+  googleMapsUrl?: string;
+  isMain?: boolean;
+}
+
 export type PageRoute =
   | 'home'
   | 'about'
@@ -53,3 +64,4 @@ export type PageRoute =
   | 'contact'
   | 'ams'
   | '404';
+
