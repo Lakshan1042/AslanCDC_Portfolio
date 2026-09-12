@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './Button';
-import { CheckCircle2, Loader2, HeartHandshake, ShieldCheck, Clock, AlertCircle } from 'lucide-react';
+import { CheckCircle2, Loader2, HeartHandshake, ShieldCheck, Clock, AlertCircle, Building2, Home } from 'lucide-react';
 
 interface FormErrors {
   parentName?: string;
@@ -9,6 +9,7 @@ interface FormErrors {
   phone?: string;
   email?: string;
   concern?: string;
+  address?: string;
 }
 
 export const AppointmentSection: React.FC = () => {
@@ -18,6 +19,8 @@ export const AppointmentSection: React.FC = () => {
     phone: '',
     email: '',
     concern: '',
+    appointmentType: 'center' as 'center' | 'home',
+    address: '',
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -54,6 +57,10 @@ export const AppointmentSection: React.FC = () => {
       newErrors.concern = 'Please share a brief note about your child’s needs.';
     }
 
+    if (formData.appointmentType === 'home' && !formData.address.trim()) {
+      newErrors.address = 'Please enter your complete home address for the visit.';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -75,6 +82,8 @@ export const AppointmentSection: React.FC = () => {
         formDataPayload.append('phone', formData.phone);
         formDataPayload.append('email', formData.email);
         formDataPayload.append('concern', formData.concern);
+        formDataPayload.append('isHomeAppointment', formData.appointmentType === 'home' ? 'Yes' : 'No');
+        formDataPayload.append('address', formData.appointmentType === 'home' ? formData.address.trim() : 'Center Visit');
         formDataPayload.append('submittedAt', new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }));
 
         await fetch(scriptUrl, {
@@ -123,7 +132,7 @@ export const AppointmentSection: React.FC = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-aslan-charcoal-muted leading-relaxed font-sans font-normal">
-              Tell us a little about your child and our team will get in touch with you.
+              Tell us a little about your child and choose between a Center Visit or Home Appointment.
             </p>
 
             {/* Qualitative Trust Card */}
@@ -150,7 +159,7 @@ export const AppointmentSection: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT: Compact 5-Field Form with Validation */}
+          {/* RIGHT: Form with Appointment Type & Validation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -172,7 +181,7 @@ export const AppointmentSection: React.FC = () => {
                   Thank you!
                 </h3>
                 <p className="text-aslan-charcoal-muted max-w-md mx-auto text-base leading-relaxed font-sans">
-                  We've received your request. Our team will contact you shortly.
+                  We've received your request for a {formData.appointmentType === 'home' ? 'Home Appointment' : 'Center Visit'}. Our team will contact you shortly.
                 </p>
                 <div className="pt-4">
                   <Button
@@ -180,7 +189,15 @@ export const AppointmentSection: React.FC = () => {
                     size="sm"
                     onClick={() => {
                       setSubmitted(false);
-                      setFormData({ parentName: '', childName: '', phone: '', email: '', concern: '' });
+                      setFormData({
+                        parentName: '',
+                        childName: '',
+                        phone: '',
+                        email: '',
+                        concern: '',
+                        appointmentType: 'center',
+                        address: '',
+                      });
                       setErrors({});
                       setSubmitError(null);
                     }}
@@ -191,6 +208,44 @@ export const AppointmentSection: React.FC = () => {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                
+                {/* Appointment Type Selector */}
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-aslan-charcoal mb-2 font-heading">
+                    Appointment Type *
+                  </label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setFormData({ ...formData, appointmentType: 'center' });
+                        if (errors.address) setErrors({ ...errors, address: undefined });
+                      }}
+                      className={`p-3.5 rounded-2xl border text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all font-heading ${
+                        formData.appointmentType === 'center'
+                          ? 'bg-aslan-teal text-white border-aslan-teal shadow-sm'
+                          : 'bg-white text-aslan-charcoal border-aslan-sage/30 hover:border-aslan-teal/50'
+                      }`}
+                    >
+                      <Building2 className="w-4 h-4 flex-shrink-0" />
+                      <span>Center Visit</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, appointmentType: 'home' })}
+                      className={`p-3.5 rounded-2xl border text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all font-heading ${
+                        formData.appointmentType === 'home'
+                          ? 'bg-aslan-teal text-white border-aslan-teal shadow-sm'
+                          : 'bg-white text-aslan-charcoal border-aslan-sage/30 hover:border-aslan-teal/50'
+                      }`}
+                    >
+                      <Home className="w-4 h-4 flex-shrink-0" />
+                      <span>Home Appointment</span>
+                    </button>
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* 1. Parent Name */}
                   <div>
@@ -299,6 +354,41 @@ export const AppointmentSection: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Conditional Home Address Field */}
+                <AnimatePresence>
+                  {formData.appointmentType === 'home' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-aslan-charcoal mb-1 font-heading">
+                        Home Address for Visit *
+                      </label>
+                      <textarea
+                        rows={2}
+                        placeholder="Enter complete home address (House No, Street, Area, Landmark, Pincode)..."
+                        value={formData.address}
+                        onChange={(e) => {
+                          setFormData({ ...formData, address: e.target.value });
+                          if (errors.address) setErrors({ ...errors, address: undefined });
+                        }}
+                        className={`w-full px-4 py-3 bg-white border rounded-2xl text-sm focus:outline-none transition-all text-aslan-charcoal resize-none ${
+                          errors.address
+                            ? 'border-rose-500 focus:ring-2 focus:ring-rose-500/30'
+                            : 'border-aslan-sage/30 focus:ring-2 focus:ring-aslan-teal focus:border-aslan-teal'
+                        }`}
+                      ></textarea>
+                      {errors.address && (
+                        <p className="text-rose-600 text-xs font-medium mt-1 flex items-center gap-1">
+                          <AlertCircle className="w-3.5 h-3.5" /> {errors.address}
+                        </p>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 {/* 5. Concern */}
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-aslan-charcoal mb-1 font-heading">
@@ -359,3 +449,4 @@ export const AppointmentSection: React.FC = () => {
     </section>
   );
 };
+

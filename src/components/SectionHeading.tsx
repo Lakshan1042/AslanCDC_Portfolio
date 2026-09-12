@@ -26,7 +26,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
         {title}
       </h2>
       {subtitle && (
-        <p className="text-base md:text-lg text-aslan-charcoal-muted leading-relaxed font-sans font-normal max-w-xl">
+        <p className={`text-base md:text-lg text-aslan-charcoal-muted leading-relaxed font-sans font-normal max-w-xl ${centered ? 'mx-auto' : ''}`}>
           {subtitle}
         </p>
       )}

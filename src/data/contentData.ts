@@ -275,27 +275,28 @@ export const APPROACH_STEPS: ApproachStep[] = [
 
 export const TESTIMONIAL_PLACEHOLDERS: TestimonialItem[] = [
   {
+    id: 'test-3',
+    parentName: 'Parent of Developmental Care',
+    childAge: 'Behavioral Care',
+    program: 'Sitting Tolerance & Behavioral Progress',
+    quote: "My child's life has changed after joining this therapy center. Vickey Sir has a positive mindset and continuously help for my child make progress every day, especially in improving sitting tolerance and behavior.",
+    isPlaceholder: false
+  },
+  {
     id: 'test-1',
-    parentName: 'Parent of 5-year-old child',
-    childAge: 'Speech Therapy',
-    program: 'Speech & Communication Support',
-    quote: 'The warm, calm atmosphere at Aslan made a noticeable difference right away. Seeing our child feel comfortable and eager to attend sessions has given our family immense confidence.',
-    isPlaceholder: true
+    parentName: 'Parent Review',
+    childAge: 'Pediatric Care',
+    program: 'Structured & Personalized Therapy',
+    quote: 'This therapy center provides excellent service with well-trained therapists. The sessions are structured and personalized based on individual needs. The environment is clean and comfortable. I could see clear improvement over time. Highly recommended.',
+    isPlaceholder: false
   },
   {
     id: 'test-2',
-    parentName: 'Parent of 6-year-old child',
-    childAge: 'Occupational Therapy',
-    program: 'Occupational & Sensory Support',
-    quote: 'The therapists at Aslan take the time to truly understand each child. The structured activities have helped improve focus and daily coordination in a very encouraging way.',
-    isPlaceholder: true
-  },
-  {
-    id: 'test-3',
-    parentName: 'Parent of 4-year-old child',
-    childAge: 'Specialized Education',
-    program: 'Tailored Learning Support',
-    quote: 'Aslan provides a supportive space where every step of growth is valued. The guidance given to parents for home practice has been invaluable for us.',
-    isPlaceholder: true
+    parentName: 'Grateful Parent',
+    childAge: 'Autism Support',
+    program: 'Autism Developmental Support',
+    quote: "This center has supported us in many things, vicky sir's mindset is so helpful in the terms of autism kids. Grateful to ASLAN",
+    isPlaceholder: false
   }
 ];
+
