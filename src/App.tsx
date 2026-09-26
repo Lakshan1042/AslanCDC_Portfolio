@@ -165,7 +165,13 @@ export const App: React.FC = () => {
           {/* 2. ABOUT ASLAN (Pure White) */}
           <AboutSection />
 
-          {/* 3. PROGRAMS & SERVICES (Soft Cream) */}
+          {/* 3. CONTACT (Warm Cream - 3rd Section: Quick access to locations, phone, hours & maps) */}
+          <ContactSection />
+
+          {/* 4. BOOK AN APPOINTMENT (Pure White - 4th Section: Directly after Contact) */}
+          <AppointmentSection />
+
+          {/* 5. PROGRAMS & SERVICES (Soft Cream) */}
           <ProgramsSection
             onOpenAppointment={handleOpenAppointment}
           />
@@ -173,20 +179,14 @@ export const App: React.FC = () => {
           {/* COMPACT TRUST VALUES STRIP (Sage Soft) */}
           <ValuesStrip />
 
-          {/* 4. HOW WE SUPPORT CHILDREN (Pure White) */}
+          {/* 6. HOW WE SUPPORT CHILDREN (Pure White) */}
           <SupportJourney />
 
-          {/* 5. OUR TEAM / ENVIRONMENT ("Inside Aslan" 6-Image Gallery - Warm Cream) */}
-          <TeamEnvironmentSection />
-
-          {/* STORIES OF GROWTH (Soft Peach-tinted) */}
+          {/* 7. PARENT EXPERIENCES (Stories of Growth & Progress - Soft Peach-tinted) */}
           <TestimonialsSection />
 
-          {/* 6. BOOK AN APPOINTMENT (Pure White - Visible Form Section) */}
-          <AppointmentSection />
-
-          {/* 7. CONTACT (Warm Cream) */}
-          <ContactSection />
+          {/* 8. INSIDE ASLAN (Our Team / Nurturing Environment 6-Image Gallery - Warm Cream) */}
+          <TeamEnvironmentSection />
         </main>
       )}
 

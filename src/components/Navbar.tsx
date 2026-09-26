@@ -25,11 +25,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
   const navLinks = [
     { label: 'Home', href: 'hero', route: 'home' as PageRoute },
     { label: 'About', href: 'about', route: 'home' as PageRoute },
+    { label: 'Contact', href: 'contact', route: 'home' as PageRoute },
     { label: 'Programs', href: 'services', route: 'home' as PageRoute },
     { label: 'Our Approach', href: 'how-we-help', route: 'home' as PageRoute },
     { label: 'Gallery', href: 'gallery', route: 'home' as PageRoute },
     { label: 'AMS', route: 'ams' as PageRoute, isBadge: true },
-    { label: 'Contact', href: 'contact', route: 'home' as PageRoute },
   ];
 
   const handleLinkClick = (link: typeof navLinks[0]) => {

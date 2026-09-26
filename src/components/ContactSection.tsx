@@ -11,14 +11,14 @@ export const ContactSection: React.FC = () => {
   const selectedBranch = CENTER_INFO.branches.find((b) => b.id === selectedBranchId) || CENTER_INFO.branches[0];
 
   return (
-    <section id="contact" className="py-20 lg:py-24 bg-aslan-cream relative overflow-hidden">
+    <section id="contact" className="py-14 lg:py-20 bg-aslan-cream relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         
         <SectionHeading
           eyebrow="Our Centers & Support"
           title="Visit Aslan"
           subtitle="We are conveniently located across 2 branches in West Tambaram and Chromepet."
-          className="mb-14"
+          className="mb-8 sm:mb-10"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
