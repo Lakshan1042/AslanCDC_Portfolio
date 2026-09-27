@@ -40,6 +40,29 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
   const [isAutoplay, setIsAutoplay] = useState<boolean>(true);
   const [itemsPerPage, setItemsPerPage] = useState<number>(3);
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 35;
+    if (distance > minSwipeDistance) {
+      handleNext();
+    } else if (distance < -minSwipeDistance) {
+      handlePrev();
+    }
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
@@ -191,19 +214,22 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
           </div>
         </div>
 
-        {/* CAROUSEL SLIDER TRACK */}
+        {/* CAROUSEL SLIDER TRACK WITH TOUCH SWIPE */}
         <div
-          className="relative min-h-[440px] overflow-hidden"
+          className="relative min-h-[440px] overflow-hidden touch-pan-y"
           onMouseEnter={() => setIsAutoplay(false)}
           onMouseLeave={() => setIsAutoplay(true)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 25 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.35, ease: 'easeInOut' }}
+              exit={{ opacity: 0, x: -25 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             >
               {visibleServices.map((service) => {

@@ -9,6 +9,29 @@ export const TestimonialsSection: React.FC = () => {
   const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 35;
+    if (distance > minSwipeDistance) {
+      nextTestimonial();
+    } else if (distance < -minSwipeDistance) {
+      prevTestimonial();
+    }
+  };
+
   const nextTestimonial = useCallback(() => {
     setDirection(1);
     setActiveIndex((prev) => (prev + 1) % TESTIMONIAL_PLACEHOLDERS.length);
@@ -36,19 +59,16 @@ export const TestimonialsSection: React.FC = () => {
 
   const variants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 60 : -60,
+      x: dir > 0 ? 35 : -35,
       opacity: 0,
-      scale: 0.98,
     }),
     center: {
       x: 0,
       opacity: 1,
-      scale: 1,
     },
     exit: (dir: number) => ({
-      x: dir > 0 ? -60 : 60,
+      x: dir > 0 ? -35 : 35,
       opacity: 0,
-      scale: 0.98,
     }),
   };
 
@@ -67,13 +87,16 @@ export const TestimonialsSection: React.FC = () => {
           className="mb-12"
         />
 
-        {/* Fixed Height Container to Guarantee Zero Page Layout Shift */}
+        {/* Fixed Height Container with Touch Pan */}
         <div
-          className="relative h-[340px] sm:h-[280px] w-full"
+          className="relative min-h-[320px] sm:min-h-[280px] w-full touch-pan-y"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
-          <AnimatePresence custom={direction} initial={false}>
+          <AnimatePresence custom={direction} mode="popLayout" initial={false}>
             <motion.div
               key={current.id}
               custom={direction}
@@ -81,8 +104,8 @@ export const TestimonialsSection: React.FC = () => {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border-4 border-amber-100 shadow-xl absolute inset-0 w-full h-full flex flex-col justify-between"
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border-4 border-amber-100 shadow-xl w-full flex flex-col justify-between"
             >
               {/* Header inside card */}
               <div className="flex items-center justify-between gap-4 flex-shrink-0">
