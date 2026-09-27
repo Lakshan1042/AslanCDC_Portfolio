@@ -117,7 +117,7 @@ export const GallerySection: React.FC = () => {
                 </h4>
               </div>
               <span className="text-xs text-aslan-charcoal-muted">
-                Aslan Child Development Center • West Tambaram
+                Aslan Child Development and Therapy Center • West Tambaram
               </span>
             </div>
           </div>

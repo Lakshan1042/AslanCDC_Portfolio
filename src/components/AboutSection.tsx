@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Heart, Sparkles } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-20 lg:py-24 bg-white relative overflow-hidden">
+    <section id="about" className="py-20 lg:py-24 bg-about-soft relative overflow-hidden">
       
-      {/* Background Soft Organic Blob */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-aslan-sage/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none"></div>
+      {/* Background Soft Organic Blobs */}
+      <div className="absolute top-10 left-0 w-96 h-96 bg-aslan-gold/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+      <div className="absolute bottom-0 right-10 w-80 h-80 bg-aslan-blue/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -20,8 +22,8 @@ export const AboutSection: React.FC = () => {
             className="lg:col-span-6 relative order-2 lg:order-1"
           >
             <div className="relative">
-              {/* Main Image Frame */}
-              <div className="rounded-3xl overflow-hidden shadow-aslan-card border border-aslan-sage/20 bg-aslan-cream group">
+              {/* Main Image Frame with Soft Gold Border */}
+              <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-aslan-gold/30 bg-white group">
                 <img
                   src="/images/center_interior.png"
                   alt="Inside Aslan Child Development Center consultation area"
@@ -29,8 +31,8 @@ export const AboutSection: React.FC = () => {
                 />
               </div>
 
-              {/* Overlapping Small Secondary Detail Frame */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 w-44 sm:w-52 h-36 sm:h-40 rounded-2xl overflow-hidden shadow-aslan-hover border-4 border-white bg-white hidden sm:block">
+              {/* Overlapping Secondary Image */}
+              <div className="absolute -bottom-6 -right-4 sm:-right-6 w-44 sm:w-52 h-36 sm:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white hidden sm:block">
                 <img
                   src="/images/sensory_room.png"
                   alt="Sensory equipment detail"
@@ -48,21 +50,26 @@ export const AboutSection: React.FC = () => {
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
             className="lg:col-span-6 space-y-6 order-1 lg:order-2"
           >
-            <span className="text-xs font-semibold uppercase tracking-widest text-aslan-teal font-heading">
-              About Aslan
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-aslan-gold/20 border border-aslan-gold/40 text-xs font-extrabold uppercase tracking-wider text-aslan-charcoal font-heading">
+              <Heart className="w-3.5 h-3.5 text-aslan-coral fill-aslan-coral/20" />
+              <span>About Aslan</span>
             </span>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading text-aslan-charcoal leading-tight tracking-tight">
-              A Supportive Space for Every Child
+              A Supportive & <span className="text-gradient-gold">Nurturing Space</span> for Every Child
             </h2>
 
-            <p className="text-base sm:text-lg md:text-xl text-aslan-charcoal-muted leading-relaxed font-sans font-normal">
-              At Aslan Child Development Center, we provide specialized therapy and tailored educational support designed around your child’s individual needs in a calm, nurturing environment.
+            <p className="text-base sm:text-lg md:text-xl text-aslan-charcoal-muted leading-relaxed font-sans font-medium">
+              At Aslan Child Development and Therapy Center, we provide specialized therapy and tailored educational support designed around your child’s individual needs in a calm, nurturing environment.
             </p>
 
-            {/* Short Qualitative Callout Box */}
-            <div className="p-4 rounded-2xl bg-aslan-cream border-l-4 border-aslan-teal text-xs sm:text-sm font-heading font-semibold text-aslan-charcoal leading-relaxed">
-              "Every child has their own way of learning, communicating and growing."
+            {/* Slogan Callout Box */}
+            <div className="p-5 rounded-2xl bg-gradient-to-r from-amber-50 via-sky-50 to-emerald-50 border-l-4 border-aslan-gold text-sm sm:text-base font-heading font-bold text-aslan-charcoal leading-relaxed shadow-sm flex items-start gap-3">
+              <Sparkles className="w-5 h-5 text-aslan-gold flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-aslan-blue text-xs uppercase font-extrabold tracking-wider mb-0.5">Our Promise</p>
+                <p>"Despair turns into aspire — Every child has their own unique way of learning, communicating, and growing."</p>
+              </div>
             </div>
           </motion.div>
 
@@ -71,3 +78,5 @@ export const AboutSection: React.FC = () => {
     </section>
   );
 };
+
+

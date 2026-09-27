@@ -50,48 +50,58 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
     <>
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
-          ? 'bg-white/95 backdrop-blur-md py-3 border-b border-aslan-sage/20 shadow-aslan-sm'
-          : 'bg-aslan-cream/90 backdrop-blur-sm py-4 border-b border-aslan-sage/15'
+          ? 'bg-white/95 backdrop-blur-md py-2.5 border-b border-aslan-gold/30 shadow-md'
+          : 'bg-white/90 backdrop-blur-sm py-3.5 border-b border-amber-100'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
 
-          {/* Brand Mark */}
+          {/* Official Aslan Logo Brand Mark */}
           <button
             onClick={() => onNavigate('home', 'hero')}
-            className="flex flex-col text-left group focus:outline-none focus:ring-2 focus:ring-aslan-teal rounded-lg p-1"
+            className="flex items-center gap-3 text-left group focus:outline-none focus:ring-2 focus:ring-aslan-gold rounded-xl p-1"
           >
-            <div className="flex items-center gap-1.5">
-              <span className="font-heading font-extrabold text-2xl tracking-tight text-aslan-teal">
-                ASLAN
-              </span>
-              {currentRoute === 'ams' && (
-                <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-aslan-teal text-white rounded-md">
-                  AMS
+            <img
+              src="/images/aslan_logo.png"
+              alt="Aslan Child Development Center Official Logo"
+              className="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
+            <div className="hidden sm:flex flex-col">
+              <div className="flex items-center gap-1.5">
+                <span className="font-heading font-extrabold text-xl tracking-tight text-aslan-charcoal group-hover:text-aslan-blue transition-colors">
+                  AS<span className="text-aslan-gold">L</span>AN
                 </span>
-              )}
+                {currentRoute === 'ams' && (
+                  <span className="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-aslan-gold text-aslan-charcoal rounded-md shadow-xs">
+                    AMS
+                  </span>
+                )}
+              </div>
+              <span className="text-[9px] font-bold tracking-wider text-aslan-charcoal-muted uppercase -mt-0.5">
+                Child Development & Therapy Center
+              </span>
+              <span className="text-[10px] font-semibold text-aslan-blue italic">
+                - Despair turns into aspire
+              </span>
             </div>
-            <span className="text-[10px] font-semibold tracking-widest text-aslan-charcoal-muted uppercase -mt-0.5">
-              Child Development Center
-            </span>
           </button>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center space-x-7">
+          <nav className="hidden lg:flex items-center space-x-1.5">
             {navLinks.map((link) => {
               const isActive = link.route === currentRoute && link.route === 'ams';
               return (
                 <button
                   key={link.label}
                   onClick={() => handleLinkClick(link)}
-                  className={`text-sm font-medium transition-colors relative py-1 flex items-center gap-1 focus:outline-none focus:text-aslan-teal ${isActive
-                    ? 'text-aslan-teal font-bold'
-                    : 'text-aslan-charcoal hover:text-aslan-teal'
+                  className={`text-sm font-bold transition-all duration-200 px-3.5 py-2 rounded-full flex items-center gap-1.5 focus:outline-none ${isActive
+                    ? 'bg-sky-100 text-sky-900 font-extrabold border border-sky-300/80 shadow-xs'
+                    : 'text-slate-700 hover:text-sky-900 hover:bg-sky-100/80'
                     }`}
                 >
                   <span>{link.label}</span>
                   {link.isBadge && (
-                    <span className="px-1.5 py-0.5 text-[9px] font-extrabold bg-aslan-sage/20 text-aslan-teal rounded-full uppercase">
+                    <span className="px-1.5 py-0.5 text-[9px] font-extrabold bg-sky-500 text-white rounded-full uppercase shadow-xs">
                       New
                     </span>
                   )}
@@ -100,10 +110,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
             })}
           </nav>
 
-          {/* Primary CTA - Smooth Navigates to #book */}
+          {/* Primary CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
             <Button
-              variant="primary"
+              variant="secondary"
               size="md"
               onClick={handleBookClick}
             >
@@ -114,7 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-aslan-charcoal hover:text-aslan-teal focus:outline-none rounded-lg"
+            className="lg:hidden p-2 text-slate-700 hover:text-sky-900 hover:bg-sky-100/60 focus:outline-none rounded-xl transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -129,18 +139,18 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="lg:hidden bg-white border-b border-aslan-sage/20 px-6 py-6 space-y-4 shadow-lg overflow-hidden"
+              className="lg:hidden bg-white/95 backdrop-blur-md border-b border-amber-100 px-6 py-6 space-y-4 shadow-xl overflow-hidden"
             >
               <div className="flex flex-col space-y-3">
                 {navLinks.map((link) => (
                   <button
                     key={link.label}
                     onClick={() => handleLinkClick(link)}
-                    className="text-left text-base font-medium text-aslan-charcoal py-2 border-b border-aslan-sage/10 flex items-center justify-between"
+                    className="text-left text-base font-bold text-slate-700 hover:text-sky-900 hover:bg-sky-50 px-3 py-2 rounded-xl transition-colors flex items-center justify-between border-b border-slate-100"
                   >
                     <span>{link.label}</span>
                     {link.isBadge && (
-                      <span className="px-2 py-0.5 text-xs font-bold bg-aslan-teal text-white rounded-md">
+                      <span className="px-2 py-0.5 text-xs font-bold bg-sky-500 text-white rounded-md shadow-xs">
                         AMS Coming Soon
                       </span>
                     )}
@@ -150,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
 
               <div className="pt-2">
                 <Button
-                  variant="primary"
+                  variant="secondary"
                   fullWidth
                   onClick={handleBookClick}
                 >
@@ -163,24 +173,24 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
       </header>
 
       {/* Mobile Fixed Quick Action Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-aslan-sage/20 px-4 py-3 flex items-center justify-between gap-3 shadow-lg">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-amber-200 px-4 py-3 flex items-center justify-between gap-3 shadow-2xl">
         <a
           href={`tel:${CENTER_INFO.phones[0]}`}
-          className="flex-1 py-2 bg-aslan-cream rounded-xl text-aslan-teal font-medium text-xs text-center flex items-center justify-center gap-1.5 border border-aslan-sage/20 active:scale-95 transition-transform"
+          className="flex-1 py-2 bg-aslan-gold/20 text-aslan-charcoal font-extrabold text-xs text-center flex items-center justify-center gap-1.5 border border-aslan-gold/40 rounded-xl active:scale-95 transition-transform"
         >
-          <Phone className="w-3.5 h-3.5" /> Call
+          <Phone className="w-3.5 h-3.5 text-aslan-blue" /> Call
         </a>
         <a
           href={`https://wa.me/91${CENTER_INFO.whatsapp}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 py-2 bg-[#25D366]/10 text-[#128C7E] font-medium text-xs text-center flex items-center justify-center gap-1.5 border border-[#25D366]/20 active:scale-95 transition-transform"
+          className="flex-1 py-2 bg-emerald-50 text-emerald-800 font-extrabold text-xs text-center flex items-center justify-center gap-1.5 border border-emerald-200 rounded-xl active:scale-95 transition-transform"
         >
-          <MessageSquare className="w-3.5 h-3.5" /> WhatsApp
+          <MessageSquare className="w-3.5 h-3.5 text-aslan-mint" /> WhatsApp
         </a>
         <button
           onClick={handleBookClick}
-          className="flex-[1.3] py-2 bg-aslan-teal text-white rounded-xl font-heading font-semibold text-xs text-center flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+          className="flex-[1.3] py-2 bg-amber-300 hover:bg-amber-400 text-amber-950 border border-amber-400/40 rounded-xl font-heading font-extrabold text-xs text-center flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-transform"
         >
           <Calendar className="w-3.5 h-3.5" /> Book
         </button>
@@ -188,3 +198,5 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
     </>
   );
 };
+
+

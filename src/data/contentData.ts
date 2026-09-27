@@ -1,7 +1,7 @@
 import type { ServiceItem, ApproachStep, TestimonialItem, BranchInfo } from '../types';
 
 export const CENTER_INFO = {
-  name: 'Aslan Child Development Center',
+  name: 'Aslan Child Development and Therapy Center',
   tagline: 'Supporting Every Step of Your Child’s Growth',
   address: '6, Raju St, Mudichur Rd, West Tambaram, Tambaram, Tamil Nadu 600045',
   shortAddress: 'West Tambaram & Chromepet, Chennai',
@@ -65,7 +65,7 @@ export const ENVIRONMENT_GALLERY = [
   {
     id: 'gallery-3',
     src: '/images/sensory_room.png',
-    alt: 'Occupational therapy sensory integration gym at Aslan Child Development Center',
+    alt: 'Occupational therapy sensory integration gym at Aslan Child Development and Therapy Center',
     tag: 'Sensory Gym',
     layout: 'stacked',
   },
@@ -86,7 +86,7 @@ export const ENVIRONMENT_GALLERY = [
   {
     id: 'gallery-6',
     src: '/images/center_interior.png',
-    alt: 'Reception and consultation lounge at Aslan Child Development Center West Tambaram',
+    alt: 'Reception and consultation lounge at Aslan Child Development and Therapy Center West Tambaram',
     tag: 'Consultation Lounge',
     layout: 'supporting',
   },
@@ -99,7 +99,7 @@ export const SERVICES: ServiceItem[] = [
     title: 'Specialized Therapy',
     category: 'therapy',
     shortDescription: 'Occupational Therapy and Speech & Language Therapy tailored to enhance sensory processing, motor coordination, communication clarity, and daily skills.',
-    fullDescription: 'Specialized therapy at Aslan Child Development Center combines evidence-based pediatric clinical interventions with a warm, sensory-friendly atmosphere. We focus on individual developmental goals, empowering children to build functional motor, communication, and self-regulation skills.',
+    fullDescription: 'Specialized therapy at Aslan Child Development and Therapy Center combines evidence-based pediatric clinical interventions with a warm, sensory-friendly atmosphere. We focus on individual developmental goals, empowering children to build functional motor, communication, and self-regulation skills.',
     highlights: [
       'Occupational Therapy & Sensory Integration',
       'Speech & Articulation Therapy',
@@ -128,7 +128,7 @@ export const SERVICES: ServiceItem[] = [
     title: 'Speech & Language Therapy',
     category: 'therapy',
     shortDescription: 'Empowering children to communicate clearly, develop expressiveness, improve speech clarity, and build social communication confidence.',
-    fullDescription: 'Speech & Language Therapy at Aslan Child Development Center helps children overcome communication barriers, pronounce sounds accurately, and build expressiveness. Our qualified Speech Therapists create engaging sessions tailored around your child’s vocabulary and social pragmatic needs.',
+    fullDescription: 'Speech & Language Therapy at Aslan Child Development and Therapy Center helps children overcome communication barriers, pronounce sounds accurately, and build expressiveness. Our qualified Speech Therapists create engaging sessions tailored around your child’s vocabulary and social pragmatic needs.',
     highlights: [
       'Speech Sound Articulation & Clarity',
       'Expressive & Receptive Language Building',
@@ -186,7 +186,7 @@ export const SERVICES: ServiceItem[] = [
     title: 'Specialized Education',
     category: 'education',
     shortDescription: 'Individualized learning plans focused on unique learning styles, strengthening academic confidence, attention span, and cognitive growth.',
-    fullDescription: 'Specialized Education at Aslan Child Development Center provides adapted learning strategies for children who process information differently. Our Special Educators design Individualized Education Plans (IEP) that foster attention, foundational literacy, numeracy, and school readiness.',
+    fullDescription: 'Specialized Education at Aslan Child Development and Therapy Center provides adapted learning strategies for children who process information differently. Our Special Educators design Individualized Education Plans (IEP) that foster attention, foundational literacy, numeracy, and school readiness.',
     highlights: [
       'Individualized Education Plans (IEP)',
       'Attention Span & Cognitive Skill Building',
@@ -236,7 +236,7 @@ export const SERVICES: ServiceItem[] = [
     ],
     iconName: 'Users',
     seoTitle: 'Social & Developmental Programs for Children | Aslan CDC',
-    seoDescription: 'Engaging group activities promoting peer play, emotional regulation, teamwork, and social confidence at Aslan Child Development Center.'
+    seoDescription: 'Engaging group activities promoting peer play, emotional regulation, teamwork, and social confidence at Aslan Child Development and Therapy Center.'
   }
 ];
 

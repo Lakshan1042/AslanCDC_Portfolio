@@ -83,7 +83,7 @@ export const App: React.FC = () => {
       case 'ams':
         return {
           title: 'AMS | Aslan Management Software | Coming Soon',
-          description: 'Aslan Management Software - A smarter way to manage care, appointments, and everyday operations at Aslan Child Development Center.',
+          description: 'Aslan Management Software - A smarter way to manage care, appointments, and everyday operations at Aslan Child Development and Therapy Center.',
           canonicalUrl: `${CENTER_INFO.siteUrl}/ams`,
           noindex: true,
         };
@@ -101,15 +101,15 @@ export const App: React.FC = () => {
         };
       case '404':
         return {
-          title: 'Page Not Found | Aslan Child Development Center',
+          title: 'Page Not Found | Aslan Child Development and Therapy Center',
           description: 'The requested page was not found.',
           canonicalUrl: `${CENTER_INFO.siteUrl}/404`,
           noindex: true,
         };
       default:
         return {
-          title: 'Aslan Child Development Center | Child Development & Therapy in Tambaram, Chennai',
-          description: 'Supporting children in Tambaram, Chennai through specialized therapy, speech therapy, occupational therapy, education and developmental programs.',
+          title: 'Aslan Child Development and Therapy Center | Pediatric Therapy & Education in Chennai',
+          description: 'Supporting children in West Tambaram & Chromepet, Chennai through specialized occupational therapy, speech therapy, special education and developmental programs.',
           canonicalUrl: `${CENTER_INFO.siteUrl}/`,
           noindex: false,
         };
@@ -122,7 +122,7 @@ export const App: React.FC = () => {
     return (
       <>
         <SEOHead {...seoProps} />
-        <AmsPage onBackToHome={() => handleNavigate('home', 'book')} />
+        <AmsPage onBackToHome={() => handleNavigate('home', 'hero')} />
       </>
     );
   }

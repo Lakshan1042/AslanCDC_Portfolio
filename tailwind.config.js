@@ -8,31 +8,43 @@ export default {
     extend: {
       colors: {
         aslan: {
-          teal: {
-            DEFAULT: '#176B68',
-            dark: '#115250',
-            light: '#218985',
-            soft: '#EBF3F2',
+          gold: {
+            DEFAULT: '#FDE047',
+            dark: '#FACC15',
+            light: '#FEF08A',
+            soft: '#FEF9C3',
+            pale: '#FEFCE8',
           },
-          sage: {
-            DEFAULT: '#7FAE9B',
-            light: '#A4C9B9',
-            soft: '#EFF6F3',
+          blue: {
+            DEFAULT: '#38BDF8',
+            dark: '#0EA5E9',
+            light: '#7DD3FC',
+            soft: '#E0F2FE',
+            pale: '#F0F9FF',
+          },
+          mint: {
+            DEFAULT: '#34D399',
+            dark: '#10B981',
+            light: '#6EE7B7',
+            soft: '#D1FAE5',
+            pale: '#ECFDF5',
+          },
+          coral: {
+            DEFAULT: '#FCA5A5',
+            dark: '#F87171',
+            light: '#FECACA',
+            soft: '#FEE2E2',
+            pale: '#FFF1F1',
           },
           cream: {
-            DEFAULT: '#F8F5EF',
-            light: '#FCFAF6',
-            dark: '#EEE8DD',
-          },
-          peach: {
-            DEFAULT: '#F3C7B5',
-            light: '#F9DDD3',
-            soft: '#FDF4F0',
+            DEFAULT: '#FFFDF9',
+            light: '#FFFFFF',
+            dark: '#F7F2EA',
           },
           charcoal: {
-            DEFAULT: '#243333',
-            muted: '#4D6161',
-            light: '#7B8F8F',
+            DEFAULT: '#1E293B',
+            muted: '#475569',
+            light: '#64748B',
           }
         }
       },
@@ -42,10 +54,14 @@ export default {
         display: ['Manrope', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'aslan-card': '0 4px 20px -2px rgba(23, 107, 104, 0.05), 0 2px 6px -1px rgba(36, 51, 51, 0.03)',
-        'aslan-hover': '0 12px 32px -4px rgba(23, 107, 104, 0.09), 0 4px 12px -2px rgba(36, 51, 51, 0.04)',
+        'aslan-card': '0 8px 25px -4px rgba(245, 184, 25, 0.12), 0 4px 10px -2px rgba(2, 132, 199, 0.05)',
+        'aslan-hover': '0 16px 36px -6px rgba(245, 184, 25, 0.2), 0 6px 16px -3px rgba(2, 132, 199, 0.08)',
+        'aslan-gold-glow': '0 0 25px rgba(245, 184, 25, 0.4)',
+        'aslan-blue-glow': '0 0 25px rgba(2, 132, 199, 0.35)',
       }
     },
   },
   plugins: [],
 }
+
+

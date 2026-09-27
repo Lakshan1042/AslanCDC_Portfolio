@@ -4,14 +4,14 @@ import { Heart, UserCheck, ShieldCheck, Sparkles } from 'lucide-react';
 
 export const ValuesStrip: React.FC = () => {
   const values = [
-    { title: 'Child-Centered', icon: Heart },
-    { title: 'Individualized', icon: UserCheck },
-    { title: 'Supportive Care', icon: ShieldCheck },
-    { title: 'Multidisciplinary', icon: Sparkles },
+    { title: 'Child-Centered', icon: Heart, color: 'text-aslan-coral' },
+    { title: 'Individualized', icon: UserCheck, color: 'text-aslan-blue' },
+    { title: 'Supportive Care', icon: ShieldCheck, color: 'text-aslan-mint' },
+    { title: 'Multidisciplinary', icon: Sparkles, color: 'text-amber-600' },
   ];
 
   return (
-    <section className="py-8 bg-aslan-sage-soft border-y border-aslan-sage/20 relative overflow-hidden">
+    <section className="py-8 bg-gradient-to-r from-amber-300 via-yellow-200 to-sky-300 border-y border-amber-200 relative overflow-hidden shadow-md">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-center justify-between">
           {values.map((item, idx) => {
@@ -23,12 +23,12 @@ export const ValuesStrip: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="flex items-center justify-center gap-3 py-2 px-3 text-center"
+                className="flex items-center justify-center gap-3.5 py-2.5 px-4 text-center rounded-2xl bg-white/90 backdrop-blur-md border border-white shadow-xs hover:scale-105 transition-transform"
               >
-                <div className="p-2 rounded-xl bg-white text-aslan-teal shadow-aslan-sm flex-shrink-0">
-                  <Icon className="w-4 h-4" />
+                <div className={`p-2 rounded-xl bg-slate-50 ${item.color} shadow-xs flex-shrink-0`}>
+                  <Icon className="w-5 h-5" />
                 </div>
-                <span className="font-heading font-bold text-xs sm:text-sm text-aslan-charcoal tracking-wide uppercase">
+                <span className="font-heading font-extrabold text-xs sm:text-sm text-aslan-charcoal tracking-wide uppercase">
                   {item.title}
                 </span>
               </motion.div>
@@ -39,3 +39,5 @@ export const ValuesStrip: React.FC = () => {
     </section>
   );
 };
+
+

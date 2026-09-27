@@ -13,7 +13,7 @@ export const AmsPage: React.FC<AmsPageProps> = ({ onBackToHome }) => {
     <>
       <SEOHead
         title="AMS — Aslan Management Software | Coming Soon"
-        description="Aslan Management Software (AMS) — A dedicated digital care portal coming soon for Aslan Child Development Center."
+        description="Aslan Management Software (AMS) — A dedicated digital care portal coming soon for Aslan Child Development and Therapy Center."
         canonicalUrl="https://aslancdc.com/ams"
         noindex={true}
       />
@@ -107,7 +107,7 @@ export const AmsPage: React.FC<AmsPageProps> = ({ onBackToHome }) => {
 
         {/* Minimal Footer */}
         <footer className="max-w-6xl mx-auto w-full text-center text-xs text-aslan-charcoal-muted z-10 pt-6">
-          <p>© {new Date().getFullYear()} Aslan Child Development Center. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Aslan Child Development and Therapy Center. All rights reserved.</p>
         </footer>
 
       </div>

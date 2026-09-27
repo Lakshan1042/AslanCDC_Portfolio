@@ -55,7 +55,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             className="space-y-4"
           >
             <span className="text-xs font-semibold uppercase tracking-widest text-aslan-teal font-heading">
-              Aslan Child Development Center • West Tambaram, Chennai
+              Aslan Child Development and Therapy Center • West Tambaram & Chromepet, Chennai
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-aslan-charcoal leading-tight tracking-tight">
               {service.title}
@@ -129,12 +129,12 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           </motion.div>
 
           {/* Call to Action Box */}
-          <div className="p-8 md:p-10 rounded-3xl bg-aslan-teal text-white shadow-aslan-lg space-y-4 text-center">
-            <h3 className="text-2xl font-bold font-heading">
+          <div className="p-8 md:p-10 rounded-3xl bg-gradient-to-r from-amber-500 via-amber-400 to-sky-500 text-slate-900 shadow-xl space-y-4 text-center border border-amber-300">
+            <h3 className="text-2xl font-bold font-heading text-slate-900">
               Ready to Discuss {service.title}?
             </h3>
-            <p className="text-aslan-cream/90 max-w-xl mx-auto text-sm sm:text-base leading-relaxed font-sans">
-              Schedule an observational consultation with our care team in West Tambaram, Chennai.
+            <p className="text-slate-900/90 font-medium max-w-xl mx-auto text-sm sm:text-base leading-relaxed font-sans">
+              Schedule an observational consultation with our care team in West Tambaram & Chromepet, Chennai.
             </p>
             <div className="pt-2">
               <Button

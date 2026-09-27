@@ -18,7 +18,7 @@ export const IntroductionSection: React.FC = () => {
 
             <div className="space-y-4 text-aslan-charcoal-muted leading-relaxed text-base font-sans">
               <p>
-                At <strong className="text-aslan-teal font-semibold">Aslan Child Development Center</strong>, we believe every child possesses unique strengths and deserves a nurturing environment to learn, express, and thrive.
+                At <strong className="text-aslan-teal font-semibold">Aslan Child Development and Therapy Center</strong>, we believe every child possesses unique strengths and deserves a nurturing environment to learn, express, and thrive.
               </p>
               <p>
                 Located across West Tambaram and Chromepet, our centers bring together specialized therapy and tailored educational support designed specifically around the natural pace of your child. We collaborate closely with parents and caregivers to create a calm, empowering space where every developmental step is supported with warmth and clinical expertise.

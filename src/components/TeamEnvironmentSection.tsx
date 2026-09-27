@@ -4,13 +4,22 @@ import { SectionHeading } from './SectionHeading';
 import { ENVIRONMENT_GALLERY } from '../data/contentData';
 
 export const TeamEnvironmentSection: React.FC = () => {
+  const badgeColors = [
+    'bg-aslan-gold text-aslan-charcoal',
+    'bg-aslan-blue text-white',
+    'bg-aslan-mint text-white',
+    'bg-aslan-coral text-white',
+    'bg-aslan-gold text-aslan-charcoal',
+    'bg-aslan-blue text-white',
+  ];
+
   return (
-    <section id="environment" className="py-20 lg:py-24 bg-aslan-cream relative overflow-hidden">
+    <section id="environment" className="py-20 lg:py-24 bg-gallery-soft relative overflow-hidden">
       <span id="gallery" className="absolute top-0"></span>
       
       {/* Organic Background Blobs */}
-      <div className="absolute top-10 right-10 w-96 h-96 bg-aslan-sage/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-aslan-peach/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-10 right-10 w-96 h-96 bg-aslan-gold/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-aslan-blue/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
         
@@ -30,7 +39,7 @@ export const TeamEnvironmentSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-aslan-card border border-aslan-sage/20 bg-white group h-[380px] lg:h-[440px]"
+            className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group h-[380px] lg:h-[440px]"
           >
             <img
               src={ENVIRONMENT_GALLERY[0].src}
@@ -38,8 +47,8 @@ export const TeamEnvironmentSection: React.FC = () => {
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/70 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-6 flex items-end">
-              <span className="px-3.5 py-1 rounded-full text-xs font-semibold bg-white/90 text-aslan-teal backdrop-blur-md font-heading">
+            <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/75 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-6 flex items-end">
+              <span className={`px-4 py-1.5 rounded-full text-xs font-extrabold ${badgeColors[0]} shadow-md font-heading`}>
                 {ENVIRONMENT_GALLERY[0].tag}
               </span>
             </div>
@@ -52,7 +61,7 @@ export const TeamEnvironmentSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative rounded-3xl overflow-hidden shadow-aslan-card border border-aslan-sage/20 bg-white group h-[180px] lg:h-[210px]"
+              className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group h-[180px] lg:h-[210px]"
             >
               <img
                 src={ENVIRONMENT_GALLERY[1].src}
@@ -60,8 +69,8 @@ export const TeamEnvironmentSection: React.FC = () => {
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/70 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-4 flex items-end">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-aslan-teal backdrop-blur-md font-heading">
+              <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/75 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-4 flex items-end">
+                <span className={`px-3.5 py-1 rounded-full text-xs font-extrabold ${badgeColors[1]} shadow-md font-heading`}>
                   {ENVIRONMENT_GALLERY[1].tag}
                 </span>
               </div>
@@ -72,7 +81,7 @@ export const TeamEnvironmentSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="relative rounded-3xl overflow-hidden shadow-aslan-card border border-aslan-sage/20 bg-white group h-[180px] lg:h-[210px]"
+              className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group h-[180px] lg:h-[210px]"
             >
               <img
                 src={ENVIRONMENT_GALLERY[2].src}
@@ -80,8 +89,8 @@ export const TeamEnvironmentSection: React.FC = () => {
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/70 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-4 flex items-end">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-aslan-teal backdrop-blur-md font-heading">
+              <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/75 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-4 flex items-end">
+                <span className={`px-3.5 py-1 rounded-full text-xs font-extrabold ${badgeColors[2]} shadow-md font-heading`}>
                   {ENVIRONMENT_GALLERY[2].tag}
                 </span>
               </div>
@@ -94,7 +103,7 @@ export const TeamEnvironmentSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-4 relative rounded-3xl overflow-hidden shadow-aslan-card border border-aslan-sage/20 bg-white group h-[260px] lg:h-[290px]"
+            className="md:col-span-4 relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group h-[260px] lg:h-[290px]"
           >
             <img
               src={ENVIRONMENT_GALLERY[3].src}
@@ -102,8 +111,8 @@ export const TeamEnvironmentSection: React.FC = () => {
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/70 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-5 flex items-end">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-aslan-teal backdrop-blur-md font-heading">
+            <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/75 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-5 flex items-end">
+              <span className={`px-3.5 py-1 rounded-full text-xs font-extrabold ${badgeColors[3]} shadow-md font-heading`}>
                 {ENVIRONMENT_GALLERY[3].tag}
               </span>
             </div>
@@ -114,7 +123,7 @@ export const TeamEnvironmentSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="md:col-span-4 relative rounded-3xl overflow-hidden shadow-aslan-card border border-aslan-sage/20 bg-white group h-[260px] lg:h-[290px]"
+            className="md:col-span-4 relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group h-[260px] lg:h-[290px]"
           >
             <img
               src={ENVIRONMENT_GALLERY[4].src}
@@ -122,8 +131,8 @@ export const TeamEnvironmentSection: React.FC = () => {
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/70 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-5 flex items-end">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-aslan-teal backdrop-blur-md font-heading">
+            <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/75 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-5 flex items-end">
+              <span className={`px-3.5 py-1 rounded-full text-xs font-extrabold ${badgeColors[4]} shadow-md font-heading`}>
                 {ENVIRONMENT_GALLERY[4].tag}
               </span>
             </div>
@@ -134,7 +143,7 @@ export const TeamEnvironmentSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:col-span-4 relative rounded-3xl overflow-hidden shadow-aslan-card border border-aslan-sage/20 bg-white group h-[260px] lg:h-[290px]"
+            className="md:col-span-4 relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group h-[260px] lg:h-[290px]"
           >
             <img
               src={ENVIRONMENT_GALLERY[5].src}
@@ -142,8 +151,8 @@ export const TeamEnvironmentSection: React.FC = () => {
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/70 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-5 flex items-end">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-aslan-teal backdrop-blur-md font-heading">
+            <div className="absolute inset-0 bg-gradient-to-t from-aslan-charcoal/75 via-transparent to-transparent opacity-85 group-hover:opacity-95 transition-opacity p-5 flex items-end">
+              <span className={`px-3.5 py-1 rounded-full text-xs font-extrabold ${badgeColors[5]} shadow-md font-heading`}>
                 {ENVIRONMENT_GALLERY[5].tag}
               </span>
             </div>
@@ -155,3 +164,5 @@ export const TeamEnvironmentSection: React.FC = () => {
     </section>
   );
 };
+
+
