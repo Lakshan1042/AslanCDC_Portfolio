@@ -70,9 +70,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Copyright & Phone */}
           <div className="text-slate-600 text-center md:text-right font-medium space-y-1">
             <p>© {new Date().getFullYear()} Aslan Child Development and Therapy Center.</p>
-            <p className="text-[12px] text-sky-700 font-extrabold tracking-wide">
-              📞 9445914020 • 8072545109
-            </p>
+            <div className="text-xs text-sky-700 font-extrabold tracking-wide flex items-center justify-center md:justify-end gap-1.5 flex-wrap">
+              <Phone className="w-3.5 h-3.5 text-sky-600 inline-block" />
+              <a
+                href="tel:9445914020"
+                className="hover:underline hover:text-sky-900 transition-colors focus:outline-none rounded px-0.5"
+              >
+                9445914020
+              </a>
+              <span className="text-slate-400">•</span>
+              <a
+                href="tel:8072545109"
+                className="hover:underline hover:text-sky-900 transition-colors focus:outline-none rounded px-0.5"
+              >
+                8072545109
+              </a>
+            </div>
           </div>
         </div>
 
