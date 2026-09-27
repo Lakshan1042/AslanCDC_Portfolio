@@ -3,9 +3,9 @@
   "name": "Aslan Child Development and Therapy Center",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/svg+xml"
+      "src": "/images/aslan_logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"
     }
   ],
   "start_url": "/",

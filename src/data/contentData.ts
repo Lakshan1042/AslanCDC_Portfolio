@@ -111,7 +111,7 @@ export const SEO_CONDITIONS_CATEGORIES: SeoConditionCategory[] = [
       'Dysphagia',
       'Dysarthria',
       'Phonological delay',
-      'Misarticulating'
+      'Misarticulation'
     ]
   },
   {
@@ -229,7 +229,7 @@ export const SERVICES: ServiceItem[] = [
       'Puberphonia',
       'Dysarthria',
       'Phonological delay',
-      'Misarticulating',
+      'Misarticulation',
       'Apraxia',
       'Motor speech disorder',
       'AAC'
@@ -374,7 +374,7 @@ export const SERVICES: ServiceItem[] = [
     seoDescription: 'Clinical Pure Tone Audiometry (PTA) hearing test in West Tambaram & Chromepet, Chennai for accurate pediatric hearing evaluation.',
     relatedConditions: [
       'Phonological delay',
-      'Misarticulating',
+      'Misarticulation',
       'AAC',
       'Aphasia'
     ]
