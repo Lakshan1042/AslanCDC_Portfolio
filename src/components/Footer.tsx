@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="bg-footer-bright text-aslan-charcoal border-t border-amber-200/80 py-14 font-sans text-xs relative overflow-hidden">
+    <footer className="bg-footer-bright text-aslan-charcoal border-t border-amber-200/80 pt-12 pb-24 sm:pb-16 lg:pb-14 font-sans text-xs relative overflow-hidden">
       {/* Subtle Background Soft Blobs */}
       <div className="absolute top-0 right-10 w-80 h-80 bg-aslan-gold/15 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-10 w-80 h-80 bg-aslan-blue/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -76,8 +76,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Subtle Developer Branding Line */}
-        <div className="pt-6 border-t border-amber-200/80 flex items-center justify-center text-center">
+        {/* Subtle Developer Branding Line - Positioned higher up on mobile UI */}
+        <div className="pt-6 border-t border-amber-200/80 flex items-center justify-center text-center pb-4 sm:pb-0">
           <p className="text-[11px] text-slate-600 inline-flex items-center gap-2 flex-wrap justify-center font-medium">
             <span>Want a similar website?</span>
             <button
@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ duration: 0.2 }}
-              className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-teal-100 shadow-2xl relative space-y-6 text-aslan-charcoal"
+              className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-teal-100 shadow-2xl relative space-y-6 text-aslan-charcoal mb-12 sm:mb-0"
             >
               {/* Close Button */}
               <button

@@ -56,31 +56,31 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
 
-          {/* Official Aslan Logo Brand Mark */}
+          {/* Official Aslan Brand Mark with Full Center Name */}
           <button
             onClick={() => onNavigate('home', 'hero')}
-            className="flex items-center gap-3 text-left group focus:outline-none focus:ring-2 focus:ring-aslan-gold rounded-xl p-1"
+            className="flex items-center gap-3 text-left group focus:outline-none focus:ring-2 focus:ring-aslan-gold rounded-xl p-1 max-w-[78%] sm:max-w-none"
           >
             <img
               src="/images/aslan_logo.png"
-              alt="Aslan Child Development Center Official Logo"
-              className="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform"
+              alt="Aslan Child Development and Therapy Center Logo"
+              className="h-11 sm:h-14 lg:h-16 w-auto object-contain drop-shadow-xs group-hover:scale-105 transition-transform flex-shrink-0"
             />
-            <div className="hidden sm:flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="font-heading font-extrabold text-xl tracking-tight text-aslan-charcoal group-hover:text-aslan-blue transition-colors">
-                  AS<span className="text-aslan-gold">L</span>AN
+            <div className="flex flex-col justify-center">
+              <div className="flex items-center gap-1.5 flex-wrap sm:flex-nowrap">
+                <span className="font-heading font-black text-base sm:text-lg lg:text-xl tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors leading-none">
+                  ASLAN
                 </span>
                 {currentRoute === 'ams' && (
-                  <span className="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-aslan-gold text-aslan-charcoal rounded-md shadow-xs">
+                  <span className="px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider bg-aslan-gold text-aslan-charcoal rounded-md shadow-xs">
                     AMS
                   </span>
                 )}
               </div>
-              <span className="text-[9px] font-bold tracking-wider text-aslan-charcoal-muted uppercase -mt-0.5">
-                Child Development & Therapy Center
+              <span className="text-[10px] sm:text-[11px] lg:text-xs font-bold text-sky-700 uppercase tracking-tight leading-tight mt-0.5">
+                Child Development and Therapy Center
               </span>
-              <span className="text-[10px] font-semibold text-aslan-blue italic">
+              <span className="text-[9px] sm:text-[10px] font-medium text-slate-500 italic hidden sm:block leading-none mt-0.5">
                 - Despair turns into aspire
               </span>
             </div>
@@ -124,29 +124,29 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-sky-900 hover:bg-sky-100/60 focus:outline-none rounded-xl transition-colors"
+            className="lg:hidden p-2 text-slate-700 hover:text-sky-900 hover:bg-sky-100/60 focus:outline-none rounded-xl transition-colors flex-shrink-0"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Animated Drawer */}
+        {/* Mobile Smooth Animated Drawer */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="lg:hidden bg-white/95 backdrop-blur-md border-b border-amber-100 px-6 py-6 space-y-4 shadow-xl overflow-hidden"
+              initial={{ opacity: 0, height: 0, y: -6 }}
+              animate={{ opacity: 1, height: 'auto', y: 0 }}
+              exit={{ opacity: 0, height: 0, y: -6 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:hidden bg-white/95 backdrop-blur-md border-b border-amber-100 px-5 py-5 space-y-4 shadow-xl overflow-hidden"
             >
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col space-y-2">
                 {navLinks.map((link) => (
                   <button
                     key={link.label}
                     onClick={() => handleLinkClick(link)}
-                    className="text-left text-base font-bold text-slate-700 hover:text-sky-900 hover:bg-sky-50 px-3 py-2 rounded-xl transition-colors flex items-center justify-between border-b border-slate-100"
+                    className="text-left text-sm font-bold text-slate-700 hover:text-sky-900 hover:bg-sky-50 px-3 py-2.5 rounded-xl transition-colors flex items-center justify-between border-b border-slate-100"
                   >
                     <span>{link.label}</span>
                     {link.isBadge && (
@@ -158,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 ))}
               </div>
 
-              <div className="pt-2">
+              <div className="pt-1">
                 <Button
                   variant="secondary"
                   fullWidth

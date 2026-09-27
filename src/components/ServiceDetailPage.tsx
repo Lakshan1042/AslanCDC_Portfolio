@@ -97,11 +97,29 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             </h2>
             <div className="space-y-3">
               {service.whoItHelps.map((item, idx) => (
-                <div key={idx} className="p-4 rounded-2xl bg-white border border-aslan-sage/20 shadow-aslan-sm text-sm text-aslan-charcoal-muted leading-relaxed font-sans">
+                <div key={idx} className="p-4 rounded-2xl bg-white border border-aslan-sage/20 shadow-aslan-sm text-sm text-aslan-charcoal-muted leading-relaxed font-sans font-medium">
                   {item}
                 </div>
               ))}
             </div>
+
+            {service.relatedConditions && service.relatedConditions.length > 0 && (
+              <div className="pt-4 space-y-3">
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-500 font-heading">
+                  Specific Diagnoses & Conditions Addressed:
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {service.relatedConditions.map((cond, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-100/80 text-amber-950 border border-amber-300/80"
+                    >
+                      {cond}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </motion.div>
 
           {/* What Parents Can Expect */}

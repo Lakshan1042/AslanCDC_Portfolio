@@ -2,7 +2,7 @@ export interface ServiceItem {
   id: string;
   slug: string;
   title: string;
-  category: 'therapy' | 'education' | 'activities' | 'support';
+  category: 'therapy' | 'education' | 'activities' | 'support' | 'assessment';
   shortDescription: string;
   fullDescription: string;
   highlights: string[];
@@ -11,6 +11,7 @@ export interface ServiceItem {
   iconName: string;
   seoTitle: string;
   seoDescription: string;
+  relatedConditions?: string[];
 }
 
 export interface ApproachStep {
@@ -58,7 +59,6 @@ export type PageRoute =
   | 'home'
   | 'about'
   | 'services'
-  | 'service-detail'
   | 'approach'
   | 'gallery'
   | 'contact'

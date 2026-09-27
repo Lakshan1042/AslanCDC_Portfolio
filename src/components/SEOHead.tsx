@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CENTER_INFO } from '../data/contentData';
+import { CENTER_INFO, SERVICES, ALL_SEO_KEYWORDS } from '../data/contentData';
 
 interface SEOHeadProps {
   title: string;
@@ -47,6 +47,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     // 2. Set Meta Description & Robots
     setMeta('meta[name="description"]', 'name', 'description', description);
     setMeta('meta[name="robots"]', 'name', 'robots', noindex ? 'noindex, follow' : 'index, follow');
+    setMeta('meta[name="keywords"]', 'name', 'keywords', ALL_SEO_KEYWORDS.join(', '));
 
     // 3. Set Canonical URL
     setLink('canonical', canonicalUrl);
@@ -79,7 +80,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       '@context': 'https://schema.org',
       '@type': 'MedicalClinic',
       'name': CENTER_INFO.name,
-      'description': 'Specialized pediatric therapy, speech therapy, occupational therapy, and education in West Tambaram, Chennai.',
+      'description': 'Specialized pediatric occupational therapy, speech therapy, special education, primitive reflex integration, hearing test PTA, oral placement therapy, psychology counselling, sensory integration, and behavior modification in West Tambaram & Chromepet, Chennai.',
       'url': CENTER_INFO.siteUrl,
       'logo': `${CENTER_INFO.siteUrl}/favicon.svg`,
       'image': ogImage,
@@ -104,7 +105,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         'closes': '20:00'
       }],
       'areaServed': ['West Tambaram', 'Chromepet', 'Tambaram', 'Chennai', 'Tamil Nadu'],
-      'medicalSpecialty': ['Pediatric Therapy', 'Occupational Therapy', 'Speech Therapy', 'Special Education']
+      'medicalSpecialty': SERVICES.map(s => s.title),
+      'knowsAbout': ALL_SEO_KEYWORDS
     };
     clinicScript.text = JSON.stringify(clinicSchema);
 

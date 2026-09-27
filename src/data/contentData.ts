@@ -92,77 +92,82 @@ export const ENVIRONMENT_GALLERY = [
   },
 ];
 
+export interface SeoConditionCategory {
+  title: string;
+  description: string;
+  conditions: string[];
+}
+
+export const SEO_CONDITIONS_CATEGORIES: SeoConditionCategory[] = [
+  {
+    title: 'Speech & Language Conditions',
+    description: 'Speech sound clarity, articulation, language delays, and speech fluency disorders.',
+    conditions: [
+      'Aphasia',
+      'Cleft lip/palate',
+      'Stuttering',
+      'Cluttering',
+      'Puberphonia',
+      'Dysphagia',
+      'Dysarthria',
+      'Phonological delay',
+      'Misarticulating'
+    ]
+  },
+  {
+    title: 'Speech Motor & Communication Disorders',
+    description: 'Motor speech planning, non-verbal communication, and eating/swallowing coordination.',
+    conditions: [
+      'Apraxia',
+      'ASD (Autism Spectrum Disorder)',
+      'ADHD (Attention Deficit Hyperactivity Disorder)',
+      'GDD (Global Developmental Delay)',
+      'AAC (Augmentative & Alternative Communication)',
+      'Chewing/swallowing difficulties',
+      'Motor speech disorder'
+    ]
+  },
+  {
+    title: 'Neurodevelopmental, Motor & Sensory Needs',
+    description: 'Sensory processing, posture, coordination, behavior, learning, and physical conditions.',
+    conditions: [
+      'Autism spectrum disorder (ASD)',
+      'Cerebral palsy',
+      'Global development delay',
+      'Developmental coordination disorder (DCD/ Dyspraxia)',
+      'Hypotonia and hypertonia',
+      'Sensory and regulatory issues',
+      'Sensory processing disorder',
+      'Sensory based feeding difficulties',
+      'Downs syndrome',
+      'Traumatic brain injury',
+      'Brachial plexus injuries',
+      'Learning disability',
+      'Visual motor difficulties',
+      'Poor attention',
+      'Classroom difficulties',
+      'Behaviour issues'
+    ]
+  }
+];
+
+export const ALL_SEO_KEYWORDS: string[] = Array.from(
+  new Set(SEO_CONDITIONS_CATEGORIES.flatMap((cat) => cat.conditions))
+);
+
 export const SERVICES: ServiceItem[] = [
-  {
-    id: 'specialized-therapy',
-    slug: 'specialized-therapy',
-    title: 'Specialized Therapy',
-    category: 'therapy',
-    shortDescription: 'Occupational Therapy and Speech & Language Therapy tailored to enhance sensory processing, motor coordination, communication clarity, and daily skills.',
-    fullDescription: 'Specialized therapy at Aslan Child Development and Therapy Center combines evidence-based pediatric clinical interventions with a warm, sensory-friendly atmosphere. We focus on individual developmental goals, empowering children to build functional motor, communication, and self-regulation skills.',
-    highlights: [
-      'Occupational Therapy & Sensory Integration',
-      'Speech & Articulation Therapy',
-      'Fine & Gross Motor Coordination',
-      'Self-Regulation & Daily Independence'
-    ],
-    whoItHelps: [
-      'Children experiencing sensory processing or environmental sensitivities.',
-      'Children working to improve speech clarity, vocabulary, or articulation.',
-      'Children building motor coordination, grip strength, and posture stability.',
-      'Children developing daily independence at home and school.'
-    ],
-    whatToExpect: [
-      'Warm observational evaluation by qualified therapists.',
-      'Custom developmental care plan tailored to your child’s natural pace.',
-      'Engaging 1-on-1 sessions incorporating play-based interventions.',
-      'Continuous parent feedback and home activity guidance.'
-    ],
-    iconName: 'Activity',
-    seoTitle: 'Specialized Therapy for Children | Aslan CDC | Tambaram',
-    seoDescription: 'Specialized pediatric therapy sessions in West Tambaram, Chennai designed to enhance emotional, social, sensory, and cognitive development.'
-  },
-  {
-    id: 'speech-therapy',
-    slug: 'speech-therapy',
-    title: 'Speech & Language Therapy',
-    category: 'therapy',
-    shortDescription: 'Empowering children to communicate clearly, develop expressiveness, improve speech clarity, and build social communication confidence.',
-    fullDescription: 'Speech & Language Therapy at Aslan Child Development and Therapy Center helps children overcome communication barriers, pronounce sounds accurately, and build expressiveness. Our qualified Speech Therapists create engaging sessions tailored around your child’s vocabulary and social pragmatic needs.',
-    highlights: [
-      'Speech Sound Articulation & Clarity',
-      'Expressive & Receptive Language Building',
-      'Social Communication & Pragmatics',
-      'Fluency & Early Communication Encouragement'
-    ],
-    whoItHelps: [
-      'Children experiencing delay in speaking or combining words.',
-      'Children seeking assistance with sound articulation or pronunciation.',
-      'Children needing support with listening comprehension and following instructions.',
-      'Children building confidence for peer interaction and classroom settings.'
-    ],
-    whatToExpect: [
-      'Initial speech and language evaluation in a supportive setting.',
-      'Interactive games, visual cards, and articulation exercises.',
-      'Individualized goals focused on expressive confidence and clarity.',
-      'Practical home strategy guidance for parents.'
-    ],
-    iconName: 'MessageCircle',
-    seoTitle: 'Speech Therapy for Children in Tambaram, Chennai | Aslan CDC',
-    seoDescription: 'Pediatric speech and language therapy in West Tambaram, Chennai. Helping children build speech clarity, articulation, and social communication.'
-  },
   {
     id: 'occupational-therapy',
     slug: 'occupational-therapy',
     title: 'Occupational Therapy',
     category: 'therapy',
-    shortDescription: 'Enhancing sensory processing, motor coordination, self-regulation, and daily living skills in a supportive, play-based environment.',
-    fullDescription: 'Occupational Therapy at Aslan focuses on helping children perform everyday functional tasks with confidence. From fine motor grip and handwriting to gross motor balance and sensory regulation, our therapists tailor activities to each child’s natural learning style.',
+    shortDescription: 'Enhancing sensory processing, motor coordination, self-regulation, handwriting, and daily living skills in a supportive, play-based environment.',
+    fullDescription: 'Occupational Therapy at Aslan Child Development and Therapy Center focuses on helping children master everyday functional tasks with confidence. From fine motor grip and handwriting to gross motor balance, posture control, and sensory regulation, our therapists tailor activities to each child’s natural learning pace.',
     highlights: [
-      'Sensory Integration & Processing Support',
-      'Fine Motor & Handwriting Development',
-      'Gross Motor Coordination & Balance',
-      'Self-Care & Daily Living Skills'
+      'Sensory Integration & Regulation Support',
+      'Fine Motor Skills & Pencil Control',
+      'Gross Motor Coordination & Posture Balance',
+      'Self-Care & Daily Living Independence'
     ],
     whoItHelps: [
       'Children experiencing sensory over-responsiveness or under-responsiveness.',
@@ -177,24 +182,74 @@ export const SERVICES: ServiceItem[] = [
       'Collaborative parent consultations after sessions.'
     ],
     iconName: 'Activity',
-    seoTitle: 'Occupational Therapy for Children in Tambaram | Aslan CDC',
-    seoDescription: 'Occupational therapy for children in West Tambaram, Chennai. Enhancing sensory processing, motor coordination, handwriting, and daily independence.'
+    seoTitle: 'Occupational Therapy for Children in Tambaram & Chromepet | Aslan CDC',
+    seoDescription: 'Pediatric occupational therapy in West Tambaram, Chennai. Enhancing sensory processing, motor coordination, handwriting, and daily independence.',
+    relatedConditions: [
+      'Developmental coordination disorder (DCD/ Dyspraxia)',
+      'Hypotonia and hypertonia',
+      'Visual motor difficulties',
+      'Brachial plexus injuries',
+      'Cerebral palsy',
+      'Downs syndrome',
+      'Traumatic brain injury'
+    ]
   },
   {
-    id: 'specialized-education',
-    slug: 'specialized-education',
-    title: 'Specialized Education',
+    id: 'speech-therapy',
+    slug: 'speech-therapy',
+    title: 'Speech Therapy',
+    category: 'therapy',
+    shortDescription: 'Empowering children to communicate clearly, develop expressive language, improve speech articulation, and build conversational confidence.',
+    fullDescription: 'Speech & Language Therapy at Aslan Child Development and Therapy Center helps children overcome communication barriers, pronounce sounds accurately, and build expressiveness. Our qualified Speech-Language Pathologists create engaging sessions tailored around your child’s vocabulary, articulation, and social pragmatic needs.',
+    highlights: [
+      'Speech Sound Articulation & Pronunciation',
+      'Expressive & Receptive Language Building',
+      'Stuttering & Fluency Support',
+      'Social Communication & Pragmatics'
+    ],
+    whoItHelps: [
+      'Children experiencing delay in speaking or combining words.',
+      'Children seeking assistance with sound articulation, stuttering, or cluttering.',
+      'Children needing support with listening comprehension and following instructions.',
+      'Children building confidence for peer interaction and classroom settings.'
+    ],
+    whatToExpect: [
+      'Initial speech and language evaluation in a supportive setting.',
+      'Interactive games, visual cards, and articulation exercises.',
+      'Individualized goals focused on expressive confidence and clarity.',
+      'Practical home strategy guidance for parents.'
+    ],
+    iconName: 'MessageCircle',
+    seoTitle: 'Speech Therapy for Children in Tambaram & Chromepet | Aslan CDC',
+    seoDescription: 'Pediatric speech therapy in West Tambaram, Chennai. Helping children build speech clarity, articulation, language expression, and social communication.',
+    relatedConditions: [
+      'Aphasia',
+      'Stuttering',
+      'Cluttering',
+      'Puberphonia',
+      'Dysarthria',
+      'Phonological delay',
+      'Misarticulating',
+      'Apraxia',
+      'Motor speech disorder',
+      'AAC'
+    ]
+  },
+  {
+    id: 'special-education',
+    slug: 'special-education',
+    title: 'Special Education',
     category: 'education',
     shortDescription: 'Individualized learning plans focused on unique learning styles, strengthening academic confidence, attention span, and cognitive growth.',
-    fullDescription: 'Specialized Education at Aslan Child Development and Therapy Center provides adapted learning strategies for children who process information differently. Our Special Educators design Individualized Education Plans (IEP) that foster attention, foundational literacy, numeracy, and school readiness.',
+    fullDescription: 'Special Education at Aslan Child Development and Therapy Center provides adapted learning strategies for children who process information differently. Our Special Educators design Individualized Education Plans (IEP) that foster attention, foundational literacy, numeracy, problem-solving, and cognitive self-reliance.',
     highlights: [
       'Individualized Education Plans (IEP)',
       'Attention Span & Cognitive Skill Building',
       'Foundational Literacy & Numeracy',
-      'Sensory-Friendly Learning Adaptations'
+      'Sensory-Friendly Multi-Sensory Adaptations'
     ],
     whoItHelps: [
-      'Children who benefit fromadapted, 1-on-1 educational support.',
+      'Children who benefit from adapted, 1-on-1 educational support.',
       'Children building attention span, task completion, and working memory.',
       'Children developing foundational reading, writing, and math concepts.',
       'Children preparing for mainstream or specialized academic environments.'
@@ -206,37 +261,272 @@ export const SERVICES: ServiceItem[] = [
       'Teacher-parent strategy alignment.'
     ],
     iconName: 'BookOpen',
-    seoTitle: 'Specialized Education for Children | Aslan CDC | Chennai',
-    seoDescription: 'Tailored educational programs for children in West Tambaram, Chennai. Individualized education plans focusing on unique learning styles and cognitive growth.'
+    seoTitle: 'Special Education Services in Tambaram & Chromepet | Aslan CDC',
+    seoDescription: 'Tailored special educational programs in West Tambaram, Chennai. Individualized education plans (IEP) focusing on unique learning styles and cognitive growth.',
+    relatedConditions: [
+      'Learning disability',
+      'Classroom difficulties',
+      'Poor attention',
+      'ADHD',
+      'Autism spectrum disorder (ASD)',
+      'Global development delay'
+    ]
   },
   {
-    id: 'social-developmental-activities',
-    slug: 'social-developmental-activities',
-    title: 'Social & Developmental Activities',
-    category: 'activities',
-    shortDescription: 'Structured group play and interactive sessions designed to build peer teamwork, emotional regulation, and social communication confidence.',
-    fullDescription: 'Social & Developmental Activities at Aslan encourage children to connect, collaborate, and build peer relationships in a supportive environment. Guided group interactions foster turn-taking, emotional expression, and shared confidence.',
+    id: 'school-readiness-program',
+    slug: 'school-readiness-program',
+    title: 'School Readiness Program',
+    category: 'education',
+    shortDescription: 'Structured readiness training fostering sitting tolerance, classroom etiquette, pencil control, and smooth group transition skills.',
+    fullDescription: 'Aslan’s School Readiness Program prepares young learners to transition smoothly into mainstream or special school environments. We focus on key foundational competencies such as sitting tolerance, following multi-step classroom instructions, group circle participation, pencil control, and social adaptability.',
     highlights: [
-      'Guided Peer Social Play Groups',
-      'Emotional Recognition & Regulation',
-      'Collaborative Team Activities',
-      'Peer Interaction & Self-Confidence'
+      'Sitting Tolerance & Classroom Task Focus',
+      'Routine Following & Peer Group Adaptability',
+      'Pre-Writing & Fine Motor Hand Readiness',
+      'Social Communication & Circle Time'
     ],
     whoItHelps: [
-      'Children building confidence in peer group settings.',
-      'Children practicing emotional regulation during play.',
-      'Children learning sharing, turn-taking, and active listening.',
-      'Children developing cooperative problem-solving skills.'
+      'Young children preparing for preschool or kindergarten admission.',
+      'Children needing assistance with sitting tolerance and task completion.',
+      'Children adapting to structured group schedules and instructions.',
+      'Children building foundational social confidence for school.'
     ],
     whatToExpect: [
-      'Small, structured group circles led by developmental specialists.',
-      'Interactive games, art, and rhythm teamwork challenges.',
-      'Positive reinforcement for social turn-taking.',
-      'Empathetic guidance for emotional expression.'
+      'Simulated classroom circle time activities.',
+      'Pencil grip and table-top readiness exercises.',
+      'Structured group play fostering cooperation.',
+      'Parent consultations regarding school transition recommendations.'
     ],
-    iconName: 'Users',
-    seoTitle: 'Social & Developmental Programs for Children | Aslan CDC',
-    seoDescription: 'Engaging group activities promoting peer play, emotional regulation, teamwork, and social confidence at Aslan Child Development and Therapy Center.'
+    iconName: 'GraduationCap',
+    seoTitle: 'School Readiness Program for Kids in Tambaram | Aslan CDC',
+    seoDescription: 'School Readiness Program in West Tambaram & Chromepet, Chennai. Preparing young children for classroom routines, sitting tolerance, and learning.',
+    relatedConditions: [
+      'Poor attention',
+      'Classroom difficulties',
+      'Behaviour issues',
+      'Sensory and regulatory issues',
+      'Global development delay'
+    ]
+  },
+  {
+    id: 'primitive-reflex-integration',
+    slug: 'primitive-reflex-integration',
+    title: 'Primitive Reflex Integration',
+    category: 'therapy',
+    shortDescription: 'Targeted motor movement patterns to integrate retained primary reflexes, supporting balance, coordination, posture, and emotional control.',
+    fullDescription: 'Primitive reflex integration targets automatic survival movement patterns present at birth that may remain un-integrated in early childhood. Retained reflexes can impede posture, motor coordination, emotional self-regulation, and visual tracking. Our specialized reflex integration therapy utilizes structured rhythmic movement patterns to achieve neurological maturity.',
+    highlights: [
+      'Retained Primary Reflex Assessment (Moro, ATNR, STNR, TLR)',
+      'Rhythmic Movement Integration Exercises',
+      'Postural Alignment & Balance Stability',
+      'Neurological Support for Learning & Focus'
+    ],
+    whoItHelps: [
+      'Children with posture instability, balance difficulties, or motor clumsiness.',
+      'Children experiencing emotional reactivity or sensory overload.',
+      'Children with persistent visual tracking, reading, or handwriting struggles.',
+      'Children with DCD/Dyspraxia, ADHD, or learning challenges.'
+    ],
+    whatToExpect: [
+      'Systematic screening of primary primitive reflexes.',
+      'Individualized movement sequences designed for clinical and home practice.',
+      'Gradual observation of improved physical balance and emotional calm.',
+      'Home exercise routine guidance for parents.'
+    ],
+    iconName: 'RefreshCw',
+    seoTitle: 'Primitive Reflex Integration Therapy in Tambaram | Aslan CDC',
+    seoDescription: 'Primitive Reflex Integration Therapy in West Tambaram, Chennai. Improving motor coordination, balance, postural stability, and emotional regulation.',
+    relatedConditions: [
+      'Developmental coordination disorder (DCD/ Dyspraxia)',
+      'Hypotonia and hypertonia',
+      'ADHD',
+      'Sensory processing disorder',
+      'Visual motor difficulties'
+    ]
+  },
+  {
+    id: 'hearing-test-pta',
+    slug: 'hearing-test-pta',
+    title: 'Hearing Test - Pure Tone Audiometry (PTA)',
+    category: 'assessment',
+    shortDescription: 'Precise clinical hearing assessments using Pure Tone Audiometry (PTA) to evaluate hearing thresholds and auditory perception sensitivity.',
+    fullDescription: 'Pure Tone Audiometry (PTA) is the gold standard clinical hearing assessment used to measure sound perception across varying pitches and volumes. At Aslan CDC, our hearing tests evaluate hearing sensitivity to identify any auditory barriers that could affect speech development, classroom learning, or social interaction.',
+    highlights: [
+      'Clinical Pure Tone Audiometry (PTA) Testing',
+      'Frequency-Specific Auditory Sensitivity Mapping',
+      'Pediatric Sound-Conditioned Evaluation',
+      'Early Detection of Auditory Impairment'
+    ],
+    whoItHelps: [
+      'Children exhibiting speech delays or reduced responsiveness to sound.',
+      'Children suspected of hearing loss or middle ear fluid issues.',
+      'Children needing routine pre-school or developmental hearing screening.',
+      'Children struggling with auditory discrimination in noisy environments.'
+    ],
+    whatToExpect: [
+      'Gentle, child-friendly hearing assessment in a calibrated setting.',
+      'Detailed audiogram showing hearing thresholds across frequencies.',
+      'Expert consultation regarding auditory health and speech impact.',
+      'Guidance on recommendations or speech therapy follow-up if indicated.'
+    ],
+    iconName: 'Volume2',
+    seoTitle: 'Hearing Test - Pure Tone Audiometry (PTA) in Tambaram | Aslan CDC',
+    seoDescription: 'Clinical Pure Tone Audiometry (PTA) hearing test in West Tambaram & Chromepet, Chennai for accurate pediatric hearing evaluation.',
+    relatedConditions: [
+      'Phonological delay',
+      'Misarticulating',
+      'AAC',
+      'Aphasia'
+    ]
+  },
+  {
+    id: 'oral-placement-therapy',
+    slug: 'oral-placement-therapy',
+    title: 'Oral Placement Therapy (OPT)',
+    category: 'therapy',
+    shortDescription: 'Tactile-proprioceptive approach to speech production and feeding skills, strengthening lip, tongue, and jaw placement.',
+    fullDescription: 'Oral Placement Therapy (OPT) is a specialized speech and feeding intervention technique using tactile-proprioceptive stimulation combined with auditory and visual cues. OPT targets lip closure, tongue elevation, and jaw stability required for clear speech sound articulation, chewing, and safe swallowing.',
+    highlights: [
+      'Jaw Stability, Lip Closure & Tongue Movement',
+      'Tactile & Proprioceptive Speech Tools',
+      'Chewing & Swallowing Coordination (Dysphagia)',
+      'Saliva Management & Drooling Support'
+    ],
+    whoItHelps: [
+      'Children with motor speech disorders, dysarthria, or apraxia.',
+      'Children experiencing chewing or swallowing difficulties.',
+      'Children with low oral muscle tone (hypotonia) or drooling.',
+      'Children with cleft lip/palate or speech clarity challenges.'
+    ],
+    whatToExpect: [
+      'Detailed oral motor structural and functional evaluation.',
+      'Hands-on session using specialized therapeutic tools (horns, straws, bite blocks).',
+      'Targeted muscle strength progression for sound production.',
+      'Parent coaching for daily oral placement exercises.'
+    ],
+    iconName: 'Smile',
+    seoTitle: 'Oral Placement Therapy (OPT) in Tambaram & Chromepet | Aslan CDC',
+    seoDescription: 'Specialized Oral Placement Therapy (OPT) in West Tambaram, Chennai for speech clarity, oral muscle strength, and chewing/swallowing difficulties.',
+    relatedConditions: [
+      'Chewing/swallowing difficulties',
+      'Dysphagia',
+      'Dysarthria',
+      'Apraxia',
+      'Cleft lip/palate',
+      'Motor speech disorder',
+      'Hypotonia and hypertonia'
+    ]
+  },
+  {
+    id: 'psychology-counselling',
+    slug: 'psychology-counselling',
+    title: 'Psychology Counselling',
+    category: 'support',
+    shortDescription: 'Professional psychological guidance, parent counseling, emotional well-being support, and child behavioral guidance.',
+    fullDescription: 'Psychological Counselling at Aslan Child Development and Therapy Center provides a supportive, empathetic space for children and parents. Our qualified child psychologists help families navigate emotional challenges, anxiety, behavioral difficulties, developmental diagnosis acceptance, and positive parenting strategies.',
+    highlights: [
+      'Child Emotional & Mental Well-Being Support',
+      'Parent Guidance & Coping Strategies',
+      'Behavioral Management & Positive Discipline',
+      'Anxiety & Environmental Adaptation Counseling'
+    ],
+    whoItHelps: [
+      'Parents seeking guidance following a developmental diagnosis (ASD, ADHD, GDD).',
+      'Children coping with emotional outbursts, anxiety, or low self-esteem.',
+      'Families seeking effective, positive discipline techniques.',
+      'Children struggling with school adaptation or social anxiety.'
+    ],
+    whatToExpect: [
+      'Warm, confidential counseling consultation.',
+      'Customized emotional and behavioral action plans for home.',
+      'Practical parenting tools for routine structure and calm communication.',
+      'Collaborative care alignment with therapists.'
+    ],
+    iconName: 'HeartHandshake',
+    seoTitle: 'Child & Parent Psychology Counselling in Tambaram | Aslan CDC',
+    seoDescription: 'Pediatric psychology counselling and parent guidance in West Tambaram & Chromepet, Chennai for emotional health and behavior.',
+    relatedConditions: [
+      'Behaviour issues',
+      'Sensory and regulatory issues',
+      'ADHD',
+      'Autism spectrum disorder (ASD)',
+      'Poor attention',
+      'Classroom difficulties'
+    ]
+  },
+  {
+    id: 'sensory-integration-therapy',
+    slug: 'sensory-integration-therapy',
+    title: 'Sensory Integration Therapy',
+    category: 'therapy',
+    shortDescription: 'Helping children process, organize, and regulate sensory inputs (tactile, vestibular, proprioceptive) in a specialized sensory gym.',
+    fullDescription: 'Sensory Integration Therapy helps children whose nervous systems process sensory input differently. Utilizing a fully equipped sensory gym with therapeutic swings, crash pads, climbing walls, and textured tools, our therapists help children achieve emotional regulation, motor planning, and body awareness.',
+    highlights: [
+      'Vestibular, Proprioceptive & Tactile Processing',
+      'Specialized Sensory Gym Equipment & Swings',
+      'Self-Regulation & Meltdown Reduction',
+      'Sensory-Based Feeding & Texture Support'
+    ],
+    whoItHelps: [
+      'Children with Sensory Processing Disorder (SPD) or sensory overload.',
+      'Children with Autism Spectrum Disorder (ASD) or ADHD.',
+      'Children experiencing sensory-based feeding difficulties or texture sensitivity.',
+      'Children struggling with movement regulation or environmental transitions.'
+    ],
+    whatToExpect: [
+      'Sensory processing profile evaluation.',
+      'Dynamic sessions in a sensory gym matching the child’s sensory threshold.',
+      'Gradual tolerance building and self-soothing skill mastery.',
+      'Customized "Sensory Diet" plan for home and classroom.'
+    ],
+    iconName: 'Compass',
+    seoTitle: 'Sensory Integration Therapy in Tambaram & Chromepet | Aslan CDC',
+    seoDescription: 'Sensory Integration Therapy in West Tambaram, Chennai. Equipping children with sensory processing tools, sensory gym sessions, and self-regulation.',
+    relatedConditions: [
+      'Sensory processing disorder',
+      'Sensory and regulatory issues',
+      'Sensory based feeding difficulties',
+      'Autism spectrum disorder (ASD)',
+      'ADHD',
+      'Hypotonia and hypertonia'
+    ]
+  },
+  {
+    id: 'behaviour-modification-therapy',
+    slug: 'behaviour-modification-therapy',
+    title: 'Behaviour Modification Therapy',
+    category: 'support',
+    shortDescription: 'Positive reinforcement and structured behavioral interventions to manage classroom difficulties, attention, and positive behaviors.',
+    fullDescription: 'Behaviour Modification Therapy at Aslan CDC focuses on replacing challenging or non-functional behaviors with constructive, positive actions using evidence-based reinforcement and structured routines. Our therapists work closely with parents to improve sitting tolerance, reduce tantrums, and foster social cooperation.',
+    highlights: [
+      'Positive Reinforcement Systems & Visual Schedules',
+      'Tantrum & Meltdown Management Techniques',
+      'Sitting Tolerance & Task Compliance Training',
+      'Functional Behavior Assessment (FBA)'
+    ],
+    whoItHelps: [
+      'Children displaying frequent tantrums, defiance, or aggression.',
+      'Children with ADHD or ASD requiring structured daily routines.',
+      'Children struggling with attention deficits or classroom compliance.',
+      'Parents seeking consistent, positive behavioral strategies.'
+    ],
+    whatToExpect: [
+      'Functional behavior evaluation and pattern tracking.',
+      'Custom visual charts and reward reinforcement systems.',
+      'Step-by-step behavior shaping during clinical sessions.',
+      'Empathetic parent coaching for home application.'
+    ],
+    iconName: 'CheckCircle2',
+    seoTitle: 'Behaviour Modification Therapy in Tambaram, Chennai | Aslan CDC',
+    seoDescription: 'Behavior modification therapy in West Tambaram & Chromepet, Chennai to improve focus, sitting tolerance, classroom behaviors, and social harmony.',
+    relatedConditions: [
+      'Behaviour issues',
+      'Poor attention',
+      'Classroom difficulties',
+      'ADHD',
+      'Autism spectrum disorder (ASD)',
+      'Sensory and regulatory issues'
+    ]
   }
 ];
 
