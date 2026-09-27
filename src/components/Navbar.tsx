@@ -59,13 +59,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           {/* Official Aslan Brand Mark with Full Center Name */}
           <button
             onClick={() => onNavigate('home', 'hero')}
-            className="flex items-center gap-3 text-left group focus:outline-none focus:ring-2 focus:ring-aslan-gold rounded-xl p-1 max-w-[78%] sm:max-w-none"
+            className="flex items-center text-left group focus:outline-none focus:ring-2 focus:ring-aslan-gold rounded-xl p-1 max-w-[78%] sm:max-w-none"
           >
-            <img
-              src="/images/aslan_logo.png"
-              alt="Aslan Child Development and Therapy Center Logo"
-              className="h-11 sm:h-14 lg:h-16 w-auto object-contain drop-shadow-xs group-hover:scale-105 transition-transform flex-shrink-0"
-            />
             <div className="flex flex-col justify-center">
               <div className="flex items-center gap-1.5 flex-wrap sm:flex-nowrap">
                 <span className="font-heading font-black text-base sm:text-lg lg:text-xl tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors leading-none">
@@ -79,9 +74,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               </div>
               <span className="text-[10px] sm:text-[11px] lg:text-xs font-bold text-sky-700 uppercase tracking-tight leading-tight mt-0.5">
                 Child Development and Therapy Center
-              </span>
-              <span className="text-[9px] sm:text-[10px] font-medium text-slate-500 italic hidden sm:block leading-none mt-0.5">
-                - Despair turns into aspire
               </span>
             </div>
           </button>
