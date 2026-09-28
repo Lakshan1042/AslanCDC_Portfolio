@@ -60,7 +60,7 @@ export const App: React.FC = () => {
     }
   };
 
-  const handleOpenAppointment = () => {
+  const handleOpenAppointment = (_serviceName?: string) => {
     handleNavigate('home', 'book');
   };
 
@@ -83,8 +83,8 @@ export const App: React.FC = () => {
         };
       default:
         return {
-          title: 'Aslan Child Development and Therapy Center | Pediatric Therapy & Education in Chennai',
-          description: 'Supporting children in West Tambaram & Chromepet, Chennai through specialized occupational therapy, speech therapy, special education and developmental programs.',
+          title: 'Child Development Center in Tambaram | Specialized Education & Therapy Center',
+          description: 'Aslan CDC is the leading Child Development Center in Tambaram & Chromepet, Chennai. Providing Specialized Education in Tambaram and a premier Therapy Center in Tambaram for ADHD, Autism (ASD), Speech Delay, Sensory Integration, Stuttering, Down Syndrome, Cerebral Palsy, and Learning Disabilities.',
           canonicalUrl: `${CENTER_INFO.siteUrl}/`,
           noindex: false,
         };
@@ -133,10 +133,10 @@ export const App: React.FC = () => {
           {/* 2. ABOUT ASLAN (Pure White) */}
           <AboutSection />
 
-          {/* 3. CONTACT (Warm Cream - 3rd Section: Quick access to locations, phone, hours & maps) */}
+          {/* 3. CONTACT (Warm Cream - Quick access to locations, phone, hours & maps) */}
           <ContactSection />
 
-          {/* 4. BOOK AN APPOINTMENT (Pure White - 4th Section: Directly after Contact) */}
+          {/* 4. BOOK AN APPOINTMENT (Pure White - Directly after Contact) */}
           <AppointmentSection />
 
           {/* 5. PROGRAMS & SERVICES (Soft Cream) */}
@@ -150,14 +150,14 @@ export const App: React.FC = () => {
           {/* 6. HOW WE SUPPORT CHILDREN (Pure White) */}
           <SupportJourney />
 
-          {/* 7. PARENT EXPERIENCES (Stories of Growth & Progress - Soft Peach-tinted) */}
+          {/* 7. PARENT EXPERIENCES (Stories of Growth & Progress) */}
           <TestimonialsSection />
 
-          {/* 8. INSIDE ASLAN (Our Team / Nurturing Environment 6-Image Gallery - Warm Cream) */}
+          {/* 8. INSIDE ASLAN (Our Team / Nurturing Environment) */}
           <TeamEnvironmentSection />
         </main>
 
-      {/* 8. FOOTER (Pure White) */}
+      {/* 9. FOOTER (Pure White) */}
       <Footer onNavigate={handleNavigate} />
     </div>
   );

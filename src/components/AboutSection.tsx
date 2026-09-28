@@ -25,18 +25,18 @@ export const AboutSection: React.FC = () => {
               {/* Main Image Frame with Soft Gold Border */}
               <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-aslan-gold/30 bg-white group">
                 <img
-                  src="/images/center_interior.png"
-                  alt="Inside Aslan Child Development Center consultation area"
+                  src="/images/learning_session.png"
+                  alt="Special education classroom with kidney activity table at Aslan Child Development Center"
                   className="w-full h-[360px] lg:h-[420px] object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
               {/* Overlapping Secondary Image */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 w-44 sm:w-52 h-36 sm:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white hidden sm:block">
+              <div className="absolute -bottom-6 -right-4 sm:-right-6 w-44 sm:w-52 h-36 sm:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white hidden sm:block p-1">
                 <img
-                  src="/images/sensory_room.png"
-                  alt="Sensory equipment detail"
-                  className="w-full h-full object-cover"
+                  src="/images/aslan_wall_sign.png"
+                  alt="Aslan Child Development Center illuminated emblem logo"
+                  className="w-full h-full object-cover rounded-xl"
                 />
               </div>
             </div>

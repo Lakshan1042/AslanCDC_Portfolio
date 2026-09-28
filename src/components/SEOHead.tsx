@@ -78,9 +78,16 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     const clinicSchema = {
       '@context': 'https://schema.org',
-      '@type': 'MedicalClinic',
+      '@type': ['MedicalClinic', 'ChildCare', 'EducationalOrganization'],
       'name': CENTER_INFO.name,
-      'description': 'Specialized pediatric occupational therapy, speech therapy, special education, primitive reflex integration, hearing test PTA, oral placement therapy, psychology counselling, sensory integration, and behavior modification in West Tambaram & Chromepet, Chennai.',
+      'alternateName': [
+        'Child Development Center in Tambaram',
+        'Specialized Education in Tambaram',
+        'Therapy Center in Tambaram',
+        'Aslan Therapy Center West Tambaram',
+        'Aslan CDC Chromepet'
+      ],
+      'description': 'Leading Child Development Center in Tambaram & Chromepet offering Specialized Education in Tambaram and a premier Therapy Center in Tambaram for ADHD, Autism Spectrum Disorder (ASD), Speech Delay, Sensory Integration, Cerebral Palsy, Down Syndrome, and Learning Disabilities.',
       'url': CENTER_INFO.siteUrl,
       'logo': `${CENTER_INFO.siteUrl}/favicon.svg`,
       'image': ogImage,
@@ -104,13 +111,59 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         'opens': '09:00',
         'closes': '20:00'
       }],
-      'areaServed': ['West Tambaram', 'Chromepet', 'Tambaram', 'Chennai', 'Tamil Nadu'],
+      'areaServed': ['West Tambaram', 'Chromepet', 'Tambaram', 'East Tambaram', 'Mudichur', 'Selaiyur', 'Sanatorium', 'Perungalathur', 'Chennai', 'Tamil Nadu'],
       'medicalSpecialty': SERVICES.map(s => s.title),
-      'knowsAbout': ALL_SEO_KEYWORDS
+      'knowsAbout': [
+        'Child Development Center in Tambaram',
+        'Specialized Education in Tambaram',
+        'Therapy Center in Tambaram',
+        ...ALL_SEO_KEYWORDS
+      ]
     };
     clinicScript.text = JSON.stringify(clinicSchema);
 
-    // 7. Breadcrumb Schema Injection
+    // 7. FAQPage Schema Injection
+    const faqSchemaId = 'aslan-faq-schema';
+    let faqScript = document.getElementById(faqSchemaId) as HTMLScriptElement | null;
+    if (!faqScript) {
+      faqScript = document.createElement('script');
+      faqScript.id = faqSchemaId;
+      faqScript.type = 'application/ld+json';
+      document.head.appendChild(faqScript);
+    }
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      'mainEntity': [
+        {
+          '@type': 'Question',
+          'name': 'Which is the top Child Development Center in Tambaram?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Aslan Child Development and Therapy Center in West Tambaram (Mudichur Road) and Chromepet is a premier center offering occupational therapy, speech therapy, special education, sensory integration, and behavioral therapy.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'Where can I get Specialized Education in Tambaram?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Aslan CDC provides Specialized Education in Tambaram with Individualized Education Plans (IEP), school readiness programs, attention skill development, and multi-sensory learning for children with autism, ADHD, learning disabilities, and developmental delays.'
+          }
+        },
+        {
+          '@type': 'Question',
+          'name': 'What conditions are treated at Aslan Therapy Center in Tambaram?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Aslan Therapy Center in Tambaram specializes in therapies for ADHD, Autism Spectrum Disorder (ASD), Speech Delays, Stuttering, Apraxia, Aphasia, Sensory Processing Disorder (SPD), Global Developmental Delay (GDD), Cerebral Palsy, Down Syndrome, Dyslexia, Drooling/Swallowing (Dysphagia), and behavioral issues.'
+          }
+        }
+      ]
+    };
+    faqScript.text = JSON.stringify(faqSchema);
+
+    // 8. Breadcrumb Schema Injection
     const breadcrumbSchemaId = 'aslan-breadcrumb-schema';
     let breadcrumbScript = document.getElementById(breadcrumbSchemaId) as HTMLScriptElement | null;
     if (breadcrumbs.length > 0) {
