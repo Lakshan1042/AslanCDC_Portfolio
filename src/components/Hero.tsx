@@ -107,8 +107,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onExploreServices
 
             <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group">
               <img
-                src="/images/hero_therapy.png"
-                alt="Therapist interacting with child at Aslan Child Development and Therapy Center"
+                src="/images/sensory_gym_main.jpg"
+                alt="Sensory Integration Gym at Aslan Child Development and Therapy Center Tambaram"
                 className="w-full h-[380px] lg:h-[450px] object-cover group-hover:scale-105 transition-transform duration-500"
               />
               

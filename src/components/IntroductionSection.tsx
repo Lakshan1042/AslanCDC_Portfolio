@@ -75,8 +75,8 @@ export const IntroductionSection: React.FC = () => {
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-aslan-md border border-aslan-sage/20 bg-aslan-cream p-3">
                 <img
-                  src="/images/center_interior.png"
-                  alt="Inside Aslan Child Development Center consultation area"
+                  src="/images/therapy_cubicles.jpg"
+                  alt="Inside Aslan Child Development Center therapy environment"
                   className="w-full h-[400px] object-cover rounded-2xl"
                 />
               </div>

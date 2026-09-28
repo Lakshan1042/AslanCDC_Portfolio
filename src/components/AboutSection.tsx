@@ -25,7 +25,7 @@ export const AboutSection: React.FC = () => {
               {/* Main Image Frame with Soft Gold Border */}
               <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-aslan-gold/30 bg-white group">
                 <img
-                  src="/images/learning_session.png"
+                  src="/images/special_education_room.jpg"
                   alt="Special education classroom with kidney activity table at Aslan Child Development Center"
                   className="w-full h-[360px] lg:h-[420px] object-cover group-hover:scale-105 transition-transform duration-500"
                 />

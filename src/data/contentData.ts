@@ -50,7 +50,7 @@ export const CENTER_INFO = {
 export const ENVIRONMENT_GALLERY = [
   {
     id: 'gallery-1',
-    src: '/images/hero_therapy.png',
+    src: '/images/sensory_gym_main.jpg',
     alt: 'Sensory integration therapy gym with therapy swings, balance beam, and exercise mats at Aslan CDC Tambaram',
     tag: 'Sensory Gym & Motor Therapy',
     layout: 'featured',
@@ -71,7 +71,7 @@ export const ENVIRONMENT_GALLERY = [
   },
   {
     id: 'gallery-4',
-    src: '/images/learning_session.png',
+    src: '/images/special_education_room.jpg',
     alt: 'Special education classroom with colorful kidney-shaped activity table and learning charts in Tambaram',
     tag: 'Specialized Education Classroom',
     layout: 'medium',

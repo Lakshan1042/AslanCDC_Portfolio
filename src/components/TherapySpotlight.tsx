@@ -145,8 +145,8 @@ export const TherapySpotlight: React.FC<TherapySpotlightProps> = ({ onOpenAppoin
 
             <div className="lg:col-span-5">
               <img
-                src="/images/speech_session.png"
-                alt="Speech Therapy Session at Aslan Center"
+                src="/images/therapy_cubicles.jpg"
+                alt="Individual speech and therapy cubicles at Aslan Center"
                 className="w-full h-56 md:h-64 object-cover rounded-2xl shadow-aslan-md border border-white/20"
               />
             </div>

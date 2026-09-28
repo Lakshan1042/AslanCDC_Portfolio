@@ -7,30 +7,30 @@ export const GallerySection: React.FC = () => {
 
   const galleryItems = [
     {
-      src: '/images/hero_therapy.png',
-      caption: 'Occupational Therapy Sensory Room with Balance & Coordination Tools',
-      tag: 'Sensory & Motor Therapy Space',
+      src: '/images/sensory_gym_main.jpg',
+      caption: 'Occupational Therapy Sensory Gym with Swings, Balance Beam & Motor Training Tools',
+      tag: 'Sensory & Motor Gym',
       span: 'col-span-1 md:col-span-2 row-span-2',
       height: 'h-80 md:h-[460px]'
     },
     {
-      src: '/images/speech_session.png',
-      caption: 'Speech & Language Therapy Station for Interactive Articulation Exercises',
-      tag: 'Speech Therapy Studio',
+      src: '/images/therapy_cubicles.jpg',
+      caption: 'Individual Therapy Cubicles for Speech, Language & One-on-One Activities',
+      tag: 'Individual Therapy Cubicles',
       span: 'col-span-1 md:col-span-1 row-span-1',
       height: 'h-56 md:h-[220px]'
     },
     {
-      src: '/images/sensory_room.png',
-      caption: 'Specialized Sensory Integration Room Equipped for Pediatric Motor Planning',
-      tag: 'Sensory Gym',
+      src: '/images/ball_pit.jpg',
+      caption: 'Specialized Sensory Ball Pit & Trampoline Area for Tactile Integration',
+      tag: 'Sensory Ball Pit',
       span: 'col-span-1 md:col-span-1 row-span-1',
       height: 'h-56 md:h-[220px]'
     },
     {
-      src: '/images/center_interior.png',
-      caption: 'Calm, Welcoming Reception & Family Consultation Lounge at Mudichur Road',
-      tag: 'Parent Lounge & Reception',
+      src: '/images/special_education_room.jpg',
+      caption: 'Special Education Classroom with Activity Tables and Structured Learning Charts',
+      tag: 'Special Education Room',
       span: 'col-span-1 md:col-span-2 row-span-1',
       height: 'h-60 md:h-[220px]'
     }
