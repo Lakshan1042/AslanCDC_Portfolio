@@ -15,7 +15,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   description,
   canonicalUrl,
   noindex = false,
-  ogImage = 'https://aslancdc.com/images/hero_therapy.png',
+  ogImage = 'https://aslancdc.com/images/sensory_gym_spider_net.jpg',
   breadcrumbs = [],
 }) => {
   useEffect(() => {

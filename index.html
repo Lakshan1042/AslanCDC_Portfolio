@@ -2,8 +2,8 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/images/aslan_logo.png" />
-    <link rel="apple-touch-icon" href="/images/aslan_logo.png" />
+    <link rel="icon" type="image/webp" href="/images/aslan_logo_256.webp" />
+    <link rel="apple-touch-icon" href="/images/aslan_logo_256.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Child Development Center in Tambaram | Specialized Education & Therapy Center - Aslan CDC</title>
     <meta name="description" content="Aslan CDC is the leading Child Development Center in Tambaram & Chromepet, Chennai. Providing Specialized Education in Tambaram and a top Therapy Center in Tambaram for ADHD, Autism (ASD), Speech Delay, Sensory Integration, Stuttering, Down Syndrome, Cerebral Palsy, and Learning Disabilities." />
@@ -13,10 +13,17 @@
     <meta property="og:url" content="https://aslancdc.com" />
     <meta property="og:type" content="website" />
     
-    <!-- Google Fonts: DM Sans, Manrope, Inter -->
+    <!-- Preload Critical Hero LCP Image -->
+    <link rel="preload" as="image" href="/images/sensory_gym_spider_net.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Google Fonts Optimization: Preconnect & Asynchronous Non-Blocking Load -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700;9..40,800;9..40,900&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700;9..40,800;9..40,900&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700;9..40,800;9..40,900&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap">
+    </noscript>
   </head>
   <body class="bg-aslan-cream text-aslan-charcoal font-sans antialiased selection:bg-aslan-peach selection:text-aslan-charcoal overflow-x-hidden">
     <div id="root"></div>

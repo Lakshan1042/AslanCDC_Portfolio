@@ -1,23 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { SEOHead } from './components/SEOHead';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
-import { ProgramsSection } from './components/ProgramsSection';
 import { ValuesStrip } from './components/ValuesStrip';
-import { SupportJourney } from './components/SupportJourney';
-import { TeamEnvironmentSection } from './components/TeamEnvironmentSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { AppointmentSection } from './components/AppointmentSection';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { AmsPage } from './components/AmsPage';
-import { NotFoundPage } from './components/NotFoundPage';
 import { CENTER_INFO } from './data/contentData';
 import type { PageRoute } from './types';
 
+// Code-split below-the-fold and secondary route components
+const ContactSection = lazy(() => import('./components/ContactSection').then(m => ({ default: m.ContactSection })));
+const AppointmentSection = lazy(() => import('./components/AppointmentSection').then(m => ({ default: m.AppointmentSection })));
+const ProgramsSection = lazy(() => import('./components/ProgramsSection').then(m => ({ default: m.ProgramsSection })));
+const SupportJourney = lazy(() => import('./components/SupportJourney').then(m => ({ default: m.SupportJourney })));
+const TestimonialsSection = lazy(() => import('./components/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const TeamEnvironmentSection = lazy(() => import('./components/TeamEnvironmentSection').then(m => ({ default: m.TeamEnvironmentSection })));
+const AmsPage = lazy(() => import('./components/AmsPage').then(m => ({ default: m.AmsPage })));
+const NotFoundPage = lazy(() => import('./components/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+
+// Non-shifting fallback for deferred sections
+const SectionSkeleton: React.FC<{ minHeight?: string; bg?: string }> = ({ minHeight = 'min-h-[300px]', bg = 'bg-aslan-cream' }) => (
+  <div className={`w-full ${minHeight} ${bg} animate-pulse flex items-center justify-center opacity-40`} />
+);
+
 export const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<PageRoute>('home');
+
+  // Background idle prefetching for deferred interactive sections
+  useEffect(() => {
+    const prefetch = () => {
+      import('./components/AppointmentSection');
+      import('./components/ProgramsSection');
+      import('./components/ContactSection');
+      import('./components/SupportJourney');
+      import('./components/TestimonialsSection');
+      import('./components/TeamEnvironmentSection');
+    };
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      (window as unknown as { requestIdleCallback: (cb: () => void, opts: { timeout: number }) => void }).requestIdleCallback(prefetch, { timeout: 2000 });
+    } else {
+      setTimeout(prefetch, 1200);
+    }
+  }, []);
 
   const scrollToSection = (sectionId?: string) => {
     if (!sectionId || sectionId === 'hero') {
@@ -39,8 +63,7 @@ export const App: React.FC = () => {
 
   const handleNavigate = (route: PageRoute, sectionId?: string) => {
     if (route === 'ams') {
-      setCurrentRoute('ams');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.location.href = 'https://ams-app.aslancdc.com';
       return;
     }
 
@@ -95,19 +118,19 @@ export const App: React.FC = () => {
 
   if (currentRoute === 'ams') {
     return (
-      <>
+      <Suspense fallback={<SectionSkeleton minHeight="min-h-screen" />}>
         <SEOHead {...seoProps} />
         <AmsPage onBackToHome={() => handleNavigate('home', 'hero')} />
-      </>
+      </Suspense>
     );
   }
 
   if (currentRoute === '404') {
     return (
-      <>
+      <Suspense fallback={<SectionSkeleton minHeight="min-h-screen" />}>
         <SEOHead {...seoProps} />
         <NotFoundPage onBackToHome={() => handleNavigate('home')} />
-      </>
+      </Suspense>
     );
   }
 
@@ -124,38 +147,50 @@ export const App: React.FC = () => {
 
       {/* Main Homepage Flow */}
       <main className="flex-grow">
-        {/* 1. HERO (Warm Cream) */}
+        {/* 1. HERO (Warm Cream - Immediate LCP render) */}
         <Hero
-            onOpenAppointment={handleOpenAppointment}
-            onExploreServices={() => handleNavigate('home', 'services')}
-          />
+          onOpenAppointment={handleOpenAppointment}
+          onExploreServices={() => handleNavigate('home', 'services')}
+        />
 
-          {/* 2. ABOUT ASLAN (Pure White) */}
-          <AboutSection />
+        {/* 2. ABOUT ASLAN (Pure White - Immediate Fold transition) */}
+        <AboutSection />
 
-          {/* 3. CONTACT (Warm Cream - Quick access to locations, phone, hours & maps) */}
+        {/* 3. CONTACT (Warm Cream - Quick access to locations, phone, hours & maps) */}
+        <Suspense fallback={<SectionSkeleton minHeight="min-h-[400px]" bg="bg-contact-soft" />}>
           <ContactSection />
+        </Suspense>
 
-          {/* 4. BOOK AN APPOINTMENT (Pure White - Directly after Contact) */}
+        {/* 4. BOOK AN APPOINTMENT (Pure White - Interactive form) */}
+        <Suspense fallback={<SectionSkeleton minHeight="min-h-[500px]" bg="bg-white" />}>
           <AppointmentSection />
+        </Suspense>
 
-          {/* 5. PROGRAMS & SERVICES (Soft Cream) */}
+        {/* 5. PROGRAMS & SERVICES (Soft Cream) */}
+        <Suspense fallback={<SectionSkeleton minHeight="min-h-[500px]" bg="bg-programs-soft" />}>
           <ProgramsSection
             onOpenAppointment={handleOpenAppointment}
           />
+        </Suspense>
 
-          {/* COMPACT TRUST VALUES STRIP (Sage Soft) */}
-          <ValuesStrip />
+        {/* COMPACT TRUST VALUES STRIP (Sage Soft) */}
+        <ValuesStrip />
 
-          {/* 6. HOW WE SUPPORT CHILDREN (Pure White) */}
+        {/* 6. HOW WE SUPPORT CHILDREN (Pure White) */}
+        <Suspense fallback={<SectionSkeleton minHeight="min-h-[400px]" bg="bg-journey-soft" />}>
           <SupportJourney />
+        </Suspense>
 
-          {/* 7. PARENT EXPERIENCES (Stories of Growth & Progress) */}
+        {/* 7. PARENT EXPERIENCES (Stories of Growth & Progress) */}
+        <Suspense fallback={<SectionSkeleton minHeight="min-h-[400px]" bg="bg-testimonials-soft" />}>
           <TestimonialsSection />
+        </Suspense>
 
-          {/* 8. INSIDE ASLAN (Our Team / Nurturing Environment) */}
+        {/* 8. INSIDE ASLAN (Our Team / Nurturing Environment) */}
+        <Suspense fallback={<SectionSkeleton minHeight="min-h-[500px]" bg="bg-gallery-soft" />}>
           <TeamEnvironmentSection />
-        </main>
+        </Suspense>
+      </main>
 
       {/* 9. FOOTER (Pure White) */}
       <Footer onNavigate={handleNavigate} />

@@ -7,30 +7,30 @@ export const GallerySection: React.FC = () => {
 
   const galleryItems = [
     {
-      src: '/images/sensory_gym_main.jpg',
-      caption: 'Occupational Therapy Sensory Gym with Swings, Balance Beam & Motor Training Tools',
-      tag: 'Sensory & Motor Gym',
+      src: '/images/sensory_gym_side.webp',
+      caption: 'Occupational Therapy Gym Equipment with Mini Trampoline, Climbing Ladder & Motor Training',
+      tag: 'Occupational Therapy Gym',
       span: 'col-span-1 md:col-span-2 row-span-2',
       height: 'h-80 md:h-[460px]'
     },
     {
-      src: '/images/therapy_cubicles.jpg',
+      src: '/images/independence_lab.webp',
+      caption: 'Aslan Independence Lab with Life Skills Training for Daily Confidence',
+      tag: 'Independence Lab',
+      span: 'col-span-1 md:col-span-1 row-span-1',
+      height: 'h-56 md:h-[220px]'
+    },
+    {
+      src: '/images/therapy_cubicles.webp',
       caption: 'Individual Therapy Cubicles for Speech, Language & One-on-One Activities',
       tag: 'Individual Therapy Cubicles',
       span: 'col-span-1 md:col-span-1 row-span-1',
       height: 'h-56 md:h-[220px]'
     },
     {
-      src: '/images/ball_pit.jpg',
-      caption: 'Specialized Sensory Ball Pit & Trampoline Area for Tactile Integration',
-      tag: 'Sensory Ball Pit',
-      span: 'col-span-1 md:col-span-1 row-span-1',
-      height: 'h-56 md:h-[220px]'
-    },
-    {
-      src: '/images/special_education_room.jpg',
-      caption: 'Special Education Classroom with Activity Tables and Structured Learning Charts',
-      tag: 'Special Education Room',
+      src: '/images/consultation_desk.webp',
+      caption: 'Doctor Consultation Desk with Kalam World Record Certificate and Awards Wall',
+      tag: 'Consultation Desk & Awards',
       span: 'col-span-1 md:col-span-2 row-span-1',
       height: 'h-60 md:h-[220px]'
     }
@@ -59,6 +59,8 @@ export const GallerySection: React.FC = () => {
               <img
                 src={item.src}
                 alt={item.caption}
+                loading="lazy"
+                decoding="async"
                 className={`w-full ${item.height} object-cover group-hover:scale-105 transition-transform duration-500`}
               />
 

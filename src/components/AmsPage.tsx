@@ -96,9 +96,16 @@ export const AmsPage: React.FC<AmsPageProps> = ({ onBackToHome }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="pt-2"
+            className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3"
           >
-            <Button variant="primary" size="lg" icon={ArrowRight} iconPosition="right" onClick={onBackToHome}>
+            <a
+              href="https://ams-app.aslancdc.com"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-white bg-aslan-teal hover:bg-aslan-teal-dark shadow-md transition-colors text-sm font-heading"
+            >
+              Open AMS Portal
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <Button variant="secondary" size="md" onClick={onBackToHome}>
               Return to Main Website
             </Button>
           </motion.div>

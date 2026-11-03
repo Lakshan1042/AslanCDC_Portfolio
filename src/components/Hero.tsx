@@ -23,14 +23,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onExploreServices
             
             {/* Center Brand & Logo Header */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0 }}
+              transition={{ duration: 0.4 }}
               className="flex items-center gap-4 bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-2xl border border-amber-200/70 shadow-sm w-fit"
             >
               <img
-                src="/images/aslan_logo.png"
+                src="/images/aslan_logo_256.webp"
                 alt="Aslan Child Development and Therapy Center Logo"
+                width="80"
+                height="80"
+                decoding="async"
                 className="h-14 sm:h-18 lg:h-20 w-auto object-contain drop-shadow-md flex-shrink-0"
               />
               <div className="flex flex-col justify-center">
@@ -49,9 +52,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onExploreServices
 
             {/* Headline (Single H1 Tag on Page) */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.08 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
               className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-aslan-charcoal leading-[1.15] tracking-tight"
             >
               Every Child Has the Potential to <span className="text-gradient-gold">Grow, Learn & Thrive.</span>
@@ -59,9 +62,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onExploreServices
 
             {/* Supporting Text */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.14 }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.05 }}
               className="text-base sm:text-lg md:text-xl text-aslan-charcoal-muted leading-relaxed max-w-xl font-sans font-medium"
             >
               Specialized therapy, education and developmental support designed around every child's individual needs.
@@ -69,9 +72,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onExploreServices
 
             {/* Action Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.22 }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
               className="pt-2 flex flex-col sm:flex-row gap-4 items-stretch sm:items-center"
             >
               <Button
@@ -97,26 +100,40 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onExploreServices
 
           {/* Right Image Showcase */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0.85, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.18 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className="lg:col-span-5 relative"
           >
             {/* Soft Backing Glow Frame */}
             <div className="absolute -inset-4 bg-gradient-to-tr from-amber-200/50 via-yellow-100/50 to-sky-200/50 rounded-[3rem] blur-lg transform rotate-2 pointer-events-none opacity-60"></div>
 
             <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group">
-              <img
-                src="/images/sensory_gym_main.jpg"
-                alt="Sensory Integration Gym at Aslan Child Development and Therapy Center Tambaram"
-                className="w-full h-[380px] lg:h-[450px] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet="/images/sensory_gym_spider_net_640.webp 640w, /images/sensory_gym_spider_net.webp 768w"
+                  sizes="(max-width: 1024px) 100vw, 500px"
+                />
+                <img
+                  src="/images/sensory_gym_spider_net.webp"
+                  alt="Sensory Integration Gym with Spider Net & Climbing Equipment at Aslan Child Development and Therapy Center Tambaram"
+                  width="768"
+                  height="1024"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="w-full h-[380px] lg:h-[450px] object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+              </picture>
               
               {/* Floating Top Badge with Logo */}
               <div className="absolute top-4 left-4 p-2 sm:p-2.5 rounded-2xl bg-white/95 backdrop-blur-md border border-amber-200 shadow-md flex items-center gap-2.5">
                 <img
-                  src="/images/aslan_logo.png"
+                  src="/images/aslan_logo_256.webp"
                   alt="Aslan Logo Badge"
+                  width="36"
+                  height="36"
+                  decoding="async"
                   className="h-8 sm:h-9 w-auto object-contain flex-shrink-0"
                 />
                 <div className="flex flex-col">

@@ -14,11 +14,30 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Prevent background scrolling while mobile navigation menu is open
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
     };
-    window.addEventListener('scroll', handleScroll);
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -29,13 +48,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
     { label: 'Programs', href: 'services', route: 'home' as PageRoute },
     { label: 'Our Approach', href: 'how-we-help', route: 'home' as PageRoute },
     { label: 'Gallery', href: 'gallery', route: 'home' as PageRoute },
-    { label: 'AMS', route: 'ams' as PageRoute, isBadge: true },
+    { label: 'AMS', route: 'ams' as PageRoute, isBadge: true, externalUrl: 'https://ams-app.aslancdc.com' },
   ];
 
   const handleLinkClick = (link: typeof navLinks[0]) => {
     setIsMobileMenuOpen(false);
-    if (link.route === 'ams') {
-      onNavigate('ams');
+    if (link.route === 'ams' || link.externalUrl) {
+      window.location.href = link.externalUrl || 'https://ams-app.aslancdc.com';
     } else {
       onNavigate('home', link.href);
     }
@@ -82,6 +101,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           <nav className="hidden lg:flex items-center space-x-1.5">
             {navLinks.map((link) => {
               const isActive = link.route === currentRoute && link.route === 'ams';
+              if (link.externalUrl) {
+                return (
+                  <a
+                    key={link.label}
+                    href={link.externalUrl}
+                    className="text-sm font-bold transition-all duration-200 px-3.5 py-2 rounded-full flex items-center gap-1.5 focus:outline-none text-slate-700 hover:text-sky-900 hover:bg-sky-100/80"
+                  >
+                    <span>{link.label}</span>
+                    {link.isBadge && (
+                      <span className="px-1.5 py-0.5 text-[9px] font-extrabold bg-sky-500 text-white rounded-full uppercase shadow-xs">
+                        Portal
+                      </span>
+                    )}
+                  </a>
+                );
+              }
               return (
                 <button
                   key={link.label}
@@ -116,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-sky-900 hover:bg-sky-100/60 focus:outline-none rounded-xl transition-colors flex-shrink-0"
+            className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 text-slate-700 hover:text-sky-900 hover:bg-sky-100/60 focus:outline-none rounded-xl transition-colors flex-shrink-0"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -134,25 +169,45 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               className="lg:hidden bg-white/95 backdrop-blur-md border-b border-amber-100 px-5 py-5 space-y-4 shadow-xl overflow-hidden"
             >
               <div className="flex flex-col space-y-2">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.label}
-                    onClick={() => handleLinkClick(link)}
-                    className="text-left text-sm font-bold text-slate-700 hover:text-sky-900 hover:bg-sky-50 px-3 py-2.5 rounded-xl transition-colors flex items-center justify-between border-b border-slate-100"
-                  >
-                    <span>{link.label}</span>
-                    {link.isBadge && (
-                      <span className="px-2 py-0.5 text-xs font-bold bg-sky-500 text-white rounded-md shadow-xs">
-                        AMS Coming Soon
-                      </span>
-                    )}
-                  </button>
-                ))}
+                {navLinks.map((link) => {
+                  if (link.externalUrl) {
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.externalUrl}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="text-left text-sm font-bold text-slate-700 hover:text-sky-900 hover:bg-sky-50 min-h-[44px] px-3.5 py-3 rounded-xl transition-colors flex items-center justify-between border-b border-slate-100 active:scale-[0.98]"
+                      >
+                        <span>{link.label}</span>
+                        {link.isBadge && (
+                          <span className="px-2 py-0.5 text-xs font-bold bg-sky-500 text-white rounded-md shadow-xs">
+                            Portal
+                          </span>
+                        )}
+                      </a>
+                    );
+                  }
+                  return (
+                    <button
+                      key={link.label}
+                      onClick={() => handleLinkClick(link)}
+                      className="text-left text-sm font-bold text-slate-700 hover:text-sky-900 hover:bg-sky-50 min-h-[44px] px-3.5 py-3 rounded-xl transition-colors flex items-center justify-between border-b border-slate-100 active:scale-[0.98]"
+                    >
+                      <span>{link.label}</span>
+                      {link.isBadge && (
+                        <span className="px-2 py-0.5 text-xs font-bold bg-sky-500 text-white rounded-md shadow-xs">
+                          New
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
 
               <div className="pt-1">
                 <Button
                   variant="secondary"
+                  size="md"
                   fullWidth
                   onClick={handleBookClick}
                 >
@@ -165,26 +220,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
       </header>
 
       {/* Mobile Fixed Quick Action Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-amber-200 px-4 py-3 flex items-center justify-between gap-3 shadow-2xl">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-amber-200 px-4 py-2.5 flex items-center justify-between gap-3 shadow-2xl">
         <a
           href={`tel:${CENTER_INFO.phones[0]}`}
-          className="flex-1 py-2 bg-aslan-gold/20 text-aslan-charcoal font-extrabold text-xs text-center flex items-center justify-center gap-1.5 border border-aslan-gold/40 rounded-xl active:scale-95 transition-transform"
+          className="flex-1 min-h-[44px] py-2 bg-aslan-gold/20 text-aslan-charcoal font-extrabold text-xs text-center flex items-center justify-center gap-1.5 border border-aslan-gold/40 rounded-xl active:scale-95 transition-transform"
         >
-          <Phone className="w-3.5 h-3.5 text-aslan-blue" /> Call
+          <Phone className="w-4 h-4 text-aslan-blue" /> Call
         </a>
         <a
           href={`https://wa.me/91${CENTER_INFO.whatsapp}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 py-2 bg-emerald-50 text-emerald-800 font-extrabold text-xs text-center flex items-center justify-center gap-1.5 border border-emerald-200 rounded-xl active:scale-95 transition-transform"
+          className="flex-1 min-h-[44px] py-2 bg-emerald-50 text-emerald-800 font-extrabold text-xs text-center flex items-center justify-center gap-1.5 border border-emerald-200 rounded-xl active:scale-95 transition-transform"
         >
-          <MessageSquare className="w-3.5 h-3.5 text-aslan-mint" /> WhatsApp
+          <MessageSquare className="w-4 h-4 text-aslan-mint" /> WhatsApp
         </a>
         <button
           onClick={handleBookClick}
-          className="flex-[1.3] py-2 bg-amber-300 hover:bg-amber-400 text-amber-950 border border-amber-400/40 rounded-xl font-heading font-extrabold text-xs text-center flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-transform"
+          className="flex-[1.3] min-h-[44px] py-2 bg-amber-300 hover:bg-amber-400 text-amber-950 border border-amber-400/40 rounded-xl font-heading font-extrabold text-xs text-center flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-transform"
         >
-          <Calendar className="w-3.5 h-3.5" /> Book
+          <Calendar className="w-4 h-4" /> Book
         </button>
       </div>
     </>

@@ -113,6 +113,14 @@
   animation: pulse-glow 5s ease-in-out infinite;
 }
 
+/* Optimize mobile GPU performance: disable continuous 64px Gaussian blur animations on small viewports */
+@media (max-width: 640px) {
+  .animate-float-slow,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+}
+
 /* Custom subtle scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -126,6 +134,22 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #0284C7;
+}
+
+/* Off-screen section rendering optimization */
+section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 

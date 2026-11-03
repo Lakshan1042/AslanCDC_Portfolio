@@ -152,31 +152,35 @@ export const TestimonialsSection: React.FC = () => {
         <div className="flex items-center justify-between mt-8">
           <button
             onClick={prevTestimonial}
-            className="p-3 rounded-full bg-white border border-amber-200 text-aslan-charcoal hover:bg-aslan-gold hover:border-aslan-gold transition-all shadow-md focus:outline-none hover:scale-105"
+            className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-white border border-amber-200 text-aslan-charcoal hover:bg-aslan-gold hover:border-aslan-gold transition-all shadow-md focus:outline-none hover:scale-105 active:scale-95"
             aria-label="Previous review"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
 
           {/* Dots Indicator */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             {TESTIMONIAL_PLACEHOLDERS.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  index === activeIndex
-                    ? 'w-8 bg-aslan-gold'
-                    : 'w-2.5 bg-amber-200 hover:bg-aslan-gold/50'
-                }`}
+                className="p-2 min-w-[32px] min-h-[32px] flex items-center justify-center"
                 aria-label={`Go to review ${index + 1}`}
-              />
+              >
+                <span
+                  className={`h-2.5 rounded-full transition-all duration-300 block ${
+                    index === activeIndex
+                      ? 'w-8 bg-aslan-gold'
+                      : 'w-2.5 bg-amber-200 hover:bg-aslan-gold/50'
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
           <button
             onClick={nextTestimonial}
-            className="p-3 rounded-full bg-white border border-amber-200 text-aslan-charcoal hover:bg-aslan-gold hover:border-aslan-gold transition-all shadow-md focus:outline-none hover:scale-105"
+            className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-white border border-amber-200 text-aslan-charcoal hover:bg-aslan-gold hover:border-aslan-gold transition-all shadow-md focus:outline-none hover:scale-105 active:scale-95"
             aria-label="Next review"
           >
             <ChevronRight className="w-5 h-5" />

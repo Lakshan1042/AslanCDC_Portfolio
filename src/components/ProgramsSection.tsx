@@ -38,7 +38,13 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
   const [isExpandedConditions, setIsExpandedConditions] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAutoplay, setIsAutoplay] = useState<boolean>(true);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(3);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(() => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 1024) return 2;
+    }
+    return 3;
+  });
 
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -185,11 +191,12 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
           </span>
 
           {/* Carousel Arrow Controls & Autoplay Toggle */}
-          <div className="flex items-center gap-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full border border-slate-200 shadow-sm">
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-white/90 backdrop-blur-sm p-1 sm:p-1.5 rounded-full border border-slate-200 shadow-sm">
             <button
               onClick={() => setIsAutoplay(!isAutoplay)}
-              className="p-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="p-2 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
               title={isAutoplay ? 'Pause Slideshow' : 'Play Slideshow'}
+              aria-label={isAutoplay ? 'Pause Slideshow' : 'Play Slideshow'}
             >
               {isAutoplay ? <Pause className="w-4 h-4 text-amber-600" /> : <Play className="w-4 h-4 text-emerald-600" />}
             </button>
@@ -197,7 +204,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
             <button
               onClick={handlePrev}
               disabled={SERVICES.length <= itemsPerPage}
-              className="p-2 rounded-full bg-slate-100 text-slate-700 hover:bg-amber-100 hover:text-slate-900 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+              className="p-2 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full bg-slate-100 text-slate-700 hover:bg-amber-100 hover:text-slate-900 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
               aria-label="Previous services"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -206,7 +213,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
             <button
               onClick={handleNext}
               disabled={SERVICES.length <= itemsPerPage}
-              className="p-2 rounded-full bg-amber-300 text-amber-950 hover:bg-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-xs"
+              className="p-2 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full bg-amber-300 text-amber-950 hover:bg-amber-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-xs"
               aria-label="Next services"
             >
               <ChevronRight className="w-4 h-4" />
@@ -304,18 +311,22 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
         </div>
 
         {/* CAROUSEL PAGINATION DOTS */}
-        <div className="flex items-center justify-center gap-2 mt-8 mb-16">
+        <div className="flex items-center justify-center gap-1 mt-8 mb-16">
           {Array.from({ length: totalPages }).map((_, pageIdx) => {
             const isActive = Math.floor(currentIndex / itemsPerPage) === pageIdx;
             return (
               <button
                 key={pageIdx}
                 onClick={() => setCurrentIndex(pageIdx * itemsPerPage)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  isActive ? 'w-8 bg-amber-500 shadow-sm' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
-                }`}
+                className="p-2 min-w-[32px] min-h-[32px] flex items-center justify-center"
                 aria-label={`Go to page ${pageIdx + 1}`}
-              />
+              >
+                <span
+                  className={`h-2.5 rounded-full transition-all duration-300 block ${
+                    isActive ? 'w-8 bg-amber-500 shadow-sm' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              </button>
             );
           })}
         </div>

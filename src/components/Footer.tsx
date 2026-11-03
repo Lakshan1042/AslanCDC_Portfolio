@@ -33,8 +33,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               className="flex items-center gap-3.5 focus:outline-none group text-left"
             >
               <img 
-                src="/images/aslan_logo.png" 
+                src="/images/aslan_logo_256.webp" 
                 alt="Aslan Child Development Center Logo" 
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
                 className="w-12 h-12 object-contain drop-shadow-md group-hover:scale-105 transition-transform" 
               />
               <div>

@@ -67,6 +67,7 @@ export const AppointmentSection: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -266,7 +267,7 @@ export const AppointmentSection: React.FC = () => {
                         setFormData({ ...formData, parentName: e.target.value });
                         if (errors.parentName) setErrors({ ...errors, parentName: undefined });
                       }}
-                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal ${
+                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-base sm:text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal ${
                         errors.parentName
                           ? 'border-rose-500 focus:ring-2 focus:ring-rose-500/30'
                           : 'border-slate-200 focus:ring-2 focus:ring-amber-300 focus:border-amber-400'
@@ -292,7 +293,7 @@ export const AppointmentSection: React.FC = () => {
                         setFormData({ ...formData, childName: e.target.value });
                         if (errors.childName) setErrors({ ...errors, childName: undefined });
                       }}
-                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal ${
+                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-base sm:text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal ${
                         errors.childName
                           ? 'border-rose-500 focus:ring-2 focus:ring-rose-500/30'
                           : 'border-slate-200 focus:ring-2 focus:ring-amber-300 focus:border-amber-400'
@@ -320,7 +321,7 @@ export const AppointmentSection: React.FC = () => {
                         setFormData({ ...formData, phone: e.target.value });
                         if (errors.phone) setErrors({ ...errors, phone: undefined });
                       }}
-                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal ${
+                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-base sm:text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal ${
                         errors.phone
                           ? 'border-rose-500 focus:ring-2 focus:ring-rose-500/30'
                           : 'border-slate-200 focus:ring-2 focus:ring-amber-300 focus:border-amber-400'
@@ -346,7 +347,7 @@ export const AppointmentSection: React.FC = () => {
                         setFormData({ ...formData, email: e.target.value });
                         if (errors.email) setErrors({ ...errors, email: undefined });
                       }}
-                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal ${
+                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-base sm:text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal ${
                         errors.email
                           ? 'border-rose-500 focus:ring-2 focus:ring-rose-500/30'
                           : 'border-slate-200 focus:ring-2 focus:ring-amber-300 focus:border-amber-400'
@@ -380,7 +381,7 @@ export const AppointmentSection: React.FC = () => {
                           setFormData({ ...formData, address: e.target.value });
                           if (errors.address) setErrors({ ...errors, address: undefined });
                         }}
-                        className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal resize-none ${
+                        className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-base sm:text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal resize-none ${
                           errors.address
                             ? 'border-rose-500 focus:ring-2 focus:ring-rose-500/30'
                             : 'border-slate-200 focus:ring-2 focus:ring-amber-300 focus:border-amber-400'
@@ -408,7 +409,7 @@ export const AppointmentSection: React.FC = () => {
                       setFormData({ ...formData, concern: e.target.value });
                       if (errors.concern) setErrors({ ...errors, concern: undefined });
                     }}
-                    className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal resize-none ${
+                    className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-base sm:text-sm focus:outline-none focus:bg-white transition-all text-aslan-charcoal resize-none ${
                       errors.concern
                         ? 'border-rose-500 focus:ring-2 focus:ring-rose-500/30'
                         : 'border-slate-200 focus:ring-2 focus:ring-amber-300 focus:border-amber-400'

@@ -75,9 +75,13 @@ export const IntroductionSection: React.FC = () => {
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-aslan-md border border-aslan-sage/20 bg-aslan-cream p-3">
                 <img
-                  src="/images/therapy_cubicles.jpg"
-                  alt="Inside Aslan Child Development Center therapy environment"
-                  className="w-full h-[400px] object-cover rounded-2xl"
+                  src="/images/sensory_wall_board.webp"
+                  alt="Inside Aslan Child Development Center interactive sensory wall and development environment"
+                  width="768"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-[400px] object-cover object-center rounded-2xl"
                 />
               </div>
 
