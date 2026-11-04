@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onExploreServices
               transition={{ duration: 0.4, ease: 'easeOut' }}
               className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-aslan-charcoal leading-[1.15] tracking-tight"
             >
-              Every Child Has the Potential to <span className="text-gradient-gold">Grow, Learn & Thrive.</span>
+              Helping Every Child <span className="text-gradient-gold">Grow, Learn & Thrive</span> in Tambaram & Chromepet
             </motion.h1>
 
             {/* Supporting Text */}
@@ -67,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onExploreServices
               transition={{ duration: 0.4, ease: 'easeOut', delay: 0.05 }}
               className="text-base sm:text-lg md:text-xl text-aslan-charcoal-muted leading-relaxed max-w-xl font-sans font-medium"
             >
-              Specialized therapy, education and developmental support designed around every child's individual needs.
+              Specialized pediatric therapy, occupational therapy, speech clarity, and early developmental care designed around every child's individual pace.
             </motion.p>
 
             {/* Action Buttons */}

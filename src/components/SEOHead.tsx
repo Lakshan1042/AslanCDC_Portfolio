@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
-import { CENTER_INFO, SERVICES, ALL_SEO_KEYWORDS } from '../data/contentData';
+import { CENTER_INFO } from '../data/contentData';
 
-interface SEOHeadProps {
+export interface SEOHeadProps {
   title: string;
   description: string;
   canonicalUrl: string;
   noindex?: boolean;
   ogImage?: string;
   breadcrumbs?: Array<{ name: string; url: string }>;
+  faqs?: Array<{ question: string; answer: string }>;
+  branchType?: 'main' | 'chromepet' | 'all';
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
@@ -15,8 +17,10 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   description,
   canonicalUrl,
   noindex = false,
-  ogImage = 'https://aslancdc.com/images/sensory_gym_spider_net.jpg',
+  ogImage = 'https://aslancdc.com/images/sensory_gym_spider_net.webp',
   breadcrumbs = [],
+  faqs = [],
+  branchType = 'all',
 }) => {
   useEffect(() => {
     // 1. Update Document Title
@@ -46,8 +50,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     // 2. Set Meta Description & Robots
     setMeta('meta[name="description"]', 'name', 'description', description);
-    setMeta('meta[name="robots"]', 'name', 'robots', noindex ? 'noindex, follow' : 'index, follow');
-    setMeta('meta[name="keywords"]', 'name', 'keywords', ALL_SEO_KEYWORDS.join(', '));
+    setMeta('meta[name="robots"]', 'name', 'robots', noindex ? 'noindex, nofollow' : 'index, follow');
 
     // 3. Set Canonical URL
     setLink('canonical', canonicalUrl);
@@ -66,7 +69,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
     setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', ogImage);
 
-    // 6. LocalBusiness / MedicalClinic Schema Injection
+    // 6. Schema.org Injection
     const clinicSchemaId = 'aslan-clinic-schema';
     let clinicScript = document.getElementById(clinicSchemaId) as HTMLScriptElement | null;
     if (!clinicScript) {
@@ -76,22 +79,24 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       document.head.appendChild(clinicScript);
     }
 
-    const clinicSchema = {
-      '@context': 'https://schema.org',
-      '@type': ['MedicalClinic', 'ChildCare', 'EducationalOrganization'],
+    const organizationSchema = {
+      '@type': 'MedicalOrganization',
+      '@id': 'https://aslancdc.com/#organization',
       'name': CENTER_INFO.name,
-      'alternateName': [
-        'Child Development Center in Tambaram',
-        'Specialized Education in Tambaram',
-        'Therapy Center in Tambaram',
-        'Aslan Therapy Center West Tambaram',
-        'Aslan CDC Chromepet'
-      ],
-      'description': 'Leading Child Development Center in Tambaram & Chromepet offering Specialized Education in Tambaram and a premier Therapy Center in Tambaram for ADHD, Autism Spectrum Disorder (ASD), Speech Delay, Sensory Integration, Cerebral Palsy, Down Syndrome, and Learning Disabilities.',
-      'url': CENTER_INFO.siteUrl,
-      'logo': `${CENTER_INFO.siteUrl}/favicon.svg`,
-      'image': ogImage,
+      'url': 'https://aslancdc.com/',
+      'logo': 'https://aslancdc.com/images/aslan_logo_256.webp',
+      'description': 'Premier child development and therapy center in Chennai with specialized facilities in West Tambaram and Chromepet.',
       'telephone': CENTER_INFO.phones.map(p => `+91-${p}`),
+    };
+
+    const westTambaramClinic = {
+      '@type': 'MedicalClinic',
+      '@id': 'https://aslancdc.com/locations/west-tambaram/#clinic',
+      'name': 'Aslan Child Development and Therapy Center - West Tambaram',
+      'parentOrganization': { '@id': 'https://aslancdc.com/#organization' },
+      'url': 'https://aslancdc.com/locations/west-tambaram/',
+      'image': 'https://aslancdc.com/images/sensory_gym_spider_net.webp',
+      'telephone': '+91-9445914020',
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': '6, Raju St, Mudichur Rd, West Tambaram',
@@ -102,78 +107,97 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       },
       'geo': {
         '@type': 'GeoCoordinates',
-        'latitude': CENTER_INFO.latitude,
-        'longitude': CENTER_INFO.longitude
+        'latitude': '12.926834',
+        'longitude': '80.1054806'
       },
       'openingHoursSpecification': [{
         '@type': 'OpeningHoursSpecification',
         'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         'opens': '09:00',
         'closes': '20:00'
-      }],
-      'areaServed': ['West Tambaram', 'Chromepet', 'Tambaram', 'East Tambaram', 'Mudichur', 'Selaiyur', 'Sanatorium', 'Perungalathur', 'Chennai', 'Tamil Nadu'],
-      'medicalSpecialty': SERVICES.map(s => s.title),
-      'knowsAbout': [
-        'Child Development Center in Tambaram',
-        'Specialized Education in Tambaram',
-        'Therapy Center in Tambaram',
-        ...ALL_SEO_KEYWORDS
-      ]
+      }]
     };
-    clinicScript.text = JSON.stringify(clinicSchema);
 
-    // 7. FAQPage Schema Injection
+    const chromepetClinic = {
+      '@type': 'MedicalClinic',
+      '@id': 'https://aslancdc.com/locations/chromepet/#clinic',
+      'name': 'Aslan Child Development and Therapy Center - Chromepet',
+      'parentOrganization': { '@id': 'https://aslancdc.com/#organization' },
+      'url': 'https://aslancdc.com/locations/chromepet/',
+      'image': 'https://aslancdc.com/images/play_therapy_room.webp',
+      'telephone': '+91-9445914020',
+      'address': {
+        '@type': 'PostalAddress',
+        'streetAddress': 'No: 7/4, 3rd Cross St, New Colony, Chromepet',
+        'addressLocality': 'Chennai',
+        'addressRegion': 'Tamil Nadu',
+        'postalCode': '600044',
+        'addressCountry': 'IN'
+      },
+      'geo': {
+        '@type': 'GeoCoordinates',
+        'latitude': '12.952751',
+        'longitude': '80.1390222'
+      },
+      'openingHoursSpecification': [{
+        '@type': 'OpeningHoursSpecification',
+        'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        'opens': '09:00',
+        'closes': '20:00'
+      }]
+    };
+
+    let graphData: unknown[] = [organizationSchema];
+    if (branchType === 'main') {
+      graphData = [organizationSchema, westTambaramClinic];
+    } else if (branchType === 'chromepet') {
+      graphData = [organizationSchema, chromepetClinic];
+    } else {
+      graphData = [organizationSchema, westTambaramClinic, chromepetClinic];
+    }
+
+    clinicScript.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': graphData
+    });
+
+    // 7. FAQPage Schema Injection (strictly matching visible FAQs)
     const faqSchemaId = 'aslan-faq-schema';
     let faqScript = document.getElementById(faqSchemaId) as HTMLScriptElement | null;
-    if (!faqScript) {
-      faqScript = document.createElement('script');
-      faqScript.id = faqSchemaId;
-      faqScript.type = 'application/ld+json';
-      document.head.appendChild(faqScript);
+    if (faqs && faqs.length > 0) {
+      if (!faqScript) {
+        faqScript = document.createElement('script');
+        faqScript.id = faqSchemaId;
+        faqScript.type = 'application/ld+json';
+        document.head.appendChild(faqScript);
+      }
+      faqScript.text = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': faqs.map(f => ({
+          '@type': 'Question',
+          'name': f.question,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': f.answer
+          }
+        }))
+      });
+    } else if (faqScript) {
+      faqScript.remove();
     }
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      'mainEntity': [
-        {
-          '@type': 'Question',
-          'name': 'Which is the top Child Development Center in Tambaram?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Aslan Child Development and Therapy Center in West Tambaram (Mudichur Road) and Chromepet is a premier center offering occupational therapy, speech therapy, special education, sensory integration, and behavioral therapy.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'Where can I get Specialized Education in Tambaram?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Aslan CDC provides Specialized Education in Tambaram with Individualized Education Plans (IEP), school readiness programs, attention skill development, and multi-sensory learning for children with autism, ADHD, learning disabilities, and developmental delays.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'What conditions are treated at Aslan Therapy Center in Tambaram?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Aslan Therapy Center in Tambaram specializes in therapies for ADHD, Autism Spectrum Disorder (ASD), Speech Delays, Stuttering, Apraxia, Aphasia, Sensory Processing Disorder (SPD), Global Developmental Delay (GDD), Cerebral Palsy, Down Syndrome, Dyslexia, Drooling/Swallowing (Dysphagia), and behavioral issues.'
-          }
-        }
-      ]
-    };
-    faqScript.text = JSON.stringify(faqSchema);
 
     // 8. Breadcrumb Schema Injection
     const breadcrumbSchemaId = 'aslan-breadcrumb-schema';
     let breadcrumbScript = document.getElementById(breadcrumbSchemaId) as HTMLScriptElement | null;
-    if (breadcrumbs.length > 0) {
+    if (breadcrumbs && breadcrumbs.length > 0) {
       if (!breadcrumbScript) {
         breadcrumbScript = document.createElement('script');
         breadcrumbScript.id = breadcrumbSchemaId;
         breadcrumbScript.type = 'application/ld+json';
         document.head.appendChild(breadcrumbScript);
       }
-      const breadcrumbListSchema = {
+      breadcrumbScript.text = JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         'itemListElement': breadcrumbs.map((b, i) => ({
@@ -182,13 +206,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
           'name': b.name,
           'item': b.url
         }))
-      };
-      breadcrumbScript.text = JSON.stringify(breadcrumbListSchema);
+      });
     } else if (breadcrumbScript) {
       breadcrumbScript.remove();
     }
 
-  }, [title, description, canonicalUrl, noindex, ogImage, breadcrumbs]);
+  }, [title, description, canonicalUrl, noindex, ogImage, breadcrumbs, faqs, branchType]);
 
   return null;
 };

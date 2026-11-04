@@ -63,5 +63,9 @@ export type PageRoute =
   | 'gallery'
   | 'contact'
   | 'ams'
-  | '404';
+  | '404'
+  | 'location-chromepet'
+  | 'location-west-tambaram'
+  | 'service-occupational-therapy'
+  | 'service-autism-support';
 

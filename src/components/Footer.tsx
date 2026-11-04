@@ -61,14 +61,69 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Links */}
-          <div className="flex flex-wrap justify-center gap-6 font-bold text-slate-700">
-            <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-sky-600 transition-colors">About</a>
-            <a href="#services" onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-sky-600 transition-colors">Services</a>
-            <a href="#how-we-help" onClick={(e) => handleLinkClick(e, 'how-we-help')} className="hover:text-sky-600 transition-colors">How We Help</a>
-            <a href="#environment" onClick={(e) => handleLinkClick(e, 'environment')} className="hover:text-sky-600 transition-colors">Environment</a>
-            <a href="#book" onClick={(e) => handleLinkClick(e, 'book')} className="hover:text-sky-600 transition-colors">Appointment</a>
-            <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')} className="hover:text-sky-600 transition-colors">Contact</a>
+          {/* Links Grid */}
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 text-center sm:text-left">
+            <div>
+              <p className="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 font-heading mb-2">Our Centers</p>
+              <div className="flex flex-col gap-1.5 font-bold text-slate-700">
+                <a
+                  href="/locations/west-tambaram/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate?.('location-west-tambaram');
+                  }}
+                  className="hover:text-sky-600 transition-colors"
+                >
+                  West Tambaram Center
+                </a>
+                <a
+                  href="/locations/chromepet/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate?.('location-chromepet');
+                  }}
+                  className="hover:text-sky-600 transition-colors"
+                >
+                  Chromepet Center
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 font-heading mb-2">Core Programs</p>
+              <div className="flex flex-col gap-1.5 font-bold text-slate-700">
+                <a
+                  href="/services/occupational-therapy/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate?.('service-occupational-therapy');
+                  }}
+                  className="hover:text-sky-600 transition-colors"
+                >
+                  Occupational Therapy
+                </a>
+                <a
+                  href="/services/autism-support/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate?.('service-autism-support');
+                  }}
+                  className="hover:text-sky-600 transition-colors"
+                >
+                  Autism Support
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 font-heading mb-2">Explore</p>
+              <div className="flex flex-wrap sm:flex-col gap-3 sm:gap-1.5 font-bold text-slate-700 justify-center">
+                <a href="#about" onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-sky-600 transition-colors">About Aslan</a>
+                <a href="#services" onClick={(e) => handleLinkClick(e, 'services')} className="hover:text-sky-600 transition-colors">All Services</a>
+                <a href="#book" onClick={(e) => handleLinkClick(e, 'book')} className="hover:text-sky-600 transition-colors">Book Visit</a>
+                <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')} className="hover:text-sky-600 transition-colors">Contact</a>
+              </div>
+            </div>
           </div>
 
           {/* Copyright & Phone */}

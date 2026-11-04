@@ -41,20 +41,33 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Home', href: 'hero', route: 'home' as PageRoute },
-    { label: 'About', href: 'about', route: 'home' as PageRoute },
-    { label: 'Contact', href: 'contact', route: 'home' as PageRoute },
-    { label: 'Programs', href: 'services', route: 'home' as PageRoute },
-    { label: 'Our Approach', href: 'how-we-help', route: 'home' as PageRoute },
-    { label: 'Gallery', href: 'gallery', route: 'home' as PageRoute },
-    { label: 'AMS', route: 'ams' as PageRoute, isBadge: true, externalUrl: 'https://ams-app.aslancdc.com' },
+  const navLinks: Array<{
+    label: string;
+    href?: string;
+    route: PageRoute;
+    path: string;
+    isBadge?: boolean;
+    externalUrl?: string;
+  }> = [
+    { label: 'Home', href: 'hero', route: 'home', path: '/' },
+    { label: 'About', href: 'about', route: 'home', path: '/#about' },
+    { label: 'Programs', href: 'services', route: 'home', path: '/#services' },
+    { label: 'West Tambaram', route: 'location-west-tambaram', path: '/locations/west-tambaram/' },
+    { label: 'Chromepet', route: 'location-chromepet', path: '/locations/chromepet/' },
+    { label: 'Gallery', href: 'gallery', route: 'home', path: '/#gallery' },
+    { label: 'Contact', href: 'contact', route: 'home', path: '/#contact' },
+    { label: 'AMS', route: 'ams', isBadge: true, path: '/ams', externalUrl: 'https://ams-app.aslancdc.com' },
   ];
 
-  const handleLinkClick = (link: typeof navLinks[0]) => {
+  const handleLinkClick = (e: React.MouseEvent, link: typeof navLinks[0]) => {
     setIsMobileMenuOpen(false);
     if (link.route === 'ams' || link.externalUrl) {
       window.location.href = link.externalUrl || 'https://ams-app.aslancdc.com';
+      return;
+    }
+    e.preventDefault();
+    if (link.route === 'location-west-tambaram' || link.route === 'location-chromepet') {
+      onNavigate(link.route);
     } else {
       onNavigate('home', link.href);
     }
@@ -100,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center space-x-1.5">
             {navLinks.map((link) => {
-              const isActive = link.route === currentRoute && link.route === 'ams';
+              const isActive = link.route === currentRoute && link.route !== 'home';
               if (link.externalUrl) {
                 return (
                   <a
@@ -118,9 +131,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 );
               }
               return (
-                <button
+                <a
                   key={link.label}
-                  onClick={() => handleLinkClick(link)}
+                  href={link.path}
+                  onClick={(e) => handleLinkClick(e, link)}
                   className={`text-sm font-bold transition-all duration-200 px-3.5 py-2 rounded-full flex items-center gap-1.5 focus:outline-none ${isActive
                     ? 'bg-sky-100 text-sky-900 font-extrabold border border-sky-300/80 shadow-xs'
                     : 'text-slate-700 hover:text-sky-900 hover:bg-sky-100/80'
@@ -132,7 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                       New
                     </span>
                   )}
-                </button>
+                </a>
               );
             })}
           </nav>
@@ -188,10 +202,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                     );
                   }
                   return (
-                    <button
+                    <a
                       key={link.label}
-                      onClick={() => handleLinkClick(link)}
-                      className="text-left text-sm font-bold text-slate-700 hover:text-sky-900 hover:bg-sky-50 min-h-[44px] px-3.5 py-3 rounded-xl transition-colors flex items-center justify-between border-b border-slate-100 active:scale-[0.98]"
+                      href={link.path}
+                      onClick={(e) => handleLinkClick(e, link)}
+                      className={`text-left text-sm font-bold min-h-[44px] px-3.5 py-3 rounded-xl transition-colors flex items-center justify-between border-b border-slate-100 active:scale-[0.98] ${
+                        link.route === currentRoute && link.route !== 'home'
+                          ? 'bg-sky-100 text-sky-900 font-extrabold'
+                          : 'text-slate-700 hover:text-sky-900 hover:bg-sky-50'
+                      }`}
                     >
                       <span>{link.label}</span>
                       {link.isBadge && (
@@ -199,7 +218,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                           New
                         </span>
                       )}
-                    </button>
+                    </a>
                   );
                 })}
               </div>
