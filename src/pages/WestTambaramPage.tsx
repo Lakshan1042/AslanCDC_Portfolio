@@ -14,6 +14,7 @@ import { SectionHeading } from '../components/SectionHeading';
 import { FaqSection } from '../components/FaqSection';
 import { AppointmentSection } from '../components/AppointmentSection';
 import { CENTER_INFO } from '../data/contentData';
+import { WEST_TAMBARAM_FAQS } from '../data/faqsData';
 import type { PageRoute } from '../types';
 
 interface WestTambaramPageProps {
@@ -25,25 +26,7 @@ export const WestTambaramPage: React.FC<WestTambaramPageProps> = ({
   onNavigate,
 }) => {
   const branch = CENTER_INFO.branches.find(b => b.id === 'main-branch') || CENTER_INFO.branches[0];
-
-  const tambaramFaqs = [
-    {
-      question: "What facilities are available in the West Tambaram sensory gym?",
-      answer: "Our West Tambaram sensory gym includes suspended swings, spider climbing nets, balance ladders, crash mats, and sensory tactile paths designed to help children organize vestibular, proprioceptive, and tactile inputs."
-    },
-    {
-      question: "Does Aslan CDC provide home-visit appointments from West Tambaram?",
-      answer: "Yes, for families unable to travel to the clinic for certain sessions, our team offers structured home appointments within our local service radius across West Tambaram and Mudichur."
-    },
-    {
-      question: "What age groups do you support at the West Tambaram center?",
-      answer: "We support infants, toddlers, young children, and adolescents through early intervention, school-age therapy, and teen independence training."
-    },
-    {
-      question: "Can we visit both branches?",
-      answer: "Yes. Families residing closer to Chromepet can attend sessions at our New Colony center, while visiting West Tambaram for specialized sensory gym sessions."
-    }
-  ];
+  const tambaramFaqs = WEST_TAMBARAM_FAQS;
 
   return (
     <div className="bg-aslan-cream text-aslan-charcoal font-sans">

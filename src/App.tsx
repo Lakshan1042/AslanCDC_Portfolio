@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SEOHead } from './components/SEOHead';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -6,54 +6,39 @@ import { AboutSection } from './components/AboutSection';
 import { ValuesStrip } from './components/ValuesStrip';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
+import { ContactSection } from './components/ContactSection';
+import { AppointmentSection } from './components/AppointmentSection';
+import { ProgramsSection } from './components/ProgramsSection';
+import { SupportJourney } from './components/SupportJourney';
+import { TestimonialsSection } from './components/TestimonialsSection';
+import { TeamEnvironmentSection } from './components/TeamEnvironmentSection';
+import { AmsPage } from './components/AmsPage';
+import { NotFoundPage } from './components/NotFoundPage';
+
+import { ChromepetPage } from './pages/ChromepetPage';
+import { WestTambaramPage } from './pages/WestTambaramPage';
+import { OccupationalTherapyPage } from './pages/OccupationalTherapyPage';
+import { AutismSupportPage } from './pages/AutismSupportPage';
+
 import { CENTER_INFO } from './data/contentData';
+import {
+  HOMEPAGE_FAQS,
+  CHROMEPET_FAQS,
+  WEST_TAMBARAM_FAQS,
+  OCCUPATIONAL_THERAPY_FAQS,
+  AUTISM_SUPPORT_FAQS
+} from './data/faqsData';
 import { getRouteFromPath, getPathForRoute } from './utils/routing';
 import type { PageRoute } from './types';
 
-// Code-split secondary route components & below-the-fold sections
-const ContactSection = lazy(() => import('./components/ContactSection').then(m => ({ default: m.ContactSection })));
-const AppointmentSection = lazy(() => import('./components/AppointmentSection').then(m => ({ default: m.AppointmentSection })));
-const ProgramsSection = lazy(() => import('./components/ProgramsSection').then(m => ({ default: m.ProgramsSection })));
-const SupportJourney = lazy(() => import('./components/SupportJourney').then(m => ({ default: m.SupportJourney })));
-const TestimonialsSection = lazy(() => import('./components/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
-const TeamEnvironmentSection = lazy(() => import('./components/TeamEnvironmentSection').then(m => ({ default: m.TeamEnvironmentSection })));
-const AmsPage = lazy(() => import('./components/AmsPage').then(m => ({ default: m.AmsPage })));
-const NotFoundPage = lazy(() => import('./components/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+interface AppProps {
+  initialRoute?: PageRoute;
+}
 
-// Code-split the 4 approved Local SEO & Service Landing Pages
-const ChromepetPage = lazy(() => import('./pages/ChromepetPage').then(m => ({ default: m.ChromepetPage })));
-const WestTambaramPage = lazy(() => import('./pages/WestTambaramPage').then(m => ({ default: m.WestTambaramPage })));
-const OccupationalTherapyPage = lazy(() => import('./pages/OccupationalTherapyPage').then(m => ({ default: m.OccupationalTherapyPage })));
-const AutismSupportPage = lazy(() => import('./pages/AutismSupportPage').then(m => ({ default: m.AutismSupportPage })));
-
-// Non-shifting fallback for deferred sections
-const SectionSkeleton: React.FC<{ minHeight?: string; bg?: string }> = ({ minHeight = 'min-h-[300px]', bg = 'bg-aslan-cream' }) => (
-  <div className={`w-full ${minHeight} ${bg} animate-pulse flex items-center justify-center opacity-40`} />
-);
-
-// Verified Homepage FAQs (verbatim matching JSON-LD schema)
-const HOMEPAGE_FAQS = [
-  {
-    question: "Which is the top Child Development Center in Tambaram & Chromepet?",
-    answer: "Aslan Child Development and Therapy Center operates two specialized facilities in West Tambaram (Mudichur Road) and Chromepet (New Colony). We provide pediatric occupational therapy, speech therapy, special education, sensory integration therapy, and behavioral guidance."
-  },
-  {
-    question: "Where can I get Specialized Education in Tambaram & Chromepet?",
-    answer: "Aslan CDC provides Specialized Education with Individualized Education Plans (IEP), school readiness programs, attention skill development, and multi-sensory learning for children with autism, ADHD, learning disabilities, and developmental delays."
-  },
-  {
-    question: "What conditions are supported at Aslan Therapy Center?",
-    answer: "Aslan CDC specializes in therapeutic support for ADHD, Autism Spectrum Disorder (ASD), speech delays, stuttering, apraxia, sensory processing differences (SPD), global developmental delay (GDD), cerebral palsy, Down syndrome, and classroom behavior challenges."
-  },
-  {
-    question: "How do I choose between the West Tambaram and Chromepet centers?",
-    answer: "Both centers provide qualified occupational therapy, speech therapy, and special education. Families seeking extensive sensory gym sessions and ADL independence lab training frequently visit our West Tambaram main branch, while our Chromepet center provides quiet, distraction-free 1-on-1 cubicles and early childhood play therapy rooms."
-  }
-];
-
-export const App: React.FC = () => {
-  // Initialize route from current browser URL
+export const App: React.FC<AppProps> = ({ initialRoute }) => {
+  // Initialize route from current browser URL or initialRoute for SSR
   const [currentRoute, setCurrentRoute] = useState<PageRoute>(() => {
+    if (initialRoute) return initialRoute;
     if (typeof window !== 'undefined') {
       return getRouteFromPath(window.location.pathname).route;
     }
@@ -156,20 +141,7 @@ export const App: React.FC = () => {
             { name: 'Home', url: `${CENTER_INFO.siteUrl}/` },
             { name: 'Chromepet', url: `${CENTER_INFO.siteUrl}/locations/chromepet/` }
           ],
-          faqs: [
-            {
-              question: "Which neighborhoods are served by the Chromepet center?",
-              answer: "Our Chromepet branch primarily serves families living in Chromepet, New Colony, Hasthinapuram, Radha Nagar, Pallavaram, Nemilichery, and surrounding southern Chennai suburbs."
-            },
-            {
-              question: "How do I schedule an appointment for my child at the Chromepet branch?",
-              answer: "You can schedule an appointment by submitting the appointment form on this page or by contacting our team directly at 9445914020."
-            },
-            {
-              question: "How does the Chromepet branch differ from the West Tambaram branch?",
-              answer: "Both centers deliver professional occupational therapy, speech therapy, and special education. Our West Tambaram main branch additionally houses our full sensory gym and life-skills independence lab."
-            }
-          ]
+          faqs: CHROMEPET_FAQS
         };
 
       case 'location-west-tambaram':
@@ -183,20 +155,7 @@ export const App: React.FC = () => {
             { name: 'Home', url: `${CENTER_INFO.siteUrl}/` },
             { name: 'West Tambaram', url: `${CENTER_INFO.siteUrl}/locations/west-tambaram/` }
           ],
-          faqs: [
-            {
-              question: "What facilities are available in the West Tambaram sensory gym?",
-              answer: "Our West Tambaram sensory gym includes suspended swings, spider climbing nets, balance ladders, crash mats, and sensory tactile paths."
-            },
-            {
-              question: "Does Aslan CDC provide home-visit appointments from West Tambaram?",
-              answer: "Yes, for families unable to travel to the clinic, our team offers structured home appointments within our local service radius across West Tambaram and Mudichur."
-            },
-            {
-              question: "What age groups do you support at the West Tambaram center?",
-              answer: "We support infants, toddlers, young children, and adolescents through early intervention, school-age therapy, and teen independence training."
-            }
-          ]
+          faqs: WEST_TAMBARAM_FAQS
         };
 
       case 'service-occupational-therapy':
@@ -210,20 +169,7 @@ export const App: React.FC = () => {
             { name: 'Home', url: `${CENTER_INFO.siteUrl}/` },
             { name: 'Occupational Therapy', url: `${CENTER_INFO.siteUrl}/services/occupational-therapy/` }
           ],
-          faqs: [
-            {
-              question: "How long is a typical pediatric occupational therapy session?",
-              answer: "A standard occupational therapy session is typically 45 minutes of direct, play-based intervention followed by a collaborative discussion with parents."
-            },
-            {
-              question: "At what age can a child begin occupational therapy?",
-              answer: "Occupational therapy can begin as early as infancy through early intervention programs, supporting motor delays, sensory feeding difficulties, and posture."
-            },
-            {
-              question: "Which Aslan CDC branch offers occupational therapy?",
-              answer: "Both our West Tambaram (Mudichur Road) and Chromepet (New Colony) centers provide qualified occupational therapy."
-            }
-          ]
+          faqs: OCCUPATIONAL_THERAPY_FAQS
         };
 
       case 'service-autism-support':
@@ -237,20 +183,7 @@ export const App: React.FC = () => {
             { name: 'Home', url: `${CENTER_INFO.siteUrl}/` },
             { name: 'Autism Support', url: `${CENTER_INFO.siteUrl}/services/autism-support/` }
           ],
-          faqs: [
-            {
-              question: "Can Aslan CDC support my child if we don't have a formal diagnosis yet?",
-              answer: "Yes. If your child exhibits speech delays, sensory sensitivities, lack of eye contact, or behavioral challenges, you do not need to wait for a formal medical report to begin functional therapy."
-            },
-            {
-              question: "Which Aslan branch provides autism support programs?",
-              answer: "Both our West Tambaram (Mudichur Road) and Chromepet (New Colony) centers offer comprehensive autism developmental therapy."
-            },
-            {
-              question: "Do you offer school readiness programs for children on the spectrum?",
-              answer: "Yes. Our school readiness curriculum focuses on sitting tolerance, circle time participation, following instructions, and peer interaction."
-            }
-          ]
+          faqs: AUTISM_SUPPORT_FAQS
         };
 
       case 'ams':
@@ -299,51 +232,39 @@ export const App: React.FC = () => {
       {/* Main Routed Content Flow */}
       <main className="flex-grow">
         {currentRoute === 'location-chromepet' && (
-          <Suspense fallback={<SectionSkeleton minHeight="min-h-screen" />}>
-            <ChromepetPage
-              onNavigate={handleNavigate}
-              onOpenAppointment={handleOpenAppointment}
-            />
-          </Suspense>
+          <ChromepetPage
+            onNavigate={handleNavigate}
+            onOpenAppointment={handleOpenAppointment}
+          />
         )}
 
         {currentRoute === 'location-west-tambaram' && (
-          <Suspense fallback={<SectionSkeleton minHeight="min-h-screen" />}>
-            <WestTambaramPage
-              onNavigate={handleNavigate}
-              onOpenAppointment={handleOpenAppointment}
-            />
-          </Suspense>
+          <WestTambaramPage
+            onNavigate={handleNavigate}
+            onOpenAppointment={handleOpenAppointment}
+          />
         )}
 
         {currentRoute === 'service-occupational-therapy' && (
-          <Suspense fallback={<SectionSkeleton minHeight="min-h-screen" />}>
-            <OccupationalTherapyPage
-              onNavigate={handleNavigate}
-              onOpenAppointment={handleOpenAppointment}
-            />
-          </Suspense>
+          <OccupationalTherapyPage
+            onNavigate={handleNavigate}
+            onOpenAppointment={handleOpenAppointment}
+          />
         )}
 
         {currentRoute === 'service-autism-support' && (
-          <Suspense fallback={<SectionSkeleton minHeight="min-h-screen" />}>
-            <AutismSupportPage
-              onNavigate={handleNavigate}
-              onOpenAppointment={handleOpenAppointment}
-            />
-          </Suspense>
+          <AutismSupportPage
+            onNavigate={handleNavigate}
+            onOpenAppointment={handleOpenAppointment}
+          />
         )}
 
         {currentRoute === 'ams' && (
-          <Suspense fallback={<SectionSkeleton minHeight="min-h-screen" />}>
-            <AmsPage onBackToHome={() => handleNavigate('home', 'hero')} />
-          </Suspense>
+          <AmsPage onBackToHome={() => handleNavigate('home', 'hero')} />
         )}
 
         {currentRoute === '404' && (
-          <Suspense fallback={<SectionSkeleton minHeight="min-h-screen" />}>
-            <NotFoundPage onBackToHome={() => handleNavigate('home')} />
-          </Suspense>
+          <NotFoundPage onBackToHome={() => handleNavigate('home')} />
         )}
 
         {currentRoute === 'home' && (
@@ -358,39 +279,27 @@ export const App: React.FC = () => {
             <AboutSection />
 
             {/* 3. CONTACT & LOCATIONS (Warm Cream - Quick access to both branches) */}
-            <Suspense fallback={<SectionSkeleton minHeight="min-h-[400px]" bg="bg-contact-soft" />}>
-              <ContactSection />
-            </Suspense>
+            <ContactSection />
 
             {/* 4. BOOK AN APPOINTMENT (Pure White - Interactive form) */}
-            <Suspense fallback={<SectionSkeleton minHeight="min-h-[500px]" bg="bg-white" />}>
-              <AppointmentSection />
-            </Suspense>
+            <AppointmentSection />
 
             {/* 5. PROGRAMS & SERVICES (Soft Cream) */}
-            <Suspense fallback={<SectionSkeleton minHeight="min-h-[500px]" bg="bg-programs-soft" />}>
-              <ProgramsSection
-                onOpenAppointment={handleOpenAppointment}
-              />
-            </Suspense>
+            <ProgramsSection
+              onOpenAppointment={handleOpenAppointment}
+            />
 
             {/* COMPACT TRUST VALUES STRIP */}
             <ValuesStrip />
 
             {/* 6. HOW WE SUPPORT CHILDREN */}
-            <Suspense fallback={<SectionSkeleton minHeight="min-h-[400px]" bg="bg-journey-soft" />}>
-              <SupportJourney />
-            </Suspense>
+            <SupportJourney />
 
             {/* 7. PARENT EXPERIENCES (Stories of Growth) */}
-            <Suspense fallback={<SectionSkeleton minHeight="min-h-[400px]" bg="bg-testimonials-soft" />}>
-              <TestimonialsSection />
-            </Suspense>
+            <TestimonialsSection />
 
             {/* 8. INSIDE ASLAN (Real Environment Showcase) */}
-            <Suspense fallback={<SectionSkeleton minHeight="min-h-[500px]" bg="bg-gallery-soft" />}>
-              <TeamEnvironmentSection />
-            </Suspense>
+            <TeamEnvironmentSection />
 
             {/* 9. PARENT FAQS (Verbatim matching Schema.org) */}
             <FaqSection

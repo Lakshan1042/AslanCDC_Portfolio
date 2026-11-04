@@ -14,6 +14,7 @@ import { SectionHeading } from '../components/SectionHeading';
 import { FaqSection } from '../components/FaqSection';
 import { AppointmentSection } from '../components/AppointmentSection';
 import { CENTER_INFO } from '../data/contentData';
+import { CHROMEPET_FAQS } from '../data/faqsData';
 import type { PageRoute } from '../types';
 
 interface ChromepetPageProps {
@@ -25,25 +26,7 @@ export const ChromepetPage: React.FC<ChromepetPageProps> = ({
   onNavigate,
 }) => {
   const branch = CENTER_INFO.branches.find(b => b.id === 'chromepet-branch') || CENTER_INFO.branches[1];
-
-  const chromepetFaqs = [
-    {
-      question: "Which neighborhoods are served by the Chromepet center?",
-      answer: "Our Chromepet branch primarily serves families living in Chromepet, New Colony, Hasthinapuram, Radha Nagar, Pallavaram, Nemilichery, and surrounding southern Chennai suburbs."
-    },
-    {
-      question: "How do I schedule an appointment for my child at the Chromepet branch?",
-      answer: "You can schedule an appointment by submitting the appointment form on this page or by contacting our team directly at 9445914020. Our care coordinator will schedule an initial observational consultation."
-    },
-    {
-      question: "What should we bring to the initial consultation?",
-      answer: "Please bring any previous developmental reports, pediatrician observation notes, and school feedback, along with a note of your personal observations regarding your child's daily routines."
-    },
-    {
-      question: "How does the Chromepet branch differ from the West Tambaram branch?",
-      answer: "Both centers deliver professional occupational therapy, speech therapy, and special education. Our West Tambaram main branch additionally houses our full sensory gym and life-skills independence lab, while Chromepet offers focused, quiet 1-on-1 cubicles and early play therapy rooms."
-    }
-  ];
+  const chromepetFaqs = CHROMEPET_FAQS;
 
   return (
     <div className="bg-aslan-cream text-aslan-charcoal font-sans">

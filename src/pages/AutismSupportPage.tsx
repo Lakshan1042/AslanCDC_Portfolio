@@ -12,6 +12,7 @@ import { SectionHeading } from '../components/SectionHeading';
 import { FaqSection } from '../components/FaqSection';
 import { AppointmentSection } from '../components/AppointmentSection';
 import { CENTER_INFO, TESTIMONIAL_PLACEHOLDERS } from '../data/contentData';
+import { AUTISM_SUPPORT_FAQS } from '../data/faqsData';
 import type { PageRoute } from '../types';
 
 interface AutismSupportPageProps {
@@ -22,24 +23,7 @@ interface AutismSupportPageProps {
 export const AutismSupportPage: React.FC<AutismSupportPageProps> = ({
   onNavigate,
 }) => {
-  const autismFaqs = [
-    {
-      question: "Can Aslan CDC support my child if we don't have a formal diagnosis yet?",
-      answer: "Yes. If your child exhibits speech delays, sensory sensitivities, lack of eye contact, or behavioral challenges, you do not need to wait for a formal medical report to begin functional therapy. We can initiate sensory regulation, speech stimulation, and motor exercises while you coordinate with medical specialists."
-    },
-    {
-      question: "Which Aslan branch provides autism support programs?",
-      answer: "Both our West Tambaram (Mudichur Road) and Chromepet (New Colony) centers offer comprehensive autism developmental therapy, speech therapy, and behavioral guidance. The West Tambaram branch also houses our full sensory gym and ADL independence lab."
-    },
-    {
-      question: "How many sessions per week will my child need?",
-      answer: "Session frequency is determined collaboratively following the initial observational evaluation, typically ranging from 2 to 5 sessions per week depending on the child's developmental goals."
-    },
-    {
-      question: "Do you offer school readiness programs for children on the spectrum?",
-      answer: "Yes. Our school readiness curriculum focuses on sitting tolerance, circle time participation, following instructions, and peer interaction to facilitate smooth transitions into preschool or formal schooling."
-    }
-  ];
+  const autismFaqs = AUTISM_SUPPORT_FAQS;
 
   return (
     <div className="bg-aslan-cream text-aslan-charcoal font-sans">

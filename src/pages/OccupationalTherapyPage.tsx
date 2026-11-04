@@ -10,6 +10,7 @@ import { SectionHeading } from '../components/SectionHeading';
 import { FaqSection } from '../components/FaqSection';
 import { AppointmentSection } from '../components/AppointmentSection';
 import { CENTER_INFO } from '../data/contentData';
+import { OCCUPATIONAL_THERAPY_FAQS } from '../data/faqsData';
 import type { PageRoute } from '../types';
 
 interface OccupationalTherapyPageProps {
@@ -20,24 +21,7 @@ interface OccupationalTherapyPageProps {
 export const OccupationalTherapyPage: React.FC<OccupationalTherapyPageProps> = ({
   onNavigate,
 }) => {
-  const otFaqs = [
-    {
-      question: "How long is a typical pediatric occupational therapy session?",
-      answer: "A standard occupational therapy session is typically 45 minutes of direct, play-based intervention followed by a collaborative 5-to-10 minute discussion with parents to review home practice strategies."
-    },
-    {
-      question: "At what age can a child begin occupational therapy?",
-      answer: "Occupational therapy can begin as early as infancy through early intervention programs, supporting motor delays, sensory feeding difficulties, and posture, continuing through preschool and school-age years."
-    },
-    {
-      question: "How does Occupational Therapy differ from Physiotherapy?",
-      answer: "While physiotherapy focuses primarily on gross motor mobility, muscle strength, and gait rehabilitation, occupational therapy focuses on functional independence — fine motor dexterity, handwriting, sensory regulation, and activities of daily living (ADL)."
-    },
-    {
-      question: "Which Aslan CDC branch offers occupational therapy?",
-      answer: "Both our West Tambaram (Mudichur Road) and Chromepet (New Colony) centers provide qualified occupational therapy. Our West Tambaram flagship also houses our extensive sensory gym and Independence Lab."
-    }
-  ];
+  const otFaqs = OCCUPATIONAL_THERAPY_FAQS;
 
   return (
     <div className="bg-aslan-cream text-aslan-charcoal font-sans">
