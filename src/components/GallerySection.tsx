@@ -7,8 +7,8 @@ export const GallerySection: React.FC = () => {
 
   const galleryItems = [
     {
-      src: '/images/sensory_gym_side.webp',
-      caption: 'Occupational Therapy Gym Equipment with Mini Trampoline, Climbing Ladder & Motor Training',
+      src: '/images/tambaram_sensory_gym_front.webp',
+      caption: 'Occupational Therapy Sensory Gym Equipment with Mini Trampoline, Suspension Swing & Motor Training',
       tag: 'Occupational Therapy Gym',
       span: 'col-span-1 md:col-span-2 row-span-2',
       height: 'h-80 md:h-[460px]'

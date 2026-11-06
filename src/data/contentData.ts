@@ -50,8 +50,8 @@ export const CENTER_INFO = {
 export const ENVIRONMENT_GALLERY = [
   {
     id: 'gallery-1',
-    src: '/images/sensory_gym_side.webp',
-    alt: 'Occupational therapy gym equipment with mini trampoline and climbing ladder at Aslan CDC',
+    src: '/images/tambaram_sensory_gym_front.webp',
+    alt: 'Occupational therapy sensory gym with trampoline, therapy balls and suspension swing at Aslan CDC',
     tag: 'Occupational Therapy Gym',
     layout: 'featured',
   },
