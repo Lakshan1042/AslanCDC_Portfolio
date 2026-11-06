@@ -149,7 +149,7 @@ export const App: React.FC<AppProps> = ({ initialRoute }) => {
           title: 'Child Development & Therapy Center in West Tambaram | Aslan',
           description: 'Main therapy facility in West Tambaram, Chennai. Featuring a full sensory gym, occupational therapy, speech therapy, special education, and ADL lab.',
           canonicalUrl: `${CENTER_INFO.siteUrl}/locations/west-tambaram/`,
-          ogImage: `${CENTER_INFO.siteUrl}/images/sensory_gym_spider_net.webp`,
+          ogImage: `${CENTER_INFO.siteUrl}/images/tambaram_sensory_gym_wide.webp`,
           branchType: 'main' as const,
           breadcrumbs: [
             { name: 'Home', url: `${CENTER_INFO.siteUrl}/` },

@@ -94,18 +94,18 @@ export const WestTambaramPage: React.FC<WestTambaramPageProps> = ({
 
             {/* Right Photo Frame */}
             <div className="lg:col-span-5 relative">
-              <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group aspect-[4/3] sm:aspect-[4/3] lg:aspect-[3/4]">
+              <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/3]">
                 <img
-                  src="/images/sensory_gym_spider_net.webp"
-                  alt="Child climbing webbed spider net in full sensory gym at Aslan Child Development Center West Tambaram"
-                  width="768"
-                  height="1024"
+                  src="/images/tambaram_sensory_gym_wide.webp"
+                  alt="Sensory integration and pediatric therapy gym at Aslan Child Development Center West Tambaram"
+                  width="1024"
+                  height="768"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl border-2 border-amber-200 shadow-lg max-w-[290px]">
                 <p className="text-xs font-extrabold text-slate-900 font-heading">Specialized Sensory Gym</p>
-                <p className="text-[11px] text-slate-500 font-medium">Equipped for vestibular balance, spider net climbing, and sensory calming.</p>
+                <p className="text-[11px] text-slate-500 font-medium">Equipped for vestibular balance, suspension swings, and gross motor therapy.</p>
               </div>
             </div>
 
@@ -125,26 +125,26 @@ export const WestTambaramPage: React.FC<WestTambaramPageProps> = ({
             className="mb-12"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Feature 1 */}
             <div className="bg-amber-50/30 rounded-3xl p-6 border-2 border-amber-100 flex flex-col justify-between space-y-4">
               <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-white border border-amber-100 shadow-xs">
                 <img
-                  src="/images/sensory_gym_side.webp"
-                  alt="Sensory gym with climbing ladder and trampoline at West Tambaram"
-                  width="768"
-                  height="1024"
+                  src="/images/tambaram_sensory_gym_front.webp"
+                  alt="Sensory gym with suspension swing, mini trampoline, and exercise balls at West Tambaram"
+                  width="1024"
+                  height="768"
                   loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div>
                 <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
-                  Advanced Sensory Integration Gym
+                  Advanced Sensory Gym
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans font-medium">
-                  Features an octagonal rope spider climbing net, suspended bolster swings, multi-color safety crash pads, and balance ladders for sensory regulation and bilateral motor planning.
+                  Features suspended bolster swings, pediatric trampoline, balance bridges, therapy balls, and safety crash pads for vestibular balance and bilateral motor planning.
                 </p>
               </div>
             </div>
@@ -153,8 +153,8 @@ export const WestTambaramPage: React.FC<WestTambaramPageProps> = ({
             <div className="bg-amber-50/30 rounded-3xl p-6 border-2 border-amber-100 flex flex-col justify-between space-y-4">
               <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-white border border-amber-100 shadow-xs">
                 <img
-                  src="/images/independence_lab.webp"
-                  alt="Aslan Independence Lab for ADL training"
+                  src="/images/tambaram_learning_play_room.webp"
+                  alt="Early learning and special education room at Aslan CDC West Tambaram"
                   width="768"
                   height="1024"
                   loading="lazy"
@@ -163,10 +163,10 @@ export const WestTambaramPage: React.FC<WestTambaramPageProps> = ({
               </div>
               <div>
                 <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
-                  Aslan Independence Lab (ADL)
+                  Early Learning Suite
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans font-medium">
-                  A simulated home environment featuring child-accessible kitchen counters, cleaning, and laundry stations, empowering children with autism and developmental delays to build functional independence in daily tasks.
+                  Child-centric learning room with ergonomic activity stations, multisensory educational aids, and play-based tools tailored for special education and cognitive development.
                 </p>
               </div>
             </div>
@@ -175,8 +175,30 @@ export const WestTambaramPage: React.FC<WestTambaramPageProps> = ({
             <div className="bg-amber-50/30 rounded-3xl p-6 border-2 border-amber-100 flex flex-col justify-between space-y-4">
               <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-white border border-amber-100 shadow-xs">
                 <img
+                  src="/images/tambaram_therapy_cubicles.webp"
+                  alt="Individual therapy stations and resource library at Aslan CDC West Tambaram"
+                  width="1024"
+                  height="768"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
+                  Individual Therapy Stations
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans font-medium">
+                  Quiet, partitioned 1-on-1 cubicles with acoustic curtains and a curated therapy resource library for high-focus speech therapy and individualized attention.
+                </p>
+              </div>
+            </div>
+
+            {/* Feature 4 */}
+            <div className="bg-amber-50/30 rounded-3xl p-6 border-2 border-amber-100 flex flex-col justify-between space-y-4">
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-white border border-amber-100 shadow-xs">
+                <img
                   src="/images/consultation_desk.webp"
-                  alt="Doctor consultation room at Aslan CDC"
+                  alt="Doctor consultation room at Aslan CDC West Tambaram"
                   width="768"
                   height="1024"
                   loading="lazy"
@@ -185,10 +207,10 @@ export const WestTambaramPage: React.FC<WestTambaramPageProps> = ({
               </div>
               <div>
                 <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
-                  Consultation & Assessment Suites
+                  Consultation Suites
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans font-medium">
-                  Professional discussion suites where parents review developmental screening observations, goal roadmaps, and Kalam World Record certified milestone achievements with senior care providers.
+                  Private clinical consultation rooms where parents review developmental screening observations, goal roadmaps, and personalized therapy plans with senior specialists.
                 </p>
               </div>
             </div>

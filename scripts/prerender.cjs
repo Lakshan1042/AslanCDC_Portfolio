@@ -65,7 +65,7 @@ async function prerender() {
           'name': 'Aslan Child Development and Therapy Center - West Tambaram',
           'parentOrganization': { '@id': 'https://aslancdc.com/#organization' },
           'url': 'https://aslancdc.com/locations/west-tambaram/',
-          'image': 'https://aslancdc.com/images/sensory_gym_spider_net.webp',
+          'image': 'https://aslancdc.com/images/tambaram_sensory_gym_wide.webp',
           'telephone': '+91-9445914020',
           'address': {
             '@type': 'PostalAddress',
@@ -172,7 +172,7 @@ async function prerender() {
       title: 'Child Development & Therapy Center in West Tambaram | Aslan',
       description: 'Main therapy facility in West Tambaram, Chennai. Featuring a full sensory gym, occupational therapy, speech therapy, special education, and ADL lab.',
       canonicalUrl: 'https://aslancdc.com/locations/west-tambaram/',
-      ogImage: 'https://aslancdc.com/images/sensory_gym_spider_net.webp',
+      ogImage: 'https://aslancdc.com/images/tambaram_sensory_gym_wide.webp',
       schemaGraph: [
         {
           '@type': 'MedicalOrganization',
@@ -189,7 +189,7 @@ async function prerender() {
           'name': 'Aslan Child Development and Therapy Center - West Tambaram',
           'parentOrganization': { '@id': 'https://aslancdc.com/#organization' },
           'url': 'https://aslancdc.com/locations/west-tambaram/',
-          'image': 'https://aslancdc.com/images/sensory_gym_spider_net.webp',
+          'image': 'https://aslancdc.com/images/tambaram_sensory_gym_wide.webp',
           'telephone': '+91-9445914020',
           'address': {
             '@type': 'PostalAddress',
