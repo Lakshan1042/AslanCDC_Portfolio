@@ -93,7 +93,7 @@ async function prerender() {
           'name': 'Aslan Child Development and Therapy Center - Chromepet',
           'parentOrganization': { '@id': 'https://aslancdc.com/#organization' },
           'url': 'https://aslancdc.com/locations/chromepet/',
-          'image': 'https://aslancdc.com/images/play_therapy_room.webp',
+          'image': 'https://aslancdc.com/images/chromepet_sensory_gym.webp',
           'telephone': '+91-9445914020',
           'address': {
             '@type': 'PostalAddress',
@@ -124,7 +124,7 @@ async function prerender() {
       title: 'Child Development & Therapy Center in Chromepet | Aslan CDC',
       description: 'Dedicated child development and therapy center in New Colony, Chromepet. Providing pediatric occupational therapy, speech therapy, and autism support.',
       canonicalUrl: 'https://aslancdc.com/locations/chromepet/',
-      ogImage: 'https://aslancdc.com/images/play_therapy_room.webp',
+      ogImage: 'https://aslancdc.com/images/chromepet_sensory_gym.webp',
       schemaGraph: [
         {
           '@type': 'MedicalOrganization',
@@ -141,7 +141,7 @@ async function prerender() {
           'name': 'Aslan Child Development and Therapy Center - Chromepet',
           'parentOrganization': { '@id': 'https://aslancdc.com/#organization' },
           'url': 'https://aslancdc.com/locations/chromepet/',
-          'image': 'https://aslancdc.com/images/play_therapy_room.webp',
+          'image': 'https://aslancdc.com/images/chromepet_sensory_gym.webp',
           'telephone': '+91-9445914020',
           'address': {
             '@type': 'PostalAddress',

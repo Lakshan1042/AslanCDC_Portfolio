@@ -94,18 +94,18 @@ export const ChromepetPage: React.FC<ChromepetPageProps> = ({
 
             {/* Right Photo Frame */}
             <div className="lg:col-span-5 relative">
-              <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group aspect-[4/3] sm:aspect-[4/3] lg:aspect-[3/4]">
+              <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white group aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/3]">
                 <img
-                  src="/images/play_therapy_room.webp"
-                  alt="Bright early childhood play therapy and learning room with activity floor mats at Aslan CDC Chromepet"
+                  src="/images/chromepet_sensory_gym.webp"
+                  alt="Sensory gym with circular spider climbing web, suspension swing, and crash mats at Aslan CDC Chromepet"
                   width="768"
                   height="1024"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl border-2 border-amber-200 shadow-lg max-w-[280px]">
-                <p className="text-xs font-extrabold text-slate-900 font-heading">New Colony Facility</p>
-                <p className="text-[11px] text-slate-500 font-medium">Calm, structured spaces designed for focused child learning.</p>
+                <p className="text-xs font-extrabold text-slate-900 font-heading">Specialized Sensory Space</p>
+                <p className="text-[11px] text-slate-500 font-medium">Spider climbing web, suspension disc swing, and sensory motor crash pads.</p>
               </div>
             </div>
 
@@ -125,14 +125,14 @@ export const ChromepetPage: React.FC<ChromepetPageProps> = ({
             className="mb-12"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Room 1 */}
             <div className="bg-amber-50/30 rounded-3xl p-6 border-2 border-amber-100 flex flex-col justify-between space-y-4">
               <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-white border border-amber-100 shadow-xs">
                 <img
-                  src="/images/play_therapy_room.webp"
-                  alt="Play therapy room at Chromepet center"
+                  src="/images/chromepet_play_therapy_room.webp"
+                  alt="Play therapy room at Chromepet center with colorful chairs and floor mats"
                   width="768"
                   height="1024"
                   loading="lazy"
@@ -141,7 +141,7 @@ export const ChromepetPage: React.FC<ChromepetPageProps> = ({
               </div>
               <div>
                 <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
-                  Early Learning & Play Therapy Room
+                  Early Learning & Play Therapy
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans font-medium">
                   Spacious floor mat spaces equipped with color-coded posture chairs, sensory ring toys, and table-top activities designed to encourage attention span and natural play-based learning.
@@ -153,8 +153,8 @@ export const ChromepetPage: React.FC<ChromepetPageProps> = ({
             <div className="bg-amber-50/30 rounded-3xl p-6 border-2 border-amber-100 flex flex-col justify-between space-y-4">
               <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-white border border-amber-100 shadow-xs">
                 <img
-                  src="/images/sensory_tactile_pathway.webp"
-                  alt="Sensory tactile pathway and panels at Aslan CDC"
+                  src="/images/chromepet_independence_lab.webp"
+                  alt="Aslan Independence Lab for life skills training at Chromepet"
                   width="768"
                   height="1024"
                   loading="lazy"
@@ -163,10 +163,10 @@ export const ChromepetPage: React.FC<ChromepetPageProps> = ({
               </div>
               <div>
                 <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
-                  Tactile Pathway & Activity Wall
+                  Aslan Independence Lab (ADL)
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans font-medium">
-                  Multi-textured sensory wall panels featuring diverse tactile surfaces and calming greenery to help children explore touch sensations and de-escalate anxiety.
+                  Dedicated life skills suite with child-accessible kitchen, laundry, and cleaning stations, empowering children with autism and developmental delays to build daily confidence.
                 </p>
               </div>
             </div>
@@ -175,8 +175,8 @@ export const ChromepetPage: React.FC<ChromepetPageProps> = ({
             <div className="bg-amber-50/30 rounded-3xl p-6 border-2 border-amber-100 flex flex-col justify-between space-y-4">
               <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-white border border-amber-100 shadow-xs">
                 <img
-                  src="/images/therapy_cubicles.webp"
-                  alt="Individual therapy cubicles at Aslan CDC"
+                  src="/images/chromepet_tactile_pathway.webp"
+                  alt="Sensory tactile pathway and panels at Aslan CDC Chromepet"
                   width="768"
                   height="1024"
                   loading="lazy"
@@ -185,10 +185,32 @@ export const ChromepetPage: React.FC<ChromepetPageProps> = ({
               </div>
               <div>
                 <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
-                  1-on-1 Speech & Behavioral Cubicles
+                  Tactile Sensory Pathway
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans font-medium">
-                  Private, partitioned therapy stations allowing speech-language pathologists and special educators to deliver focused 1-on-1 instruction without visual distractions.
+                  Multi-textured sensory wall panels featuring diverse tactile surfaces and calming greenery to help children explore touch sensations and de-escalate anxiety.
+                </p>
+              </div>
+            </div>
+
+            {/* Room 4 */}
+            <div className="bg-amber-50/30 rounded-3xl p-6 border-2 border-amber-100 flex flex-col justify-between space-y-4">
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-white border border-amber-100 shadow-xs">
+                <img
+                  src="/images/chromepet_sensory_wall_board.webp"
+                  alt="Multisensory interactive activity board at Aslan CDC Chromepet"
+                  width="768"
+                  height="1024"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
+                  Multisensory Activity Board
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans font-medium">
+                  Interactive sensory activity panel equipped with tactile gears, mini keyboard, rotary wheel, telephone, and developmental counters for fine motor and cognitive engagement.
                 </p>
               </div>
             </div>

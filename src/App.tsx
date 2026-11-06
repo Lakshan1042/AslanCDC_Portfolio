@@ -135,7 +135,7 @@ export const App: React.FC<AppProps> = ({ initialRoute }) => {
           title: 'Child Development & Therapy Center in Chromepet | Aslan CDC',
           description: 'Dedicated child development and therapy center in New Colony, Chromepet. Providing pediatric occupational therapy, speech therapy, and autism support.',
           canonicalUrl: `${CENTER_INFO.siteUrl}/locations/chromepet/`,
-          ogImage: `${CENTER_INFO.siteUrl}/images/play_therapy_room.webp`,
+          ogImage: `${CENTER_INFO.siteUrl}/images/chromepet_sensory_gym.webp`,
           branchType: 'chromepet' as const,
           breadcrumbs: [
             { name: 'Home', url: `${CENTER_INFO.siteUrl}/` },
